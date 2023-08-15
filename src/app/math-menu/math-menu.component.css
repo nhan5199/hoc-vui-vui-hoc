@@ -1,0 +1,17 @@
+.math-menu{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.math-menu .geometry, .math-menu .algebra{
+  position: relative;
+}
+
+.math-menu img{
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display:block;
+}

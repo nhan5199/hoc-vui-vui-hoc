@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -8,6 +8,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit{
 
+  goToMath : string = "/math-menu";
   constructor(
     private readonly titleService:Title
   ) {
@@ -17,4 +18,5 @@ export class HomeComponent implements OnInit{
   ngOnInit(){
 
   }
+
 }
