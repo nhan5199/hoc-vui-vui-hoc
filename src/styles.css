@@ -4,8 +4,7 @@
 :root{
   --title: 'Kablammo';
   --text: 'Twinkle Star';
-  --text-size: 13px;
-  --title-size: 40px;
+  --title-size: 3vw;
   --title-font: 'Pattaya';
 }
 /* font-family: 'Baloo Bhai 2', cursive;

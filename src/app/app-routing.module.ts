@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MathMenuComponent } from './math-menu/math-menu.component';
+import { GeometryMenuComponent } from './geometry-menu/geometry-menu.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'math-menu',
     component: MathMenuComponent
+  },
+  {
+    path: 'geometry-menu',
+    component: GeometryMenuComponent
   },
   // {
   //   path: '',

@@ -1,6 +1,8 @@
 <div class="menu-button">
-  <img [src]="imgPath" alt="">
+  <img [src]="imgPath" alt="" />
   <div class="img-button">
-    <button type="button" class="left-menu-button">{{imgLabel}}</button>
+    <button type="button" class="left-menu-button" (click)="goToPage()">
+      {{ imgLabel }}
+    </button>
   </div>
 </div>

@@ -16,7 +16,8 @@
 .home-button button{
   font-size: var(--title-size);
   font-weight: bold;
-  padding: 22px 60px 22px 100px;
+  width: calc(100vw/4.5);
+  height: 9svh;
   text-align:center;
   border: 10px solid #FF8D64;
   border-radius: 30px;

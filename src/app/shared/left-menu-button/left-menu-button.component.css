@@ -11,34 +11,33 @@
   cursor: pointer;
 }
 
-.menu-button .img-button{
+.img-button{
   background-color: #E6C5FE;
   padding: 10px;
   clip-path: polygon(0 0, 80% 0, 100% 50% , 80% 100%, 0 100%);
 }
 
-.menu-button img{
+img{
   width: 40%;
   margin-right:-10%;
   z-index:10;
 }
 
 .left-menu-button{
-
-  font-size: 50px;
+  width: calc(100vw/4.5);
+  height: 8.5svh;
+  text-align: center;
+  font-size: 3vw;
   font-family: var(--title-font);
-  color: black;
-  padding: 20px 100px 20px 60px;
-  background-color: #fff;
   clip-path: polygon(0 0, 78% 0, 98% 50% , 78% 100%, 0 100%);
   color:#E6C5FE;
   border: none;
-    background: linear-gradient(to left, #fff 50%, #E6C5FE 50%);
-    background-size: 200% 100%;
-    background-position:right bottom;
-    margin-left:10px;
-    transition:all .75s ease;
-    cursor: pointer;
+  background: linear-gradient(to left, #fff 50%, #E6C5FE 50%);
+  background-size: 200% 100%;
+  background-position:right bottom;
+  margin-left:10px;
+  transition:all .75s ease;
+  cursor: pointer;
 }
 
 .menu-button:hover .left-menu-button{
@@ -47,6 +46,8 @@
 }
 
 .menu-button:hover .img-button{
-  background-color: #fff;;
+  background-color: #fff;
 }
+
+
 
