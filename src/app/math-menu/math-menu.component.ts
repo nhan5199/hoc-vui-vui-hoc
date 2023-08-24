@@ -12,7 +12,7 @@ export class MathMenuComponent implements OnInit {
   geometryButtonLabel : string = "Hình học";
   geometryUrl : string = "/geometry-menu"
   algrebraButtonPath : string = "/assets/imgs/home/algebra_button.gif";
-  algrebraButtonLabel : string = "Đại số";
+  algrebraButtonLabel : string = "Đại lượng";
   algebraUrl : string = "";
   constructor(
     private readonly _router : Router
