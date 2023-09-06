@@ -14,10 +14,10 @@
 }
 
 .home-button button{
+  padding: 0 10px;
   font-size: var(--title-size);
   font-weight: bold;
   width: calc(100vw/4.5);
-  height: 9svh;
   text-align:center;
   border: 10px solid #FF8D64;
   border-radius: 30px;
