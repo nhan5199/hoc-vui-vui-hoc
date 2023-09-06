@@ -21,17 +21,17 @@ export class GeometryMenuComponent implements OnInit{
       {
         label: "Hình tam giác",
         imgPath: "/assets/imgs/home/triangle-button.gif",
-        url: ""
+        name: "triangle"
       },
       {
         label: "Hình tứ giác",
         imgPath: "/assets/imgs/home/rectangle-button.gif",
-        url: ""
+        name: ""
       },
       {
         label: "Hình tròn",
         imgPath: "/assets/imgs/home/circle-buton.gif",
-        url: ""
+        name: ""
       }
     ];
 
@@ -39,17 +39,17 @@ export class GeometryMenuComponent implements OnInit{
       {
         label: "Hình hộp chữ nhật",
         imgPath: "/assets/imgs/home/rectangular-button.gif",
-        url: ""
+        name: ""
       },
       {
         label: "Hình lập phương",
         imgPath: "/assets/imgs/home/cube-button.gif",
-        url: ""
+        name: ""
       },
       {
         label: "Hình trụ",
         imgPath: "/assets/imgs/home/cylinder-button.gif",
-        url: ""
+        name: ""
       }
     ];
 

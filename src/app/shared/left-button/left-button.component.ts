@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'left-button',
@@ -9,11 +9,12 @@ import { Router } from '@angular/router';
 export class LeftButtonComponent implements OnInit{
   @Input('imgPath') imgPath : string = "";
   @Input('imgLabel') imgLabel : string = "";
-  @Input('url') url : string = "";
+  @Input('name') name : string = "";
 
 
   constructor(
-    private readonly _router : Router
+    private readonly _router : Router,
+    private readonly _route : ActivatedRoute
   ){
 
   }
@@ -23,7 +24,7 @@ export class LeftButtonComponent implements OnInit{
   }
 
   goToPage(){
-    this._router.navigateByUrl(this.url);
+    this._router.navigateByUrl(`geometry-menu/${this.name}`);
   }
 
 }

@@ -1,0 +1,25 @@
+<div class="math-menu">
+  <img
+    src="/assets/imgs/lession/background/triangle-lession-background.gif"
+    alt=""
+  />
+  <div class="left-btn">
+    <left-lession-button
+      class="button"
+      [imgPath]="theoryImgPath"
+      [imgLabel]="theoryLabel"
+      [url]="theoryUrl"
+      [name]="lessionName"
+    ></left-lession-button>
+  </div>
+  <div class="right-btn">
+    <right-lession-button
+      class="button"
+      [imgPath]="exerciseImgPath"
+      [imgLabel]="exerciseLabel"
+      [url]="exerciseUrl"
+      [name]="lessionName"
+    ></right-lession-button>
+  </div>
+</div>
+<router-outlet></router-outlet>

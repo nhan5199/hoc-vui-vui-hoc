@@ -11,7 +11,7 @@
         class="button"
         [imgPath]="item.imgPath"
         [imgLabel]="item.label"
-        [url]="item.url"
+        [name]="item.name"
       ></left-button>
     </div>
   </div>
@@ -25,8 +25,9 @@
         class="button"
         [imgPath]="item.imgPath"
         [imgLabel]="item.label"
-        [url]="item.url"
+        [name]="item.name"
       ></right-button>
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>

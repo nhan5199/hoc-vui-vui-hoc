@@ -10,8 +10,7 @@ export class RightButtonComponent implements OnInit{
 
   @Input('imgPath') imgPath : string = "";
   @Input('imgLabel') imgLabel : string = "";
-  @Input('url') url : string = "";
-  @Input('type') type : number = 1;
+  @Input('name') name : string = "";
 
 
   constructor(
@@ -25,6 +24,6 @@ export class RightButtonComponent implements OnInit{
   }
 
   goToPage(){
-    this._router.navigateByUrl(this.url);
+    this._router.navigateByUrl(`/geometry-menu/${this.name}`);
   }
 }

@@ -1,4 +1,4 @@
-.left-button{
+.left-lession-button{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -7,7 +7,7 @@
   margin: 3svh;
 }
 
-.img-button{
+.img-lession-button{
   background-color: #E6C5FE;
   padding: .8em;
   clip-path: polygon(0 0, 80% 0, 100% 50% , 80% 100%, 0 100%);
@@ -36,12 +36,12 @@ button{
   cursor: pointer;
 }
 
-.left-button:hover button{
+.left-lession-button:hover button{
   background-position: left bottom;
   color: white;
 }
 
-.left-button:hover .img-button{
+.left-lession-button:hover .img-button{
   background-color: #fff;
 }
 
