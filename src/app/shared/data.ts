@@ -11,93 +11,100 @@ export class DataService{
    * -name, theory, exercises
    * --quests
    */
-  lession : any[] = [
+  topic : any[] = [
     {
-      triangle : [
-        {
-          name : "lession-1",
-          theory: {
+      topicName : "triangle",
+      content : {
+        listTheory:[
+          {
+            name: "theory-1",
+            imgPath: "",
+            url: ""
+          }
+        ],
+        listExercises: [
+          {
+            name: "exercise-1",
             imgPath: "",
             url: "",
-          },
-          exercises: [
-            {
-              imgPath: "",
-              url: "",
-              quests: [
-                {
-                  type : 1,
-                  question: "Hãy chọn đáp án đúng nhất",
-                  choices : [
-                    {
-                      value: 1,
-                      name: "Đáp án 1"
-                    },
-                    {
-                      value: 2,
-                      name: "Đáp án 2"
-                    },
-                    {
-                      value: 3,
-                      name: "Đáp án 3"
-                    },
-                    {
-                      value: 4,
-                      name: "Đáp án 4"
-                    },
-                  ],
-                  answer: "1"
-                },
-                {
-                  type : 2,
-                  question: "Điền đúng/sai sau mỗi ý kiến sau",
-                  choices : [
-                    {
-                      value: 1,
-                      name: "Đáp án 1"
-                    },
-                    {
-                      value: 2,
-                      name: "Đáp án 2"
-                    },
-                    {
-                      value: 3,
-                      name: "Đáp án 3"
-                    },
-                    {
-                      value: 4,
-                      name: "Đáp án 4"
-                    },
-                  ],
-                  answer: "1"
-                },
-                {
-                  type : 3,
-                  question: "Hãy điền đáp án đúng",
-                  choices : [
-                    {
-                      value: 1,
-                      name: "Đáp án 1",
-                    },
-                    {
-                      value: 0,
-                      name: "Đáp án 2"
-                    },
-                    {
-                      value: 0,
-                      name: "Đáp án 3"
-                    },
-                    {
-                      value: 1,
-                      name: "Đáp án 4"
-                    },
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+            quests: [
+              {
+                type : 1,
+                questionName: "Hãy chọn đáp án đúng nhất",
+                choices : [
+                  {
+                    value: 1,
+                    name: "Đáp án 1"
+                  },
+                  {
+                    value: 2,
+                    name: "Đáp án 2"
+                  },
+                  {
+                    value: 3,
+                    name: "Đáp án 3"
+                  },
+                  {
+                    value: 4,
+                    name: "Đáp án 4"
+                  },
+                ],
+                answer: 1
+              },
+              {
+                type : 2,
+                questionName: "Chọn đúng/sai sau mỗi ý kiến sau",
+                choices : [
+                  {
+                    answer: 1,
+                    name: "Đáp án 1 Chọn đúng/sai sau mỗi ý kiến sau Chọn đúng/sai sau mỗi ý kiến sau, Đáp án 1 Chọn đúng/sai sau mỗi ý kiến sau Chọn đúng/sai sau mỗi ý kiến sau",
+                  },
+                  {
+                    answer: 0,
+                    name: "Đáp án 1 Chọn đúng/sai sau mỗi ý kiến sau Chọn đúng/sai sau mỗi ý kiến sau, Đáp án 1 Chọn đúng/sai sau mỗi ý kiến sau Chọn đúng/sai sau mỗi ý kiến sau"
+                  },
+                  {
+                    answer: 1,
+                    name: "Đáp án 1 Chọn đúng/sai sau mỗi ý kiến sau Chọn đúng/sai sau mỗi ý kiến sau, Đáp án 1 Chọn đúng/sai sau mỗi ý kiến sau Chọn đúng/sai sau mỗi ý kiến sau"
+                  },
+                  {
+                    answer: 0,
+                    name: "Đáp án 1 Chọn đúng/sai sau mỗi ý kiến sau Chọn đúng/sai sau mỗi ý kiến sau, Đáp án 1 Chọn đúng/sai sau mỗi ý kiến sau Chọn đúng/sai sau mỗi ý kiến sau"
+                  },
+                ],
+              },
+              {
+                type : 3,
+                questionName: "Trả lời câu hỏi",
+                choices : [
+                  {
+                    value: 1,
+                    name: "Đáp án 1",
+                  },
+                ]
+              },
+              {
+                type: 4,
+                questionName: "Đổi đơn vị đo",
+                questions:[
+                  {
+                    value: "3m",
+                    unit: ["mm"],
+                    answer: [3000]
+                  },
+                  {
+                    value: "3040m",
+                    unit: [
+                      "km","m"
+                    ],
+                    answer: [3,40]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     }
   ];
 

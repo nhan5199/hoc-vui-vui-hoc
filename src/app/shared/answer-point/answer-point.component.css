@@ -1,0 +1,29 @@
+.point-display{
+  width: 150px;
+  position: relative
+}
+
+.point-display img{
+  width: 100%;
+}
+
+.point{
+  position: absolute;
+  top: 35%;
+  color: white;
+  left: 30%;
+  transform: translate(-35%,-30%);
+  font-size: 1.5em;
+  font-family: 'Baloo Bhai 2';
+  font-weight: 500;
+}
+
+.point-plus{
+  position: absolute;
+  color: white;
+  font-size: 1.5rem;
+  font-family: 'Baloo Bhai 2';
+  font-weight: 500;
+  bottom: -40%;
+  transform: translateX(40%);
+}

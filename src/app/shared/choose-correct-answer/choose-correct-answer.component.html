@@ -1,0 +1,12 @@
+<div class="question">
+  {{ question.questionName }}
+</div>
+<div class="list-answers">
+  <button
+    class="answer"
+    *ngFor="let answer of question.choices"
+    (click)="checkAnswer(answer.value, $event)"
+  >
+    {{ answer.name }}
+  </button>
+</div>

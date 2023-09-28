@@ -1,11 +1,49 @@
-<div class="welcome-page">
-  <img src="/assets/imgs/lession/welcome-exercise.png" alt="" />
+<div class="exercise">
+  <div class="welcome-page" *ngIf="activeQuest == 0">
+    <img src="/assets/imgs/lession/welcome-exercise.png" alt="mo-dau" />
 
-  <div class="title">
-    <p>
-      Phiếu bài tập <br />
-      {{ this.exerciseName }}
-    </p>
-    <button class="start">Bắt đầu</button>
+    <div class="title">
+      <p>
+        Phiếu bài tập <br />
+        {{ this.exerciseName }}
+      </p>
+      <button class="start" (click)="changeQuestion()">Bắt đầu</button>
+    </div>
   </div>
+  <ng-container *ngIf="activeQuest != 0">
+    <div class="list-question">
+      <img src="/assets/imgs/lession/question.png" alt="cau-hoi" />
+      <app-answer-point class="point" [pointPlus]="point"></app-answer-point>
+      <ng-container *ngFor="let item of listQuestions; let i = index">
+        <div class="question" *ngIf="activeQuest == i + 1">
+          <div class="content">
+            <!-- Câu hỏi Chọn đáp án đúng -->
+            <ng-container *ngIf="item?.type == 1">
+              <app-choose-correct-answer [question]="item" (result)="checkAnswer($event)"></app-choose-correct-answer>
+            </ng-container>
+
+            <!-- Câu hỏi Chọn đúng sai -->
+            <ng-container *ngIf="item?.type == 2">
+              <app-yes-no-question [question]="item" (result)="validateAnswers($event)"></app-yes-no-question>
+            </ng-container>
+
+            <!-- Câu hỏi điền đáp án -->
+            <ng-container *ngIf="item?.type == 3">
+              <div class="question">
+                {{ item.questionName }}
+              </div>
+              <div class="answer">
+                <p>Đáp án là: </p>
+                <input type="text">
+              </div>
+              <div class="check">
+                <button (click)="onCheckAnswer()">Kiểm tra</button>
+                </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
 </div>
+<app-error-message [display]="isDisplayErrorMessage" [message]="errorMessage"></app-error-message>

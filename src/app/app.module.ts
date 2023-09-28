@@ -12,7 +12,7 @@ import { GeometryMenuComponent } from './geometry-menu/geometry-menu.component';
 import { CommonModule } from '@angular/common';
 import { LeftButtonComponent } from './shared/left-button/left-button.component';
 import { RightButtonComponent } from './shared/right-button/right-button.component';
-import { LessionComponent } from './lession/lession.component';
+import { TopicComponent } from './lession/topic.component';
 import { DataService } from './shared/data';
 import { ListTheoryComponent } from './lession/list-theory/list-theory.component';
 import { TheoryComponent } from './lession/list-theory/theory/theory.component';
@@ -20,6 +20,10 @@ import { LeftLessionButtonComponent } from './shared/lession-button/left-lession
 import { RightLessionButtonComponent } from './shared/lession-button/right-lession-button/right-lession-button.component';
 import { ExerciseComponent } from './lession/list-excercise/excercise/exercise.component';
 import { ListExerciseComponent } from './lession/list-excercise/list-exercise.component';
+import { AnswerPointComponent } from './shared/answer-point/answer-point.component';
+import { ChooseCorrectAnswerComponent } from './shared/choose-correct-answer/choose-correct-answer.component';
+import { YesNoQuestionComponent } from './shared/yes-no-question/yes-no-question.component';
+import { ErrorMessageComponent } from './shared/error-message/error-message.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +36,17 @@ import { ListExerciseComponent } from './lession/list-excercise/list-exercise.co
     GeometryMenuComponent,
     LeftButtonComponent,
     RightButtonComponent,
-    LessionComponent,
+    TopicComponent,
     ListExerciseComponent,
     ListTheoryComponent,
     TheoryComponent,
     ExerciseComponent,
     LeftLessionButtonComponent,
     RightLessionButtonComponent,
+    AnswerPointComponent,
+    ChooseCorrectAnswerComponent,
+    YesNoQuestionComponent,
+    ErrorMessageComponent,
   ],
   imports: [
     BrowserModule,

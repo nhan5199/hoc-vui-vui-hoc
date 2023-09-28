@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../shared/data';
 
 @Component({
-  selector: 'app-lession',
-  templateUrl: './lession.component.html',
-  styleUrls: ['./lession.component.css']
+  selector: 'app-topic',
+  templateUrl: './topic.component.html',
+  styleUrls: ['./topic.component.css']
 })
-export class LessionComponent implements OnInit {
+export class TopicComponent implements OnInit {
   theoryImgPath : string = "";
   theoryUrl : string = "";
   theoryLabel : string = "Lý thuyết";
@@ -16,7 +16,7 @@ export class LessionComponent implements OnInit {
   exerciseUrl : string = "";
   exerciseLabel : string = "Bài tập";
 
-  lessionName : string | null = "";
+  topicName : string | null = "";
 
   constructor(
     private readonly _router : Router,
@@ -27,6 +27,6 @@ export class LessionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.lessionName = this._route.snapshot.paramMap.get('lessionName');
+    this.topicName = this._route.snapshot.paramMap.get('topicName');
   }
 }

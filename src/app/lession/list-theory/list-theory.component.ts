@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ListTheoryComponent implements OnInit{
 
-  lessionName : string | null = "";
+  topicName : string | null = "";
   theoryName : string = "theory-123";
 
   constructor(
@@ -17,10 +17,10 @@ export class ListTheoryComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.lessionName = this._route.snapshot.paramMap.get('lessionName');
+    this.topicName = this._route.snapshot.paramMap.get('topicName');
   }
 
   goToTheory(){
-    this._router.navigateByUrl(`geometry-menu/${this.lessionName}/list-theory/${this.theoryName}`);
+    this._router.navigateByUrl(`geometry-menu/${this.topicName}/list-theory/${this.theoryName}`);
   }
 }

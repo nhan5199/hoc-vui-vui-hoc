@@ -1,0 +1,39 @@
+
+.list-answers{
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  gap: 30px;
+}
+
+
+.question{
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 2em;
+  margin: .5em;
+  font-family: var(--title-font)
+}
+
+.list-answers .answer{
+  padding: 4rem;
+  border: 8px solid white;
+  color: white;
+  font-family: var(--title-font);
+  font-size: 1.5em;
+  border-radius: 20px;
+  background-color: #33afb7;
+  cursor: pointer;
+}
+.list-answers .answer:hover, .list-answers .answer.active{
+  background-color: #2f6dac;
+}
+
+.list-answers .answer.correct{
+  background-color: rgb(21, 182, 21);
+}
+
+.list-answers .answer.false{
+  background-color: red;
+}
