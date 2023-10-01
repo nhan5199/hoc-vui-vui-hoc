@@ -19,26 +19,34 @@
           <div class="content">
             <!-- Câu hỏi Chọn đáp án đúng -->
             <ng-container *ngIf="item?.type == 1">
-              <app-choose-correct-answer [question]="item" (result)="checkAnswer($event)"></app-choose-correct-answer>
+              <app-choose-correct-answer
+                [question]="item"
+                (result)="checkAnswer($event)"
+              ></app-choose-correct-answer>
             </ng-container>
 
             <!-- Câu hỏi Chọn đúng sai -->
             <ng-container *ngIf="item?.type == 2">
-              <app-yes-no-question [question]="item" (result)="validateAnswers($event)"></app-yes-no-question>
+              <app-yes-no-question
+                [question]="item"
+                (result)="validateAnswers($event)"
+              ></app-yes-no-question>
             </ng-container>
 
             <!-- Câu hỏi điền đáp án -->
             <ng-container *ngIf="item?.type == 3">
-              <div class="question">
-                {{ item.questionName }}
-              </div>
-              <div class="answer">
-                <p>Đáp án là: </p>
-                <input type="text">
-              </div>
-              <div class="check">
-                <button (click)="onCheckAnswer()">Kiểm tra</button>
-                </div>
+              <app-write-answer
+                [question]="item"
+                (result)="checkAnswer($event)"
+              ></app-write-answer>
+            </ng-container>
+
+            <!-- Câu hỏi đổi đơn vị đo -->
+            <ng-container *ngIf="item?.type == 4">
+              <app-exchange-unit
+                [question]="item"
+                (result)="checkAnswer($event)"
+              ></app-exchange-unit>
             </ng-container>
           </div>
         </div>
@@ -46,4 +54,7 @@
     </div>
   </ng-container>
 </div>
-<app-error-message [display]="isDisplayErrorMessage" [message]="errorMessage"></app-error-message>
+<app-error-message
+  [display]="isDisplayErrorMessage"
+  [message]="errorMessage"
+></app-error-message>

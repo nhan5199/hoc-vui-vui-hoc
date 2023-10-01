@@ -3,20 +3,33 @@
     {{ question.questionName }}
   </div>
   <div class="list-answers">
-    <div class="answer"
-    *ngFor="let answer of question.choices;let i = index">
+    <div class="answer" *ngFor="let answer of question.choices; let i = index">
       <div class="opinion">
-        <p>{{answer.name}}</p>
+        <p>{{ answer.name }}</p>
       </div>
       <div class="value">
         <button (click)="saveAnswer(i, $event)">Đ</button>
         <button (click)="saveAnswer(i, $event)">S</button>
+        <img
+          *ngIf="
+            isClickCheck &&
+            this.listAnswer[i].choice == this.listAnswer[i].answer
+          "
+          src="/assets/imgs/lession/correct-icon.png"
+          alt=""
+        />
+        <img
+          *ngIf="
+            isClickCheck &&
+            this.listAnswer[i].choice != this.listAnswer[i].answer
+          "
+          src="/assets/imgs/lession/false-icon.png"
+          alt=""
+        />
       </div>
     </div>
-
   </div>
   <div class="check">
-  <button (click)="onCheckAnswer()">Kiểm tra</button>
+    <button (click)="onCheckAnswer()">Kiểm tra</button>
   </div>
-
 </div>

@@ -1,0 +1,17 @@
+<div class="write-answer">
+  <div class="question">
+    {{ question.questionName }}
+    <img
+      *ngIf="question?.imgPath?.length > 0"
+      [src]="question?.imgPath"
+      alt=""
+    />
+  </div>
+  <div class="answer">
+    <p>Đáp án là:</p>
+    <input type="text" [(ngModel)]="answer" />
+  </div>
+  <div class="check">
+    <button (click)="onCheckAnswer()">Kiểm tra</button>
+  </div>
+</div>

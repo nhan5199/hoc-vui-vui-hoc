@@ -1,0 +1,20 @@
+<div class="exchange-unit">
+  <div class="question">
+    {{ question.questionName }}
+  </div>
+  <div class="list-opinions">
+    <ng-container
+      ><div class="opinion" *ngFor="let question of question?.questions">
+        <p>{{ question.value }}</p>
+        =
+        <div class="unit" *ngFor="let unit of question.unit">
+          <input type="text" [(ngModel)]="input[numberCount]" />
+          <p>{{ unit }}</p>
+        </div>
+      </div></ng-container
+    >
+  </div>
+  <div class="check">
+    <button (click)="onCheckAnswer()">Kiểm tra</button>
+  </div>
+</div>

@@ -1,12 +1,19 @@
-<div class="question">
-  {{ question.questionName }}
-</div>
-<div class="list-answers">
-  <button
-    class="answer"
-    *ngFor="let answer of question.choices"
-    (click)="checkAnswer(answer.value, $event)"
-  >
-    {{ answer.name }}
-  </button>
+<div class="choose-correct-answer">
+  <div class="question">
+    {{ question.questionName }}
+    <img
+      *ngIf="question?.imgPath?.length > 0"
+      [src]="question?.imgPath"
+      alt=""
+    />
+  </div>
+  <div class="list-answers">
+    <button
+      class="answer"
+      *ngFor="let answer of question.choices"
+      (click)="checkAnswer(answer.value, $event)"
+    >
+      {{ answer.name }}
+    </button>
+  </div>
 </div>

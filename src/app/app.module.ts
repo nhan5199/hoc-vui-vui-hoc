@@ -24,6 +24,9 @@ import { AnswerPointComponent } from './shared/answer-point/answer-point.compone
 import { ChooseCorrectAnswerComponent } from './shared/choose-correct-answer/choose-correct-answer.component';
 import { YesNoQuestionComponent } from './shared/yes-no-question/yes-no-question.component';
 import { ErrorMessageComponent } from './shared/error-message/error-message.component';
+import { ExchangeUnitComponent } from './shared/exchange-unit/exchange-unit.component';
+import { WriteAnswerComponent } from './shared/write-answer/write-answer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,11 +50,14 @@ import { ErrorMessageComponent } from './shared/error-message/error-message.comp
     ChooseCorrectAnswerComponent,
     YesNoQuestionComponent,
     ErrorMessageComponent,
+    ExchangeUnitComponent,
+    WriteAnswerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
     DataService
