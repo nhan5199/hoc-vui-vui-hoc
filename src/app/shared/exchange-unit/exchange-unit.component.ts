@@ -7,7 +7,6 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-exchange-unit',
@@ -18,36 +17,48 @@ export class ExchangeUnitComponent implements OnInit, OnChanges {
   @Input('question') question: any;
   @Output('result') result: EventEmitter<any> = new EventEmitter();
   form: any[] = [];
-  input: number[] = [];
-  numberCount: number = 0;
-  constructor(private readonly _fb: FormBuilder) {}
+
+  constructor() {}
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['question']) {
       this.question.questions.forEach((question: any) => {
-        let temp = this._fb.group({
-          input: [''],
-          answer: [question.answer],
-          checkAnswer: [false],
-        });
+        let temp = {
+          input: [],
+          answer: question.answer,
+          checkAnswer: false,
+        };
 
         this.form.push(temp);
       });
-
-      this.input = new Array<number>(this.form.length).fill(0);
     }
   }
   ngOnInit() {}
 
   onCheckAnswer() {
-    console.log('data: ', this.input);
-    // this.form.forEach((form: any) => {
-    //   console.log('data: ', form.get('input').value);
-    // });
-  }
+    let countCorrect = 0;
+    this.form.forEach((sentence: any) => {
+      let correctAnswer = 0;
+      sentence.input.forEach((input: any, i: number) => {
+        if (input == sentence.answer[i]) {
+          correctAnswer += 1;
+        }
+      });
 
-  getNumber() {
-    console.log(1);
-    this.numberCount += 1;
-    return this.numberCount;
+      if (correctAnswer == sentence.answer.length) {
+        countCorrect += 1;
+      }
+    });
+
+    this.result.emit(
+      countCorrect > 0
+        ? {
+            result: true,
+            point: Math.round((countCorrect * 100) / this.form.length),
+          }
+        : {
+            result: false,
+            point: 0,
+          }
+    );
   }
 }

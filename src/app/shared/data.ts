@@ -11,6 +11,7 @@ export class DataService {
    * -name, theory, exercises
    * --quests
    */
+
   topic: any[] = [
     {
       topicName: 'triangle',
@@ -28,6 +29,31 @@ export class DataService {
             imgPath: '',
             url: '',
             quests: [
+              {
+                type: 1,
+                questionName:
+                  'A là người chạy nhanh thứ 50 và cũng là người chạy chậm thứ 50 trong cuộc thi ở trường. Giả sử không có 2 người nào chạy cùng tốc độ thì tổng cộng có bao nhiêu học sinh ở trường A tham gia chạy?A là người chạy nhanh thứ 50 và cũng là người chạy chậm thứ 50 trong cuộc thi ở trường. Giả sử không có 2 người nào chạy cùng tốc độ thì tổng cộng có bao nhiêu học sinh ở trường A tham gia chạy?A là người chạy nhanh thứ 50 và cũng là người chạy chậm thứ 50 trong cuộc thi ở trường. Giả sử không có 2 người nào chạy cùng tốc độ thì tổng cộng có bao nhiêu học sinh ở trường A tham gia chạy?A là người chạy nhanh thứ 50 và cũng là người chạy chậm thứ 50 trong cuộc thi ở trường. Giả sử không có 2 người nào chạy cùng tốc độ thì tổng cộng có bao nhiêu học sinh ở trường A tham gia chạy?A là người chạy nhanh thứ 50 và cũng là người chạy chậm thứ 50 trong cuộc thi ở trường. Giả sử không có 2 người nào chạy cùng tốc độ thì tổng cộng có bao nhiêu học sinh ở trường A tham gia chạy?A là người chạy nhanh thứ 50 và cũng là người chạy chậm thứ 50 trong cuộc thi ở trường. Giả sử không có 2 người nào chạy cùng tốc độ thì tổng cộng có bao nhiêu học sinh ở trường A tham gia chạy?',
+
+                choices: [
+                  {
+                    value: 1,
+                    name: '/assets/imgs/lession/square.png',
+                  },
+                  {
+                    value: 2,
+                    name: '/assets/imgs/lession/circle.jpg',
+                  },
+                  {
+                    value: 3,
+                    name: '/assets/imgs/lession/rectangle.jpg',
+                  },
+                  {
+                    value: 4,
+                    name: '/assets/imgs/lession/trapezoid.png',
+                  },
+                ],
+                answer: 1,
+              },
               {
                 type: 1,
                 questionName:

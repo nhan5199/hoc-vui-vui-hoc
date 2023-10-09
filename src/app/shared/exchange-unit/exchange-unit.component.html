@@ -4,11 +4,14 @@
   </div>
   <div class="list-opinions">
     <ng-container
-      ><div class="opinion" *ngFor="let question of question?.questions">
+      ><div
+        class="opinion"
+        *ngFor="let question of question?.questions; let i = index"
+      >
         <p>{{ question.value }}</p>
         =
-        <div class="unit" *ngFor="let unit of question.unit">
-          <input type="text" [(ngModel)]="input[numberCount]" />
+        <div class="unit" *ngFor="let unit of question.unit; let j = index">
+          <input type="number" [(ngModel)]="form[i].input[j]" />
           <p>{{ unit }}</p>
         </div>
       </div></ng-container

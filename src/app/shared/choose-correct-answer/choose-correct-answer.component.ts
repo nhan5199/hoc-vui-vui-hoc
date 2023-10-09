@@ -9,8 +9,13 @@ export class ChooseCorrectAnswerComponent implements OnInit {
   @Input('question') question: any;
   @Output() result: EventEmitter<boolean> = new EventEmitter();
   isClick: boolean = false;
+  isAnswerWithImage: boolean = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.question.choices[0].name.includes('/')) {
+      this.isAnswerWithImage = true;
+    }
+  }
 
   checkAnswer(chosenAnswer: number, event: any) {
     let parentElement = event.target.parentNode;

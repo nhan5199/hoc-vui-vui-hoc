@@ -19,8 +19,8 @@
   text-align: center;
   color: white;
   font-size: 2em;
-  margin: .5em;
-  font-family: var(--title-font)
+  margin: 0.5em;
+  font-family: var(--title-font);
 }
 
 .question img {
@@ -51,4 +51,29 @@
 
 .list-answers .answer.false {
   background-color: red;
+}
+
+.answer-img {
+  height: 200px;
+}
+
+.answer-img img {
+  width: 80%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 8px solid white;
+}
+
+.answer-img img:hover {
+  border-color: #2f6dac;
+}
+
+.answer-img img.correct {
+  border-color: rgb(21, 182, 21);
+}
+
+.answer-img img.false {
+  border-color: red;
 }

@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "hoc-vui-vui-hoc",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

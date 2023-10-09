@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { ActivatedRoute, Event } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { DataService } from 'src/app/shared/data';
 
 @Component({
@@ -19,7 +20,8 @@ export class ExerciseComponent implements OnInit {
   isDisplayErrorMessage: boolean = false;
   constructor(
     private readonly _route: ActivatedRoute,
-    private readonly _dataService: DataService
+    private readonly _dataService: DataService,
+    private readonly _appService: AppComponent
   ) {}
 
   ngOnInit() {
@@ -36,12 +38,14 @@ export class ExerciseComponent implements OnInit {
   }
 
   changeQuestion() {
-    this.activeQuest += 4;
+    this.activeQuest += 1;
   }
 
   checkAnswer(result: any, point: number = 0) {
-    if (result || point != 0) {
-      this.point = point == 0 ? this.point + 100 : this.point + point;
+    if (result?.point && result.result) {
+      this.point = this.point + result.point;
+    } else if (result || point != 0) {
+      this.point = this.point + 100;
     }
 
     setTimeout(() => {
@@ -64,4 +68,8 @@ export class ExerciseComponent implements OnInit {
   }
 
   onCheckAnswer() {}
+
+  getData() {
+    console.log(this._appService.allQuestionAnswer);
+  }
 }

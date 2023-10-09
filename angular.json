@@ -28,7 +28,7 @@
         "@schematics/angular:service": {
           "skipTests": true
         }
-     },
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -113,6 +113,13 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2,
+            "browserTarget": "hoc-vui-vui-hoc:build:production"
           }
         }
       }

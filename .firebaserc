@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "hoc-vui-vui-hoc": {
+      "hosting": {
+        "hoc-vui-vui-hoc": [
+          "hoc-vui-vui-hoc"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "hoc-vui-vui-hoc"
+  }
+}

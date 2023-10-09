@@ -8,12 +8,23 @@
     />
   </div>
   <div class="list-answers">
-    <button
-      class="answer"
-      *ngFor="let answer of question.choices"
-      (click)="checkAnswer(answer.value, $event)"
-    >
-      {{ answer.name }}
-    </button>
+    <ng-container *ngIf="!isAnswerWithImage">
+      <button
+        class="answer"
+        *ngFor="let answer of question.choices"
+        (click)="checkAnswer(answer.value, $event)"
+      >
+        {{ answer.name }}
+      </button>
+    </ng-container>
+    <ng-container *ngIf="isAnswerWithImage">
+      <span
+        class="answer-img"
+        *ngFor="let answer of question.choices"
+        (click)="checkAnswer(answer.value, $event)"
+      >
+        <img [src]="answer.name" />
+      </span>
+    </ng-container>
   </div>
 </div>
