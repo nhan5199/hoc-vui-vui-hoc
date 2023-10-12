@@ -36,16 +36,29 @@ export class ExchangeUnitComponent implements OnInit, OnChanges {
 
   onCheckAnswer() {
     let countCorrect = 0;
-    this.form.forEach((sentence: any) => {
+    this.form.forEach((sentence: any, j: number) => {
       let correctAnswer = 0;
       sentence.input.forEach((input: any, i: number) => {
         if (input == sentence.answer[i]) {
           correctAnswer += 1;
         }
       });
-
+      debugger;
+      let element = document.getElementById(j.toString());
+      let parent = element?.parentElement?.parentElement;
       if (correctAnswer == sentence.answer.length) {
         countCorrect += 1;
+        if (element && parent) {
+          parent.style.color = 'rgb(21, 182, 21)';
+          element.style.color = 'rgb(21, 182, 21)';
+          element.style.borderColor = 'rgb(21, 182, 21)';
+        }
+      } else {
+        if (element && parent) {
+          parent.style.color = 'red';
+          element.style.color = 'red';
+          element.style.borderColor = 'red';
+        }
       }
     });
 

@@ -27,14 +27,29 @@ export class ExerciseComponent implements OnInit {
   ngOnInit() {
     this.exerciseName = this._route.snapshot.paramMap.get('exerciseName');
     this.topicName = this._route.snapshot.paramMap.get('topicName');
-    this.exerciseName = 'exercise-1';
+    // this.exerciseName = 'exercise-1';
+    this.getQuestionAnswer();
+  }
 
-    this.topic = this._dataService.topic.find(
-      (x) => x.topicName == this.topicName
-    );
-    this.listQuestions = this.topic.content.listExercises.find(
-      (x: any) => x.name == this.exerciseName
-    ).quests;
+  getQuestionAnswer() {
+    if (this._appService.allQuestionAnswer?.length > 0) {
+      this.topic = this._appService.allQuestionAnswer.find(
+        (x) => x.topicName === this.topicName
+      );
+
+      this.listQuestions = this.topic?.content?.listExercises[0]?.quests;
+    } else {
+      fetch(
+        `https://hoc-vui-vui-hoc-343f8-default-rtdb.asia-southeast1.firebasedatabase.app/questionAnswer.json`
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          this.topic = data.find((x: any) => x.topicName === this.topicName);
+          this.listQuestions = this.topic?.content?.listExercises[0]?.quests;
+        });
+    }
   }
 
   changeQuestion() {
@@ -44,12 +59,18 @@ export class ExerciseComponent implements OnInit {
   checkAnswer(result: any, point: number = 0) {
     if (result?.point && result.result) {
       this.point = this.point + result.point;
-    } else if (result || point != 0) {
+    } else if (
+      result.result != undefined &&
+      result.point != undefined &&
+      (result?.result || result?.point != 0)
+    ) {
       this.point = this.point + 100;
+    } else if (point != 0) {
+      this.point = this.point + point;
     }
 
     setTimeout(() => {
-      // this.changeQuestion();
+      this.changeQuestion();
     }, 2000);
   }
 

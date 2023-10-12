@@ -1,6 +1,5 @@
 <div class="choose-correct-answer">
-  <div class="question">
-    {{ question.questionName }}
+  <div class="question" [innerHTML]="question.questionName">
     <img
       *ngIf="question?.imgPath?.length > 0"
       [src]="question?.imgPath"
@@ -13,9 +12,8 @@
         class="answer"
         *ngFor="let answer of question.choices"
         (click)="checkAnswer(answer.value, $event)"
-      >
-        {{ answer.name }}
-      </button>
+        [innerHTML]="answer.name"
+      ></button>
     </ng-container>
     <ng-container *ngIf="isAnswerWithImage">
       <span

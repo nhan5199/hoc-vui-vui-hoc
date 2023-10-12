@@ -14,12 +14,15 @@
 }
 
 .answer input {
-  font-size: 1em;
+  outline: none;
   background: transparent;
   border: none;
-  border-bottom: 3px solid white;
-  outline: none;
+  border-bottom: 2px solid white;
   color: white;
+  font-size: 1.5em;
+  width: 100px;
+  margin: 0 10px;
+  font-family: var(--title-font);
 }
 
 .question-answer {
@@ -33,8 +36,8 @@
   text-align: center;
   color: white;
   font-size: 1.5em;
-  margin: .5em;
-  font-family: var(--title-font)
+  margin: 0.5em;
+  font-family: var(--title-font);
 }
 
 .question img {
@@ -49,12 +52,11 @@
   right: 10.5%;
 }
 
-
 .check button {
-  padding: .8rem;
+  padding: 0.8rem;
   font-size: 1.2rem;
   font-weight: bold;
-  font-family: 'Calistoga';
+  font-family: "Calistoga";
   border-radius: 10px;
   background-color: #e19246;
   cursor: pointer;
@@ -64,4 +66,15 @@
 
 .check button:hover {
   background-color: #f17c0c;
+}
+
+/*Bỏ arrow ở inpur*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }

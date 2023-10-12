@@ -21,12 +21,12 @@ export class GeometryMenuComponent implements OnInit {
       {
         label: 'Hình tứ giác',
         imgPath: '/assets/imgs/home/rectangle-button.gif',
-        name: '',
+        name: 'rectangle',
       },
       {
         label: 'Hình tròn',
         imgPath: '/assets/imgs/home/circle-buton.gif',
-        name: '',
+        name: 'circle',
       },
     ];
 
@@ -34,17 +34,17 @@ export class GeometryMenuComponent implements OnInit {
       {
         label: 'Hình hộp chữ nhật',
         imgPath: '/assets/imgs/home/rectangular-button.gif',
-        name: '',
+        name: 'rectangular',
       },
       {
         label: 'Hình lập phương',
         imgPath: '/assets/imgs/home/cube-button.gif',
-        name: '',
+        name: 'cube',
       },
       {
         label: 'Hình trụ',
         imgPath: '/assets/imgs/home/cylinder-button.gif',
-        name: '',
+        name: 'cylinder',
       },
     ];
   }

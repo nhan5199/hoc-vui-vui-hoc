@@ -1,11 +1,9 @@
 <div class="yes-no-question">
-  <div class="question">
-    {{ question.questionName }}
-  </div>
+  <div class="question" [innerHTML]="question.questionName"></div>
   <div class="list-answers">
     <div class="answer" *ngFor="let answer of question.choices; let i = index">
       <div class="opinion">
-        <p>{{ answer.name }}</p>
+        <p [innerHTML]="answer.name"></p>
       </div>
       <div class="value">
         <button (click)="saveAnswer(i, $event)">Đ</button>

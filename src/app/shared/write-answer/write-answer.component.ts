@@ -29,10 +29,8 @@ export class WriteAnswerComponent implements OnInit {
   }
 
   onCheckAnswer() {
-    if (
-      this.convertViToEn(this.answer.trim().toLowerCase()) ==
-      this.convertViToEn(this.question.answer.trim().toLowerCase())
-    ) {
+    debugger;
+    if (this.answer === this.question.answer) {
       this.result.emit(true);
     } else {
       this.result.emit(false);

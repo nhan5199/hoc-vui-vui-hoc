@@ -12,7 +12,7 @@ export class ChooseCorrectAnswerComponent implements OnInit {
   isAnswerWithImage: boolean = false;
 
   ngOnInit(): void {
-    if (this.question.choices[0].name.includes('/')) {
+    if (this.question.choices[0].name.includes('/assets')) {
       this.isAnswerWithImage = true;
     }
   }

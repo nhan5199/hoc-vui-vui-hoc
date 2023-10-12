@@ -1,6 +1,5 @@
 <div class="write-answer">
-  <div class="question">
-    {{ question.questionName }}
+  <div class="question" [innerHTML]="question.questionName">
     <img
       *ngIf="question?.imgPath?.length > 0"
       [src]="question?.imgPath"
@@ -9,7 +8,8 @@
   </div>
   <div class="answer">
     <p>Đáp án là:</p>
-    <input type="text" [(ngModel)]="answer" />
+    <input type="number" [(ngModel)]="answer" />
+    <p [innerHTML]="question.unit"></p>
   </div>
   <div class="check">
     <button (click)="onCheckAnswer()">Kiểm tra</button>

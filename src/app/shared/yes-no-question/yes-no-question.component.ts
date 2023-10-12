@@ -47,14 +47,6 @@ export class YesNoQuestionComponent implements OnInit, OnChanges {
   onCheckAnswer() {
     this.isClickCheck = true;
     let choseAnswers = this.listAnswer.filter((x) => x.choice != -1);
-    if (choseAnswers?.length < this.question?.choices.length) {
-      this.isClickCheck = false;
-      this.result.emit({
-        result: false,
-        message: 'Có đáp án chưa được chọn!',
-      });
-      return;
-    }
 
     let result: boolean[] = [];
     let childrenNodes = [].slice.call(
