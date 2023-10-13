@@ -26,6 +26,7 @@ import { RightButtonComponent } from './shared/right-button/right-button.compone
 import { RightMenuButtonComponent } from './shared/right-menu-button/right-menu-button.component';
 import { WriteAnswerComponent } from './shared/write-answer/write-answer.component';
 import { YesNoQuestionComponent } from './shared/yes-no-question/yes-no-question.component';
+import { SummaryResultComponent } from './shared/summary-result/summary-result.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { YesNoQuestionComponent } from './shared/yes-no-question/yes-no-question
     ErrorMessageComponent,
     ExchangeUnitComponent,
     WriteAnswerComponent,
+    SummaryResultComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule],
   providers: [DataService],

@@ -29,11 +29,17 @@ export class WriteAnswerComponent implements OnInit {
   }
 
   onCheckAnswer() {
-    debugger;
-    if (this.answer === this.question.answer) {
-      this.result.emit(true);
-    } else {
-      this.result.emit(false);
+    let element = document.getElementById('answer');
+    if (element) {
+      if (this.answer === this.question.answer) {
+        element.style.color = 'rgb(21, 182, 21)';
+        element.style.borderColor = 'rgb(21, 182, 21)';
+        this.result.emit(true);
+      } else {
+        element.style.color = 'red';
+        element.style.borderColor = 'red';
+        this.result.emit(false);
+      }
     }
   }
 }

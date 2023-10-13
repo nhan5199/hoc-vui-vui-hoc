@@ -1,0 +1,21 @@
+<div class="summary-result">
+  <img src="/assets/imgs/lession/summary-result.png" alt="" />
+  <div class="result">
+    <div class="right-answer">
+      <img src="/assets/imgs/lession/correct-icon.png" alt="" />
+      <p>{{ rightAnswer }}</p>
+    </div>
+    <div class="wrong-answer">
+      <img src="/assets/imgs/lession/false-icon.png" alt="" />
+      <p>{{ wrongAnswer }}</p>
+    </div>
+    <div class="point">
+      <img src="/assets/imgs/lession/treasure.png" alt="" />
+      <p>{{ point }}</p>
+    </div>
+  </div>
+  <div class="action">
+    <button class="reload" (click)="reloadPage()">Làm lại</button>
+    <button class="return" (click)="returnToMenu()">Trở về</button>
+  </div>
+</div>

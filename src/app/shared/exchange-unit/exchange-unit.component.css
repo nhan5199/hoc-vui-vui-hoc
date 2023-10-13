@@ -62,7 +62,7 @@
   gap: 30px;
   align-items: center;
 }
-
+/*
 .answer input {
   font-size: 1em;
   background: transparent;
@@ -70,7 +70,7 @@
   border-bottom: 3px solid white;
   outline: none;
   color: white;
-}
+} */
 
 .check {
   position: absolute;

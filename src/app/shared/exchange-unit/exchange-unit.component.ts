@@ -43,7 +43,7 @@ export class ExchangeUnitComponent implements OnInit, OnChanges {
           correctAnswer += 1;
         }
       });
-      debugger;
+
       let element = document.getElementById(j.toString());
       let parent = element?.parentElement?.parentElement;
       if (correctAnswer == sentence.answer.length) {

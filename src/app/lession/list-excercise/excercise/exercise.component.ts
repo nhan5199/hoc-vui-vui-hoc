@@ -1,7 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
-import { DataService } from 'src/app/shared/data';
 
 @Component({
   selector: 'app-exercise',
@@ -20,8 +20,8 @@ export class ExerciseComponent implements OnInit {
   isDisplayErrorMessage: boolean = false;
   constructor(
     private readonly _route: ActivatedRoute,
-    private readonly _dataService: DataService,
-    private readonly _appService: AppComponent
+    private readonly _appService: AppComponent,
+    private readonly _location: Location
   ) {}
 
   ngOnInit() {
@@ -60,9 +60,10 @@ export class ExerciseComponent implements OnInit {
     if (result?.point && result.result) {
       this.point = this.point + result.point;
     } else if (
-      result.result != undefined &&
-      result.point != undefined &&
-      (result?.result || result?.point != 0)
+      (result.result != undefined &&
+        result.point != undefined &&
+        (result?.result || result?.point != 0)) ||
+      result == true
     ) {
       this.point = this.point + 100;
     } else if (point != 0) {
@@ -92,5 +93,9 @@ export class ExerciseComponent implements OnInit {
 
   getData() {
     console.log(this._appService.allQuestionAnswer);
+  }
+
+  returnToBackPage() {
+    this._location.back();
   }
 }
