@@ -27,6 +27,7 @@ import { RightMenuButtonComponent } from './shared/right-menu-button/right-menu-
 import { WriteAnswerComponent } from './shared/write-answer/write-answer.component';
 import { YesNoQuestionComponent } from './shared/yes-no-question/yes-no-question.component';
 import { SummaryResultComponent } from './shared/summary-result/summary-result.component';
+import { ConfirmPopupComponent } from './shared/confirm-popup/confirm-popup.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { SummaryResultComponent } from './shared/summary-result/summary-result.c
     ExchangeUnitComponent,
     WriteAnswerComponent,
     SummaryResultComponent,
+    ConfirmPopupComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule],
   providers: [DataService],
