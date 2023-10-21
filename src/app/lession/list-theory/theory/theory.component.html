@@ -1,1 +1,12 @@
-<p>theory works!</p>
+<div class="theory">
+  <img src="/assets/imgs/lession/lession-background.PNG" alt="" />
+  <ng-container>
+    <div class="video">
+      <div class="video-content" *ngFor="let video of listVideos">
+        <video width="320" height="240" controls>
+          <source [src]="video.url" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </ng-container>
+</div>
