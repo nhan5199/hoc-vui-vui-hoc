@@ -56,8 +56,12 @@
       </ng-container>
 
       <!-- màn hình kết thúc -->
-      <ng-container *ngIf="activeQuest >= 8">
-        <app-summary-result [point]="point"></app-summary-result>
+      <ng-container *ngIf="activeQuest >= listQuestions.length">
+        <app-summary-result
+          [point]="point"
+          [correctAnswers]="countCorrectAnswers"
+          [wrongAnswers]="countWrongAnswers"
+        ></app-summary-result>
       </ng-container>
     </div>
   </ng-container>

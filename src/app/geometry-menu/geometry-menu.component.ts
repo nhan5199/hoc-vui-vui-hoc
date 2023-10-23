@@ -19,7 +19,7 @@ export class GeometryMenuComponent implements OnInit {
         name: 'triangle',
       },
       {
-        label: 'Hình tứ giác',
+        label: 'Hình thang',
         imgPath: '/assets/imgs/home/rectangle-button.gif',
         name: 'rectangle',
       },
@@ -40,11 +40,6 @@ export class GeometryMenuComponent implements OnInit {
         label: 'Hình lập phương',
         imgPath: '/assets/imgs/home/cube-button.gif',
         name: 'cube',
-      },
-      {
-        label: 'Hình trụ',
-        imgPath: '/assets/imgs/home/cylinder-button.gif',
-        name: 'cylinder',
       },
     ];
   }

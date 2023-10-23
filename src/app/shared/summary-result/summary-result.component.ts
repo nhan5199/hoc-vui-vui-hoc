@@ -9,8 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SummaryResultComponent implements OnInit {
   @Input('point') point: number = 0;
-  @Input('rightAnswer') rightAnswer: number = 0;
-  @Input('wrongAnswer') wrongAnswer: number = 0;
+  @Input('correctAnswers') rightAnswer: number = 0;
+  @Input('wrongAnswers') wrongAnswer: number = 0;
   constructor(private readonly _location: Location) {}
 
   ngOnInit(): void {}

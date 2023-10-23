@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { ExerciseComponent } from './lession/list-excercise/excercise/exercise.component';
 import { ListExerciseComponent } from './lession/list-excercise/list-exercise.component';
 import { ListTheoryComponent } from './lession/list-theory/list-theory.component';
-import { TheoryComponent } from './lession/list-theory/theory/theory.component';
+import { VideoComponent } from './lession/list-theory/video/video.component';
 import { TopicComponent } from './lession/topic.component';
 import { MathMenuComponent } from './math-menu/math-menu.component';
 import { AnswerPointComponent } from './shared/answer-point/answer-point.component';
@@ -45,7 +45,7 @@ import { YesNoQuestionComponent } from './shared/yes-no-question/yes-no-question
     TopicComponent,
     ListExerciseComponent,
     ListTheoryComponent,
-    TheoryComponent,
+    VideoComponent,
     ExerciseComponent,
     LeftLessionButtonComponent,
     RightLessionButtonComponent,

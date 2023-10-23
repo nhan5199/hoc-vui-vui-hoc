@@ -15,6 +15,8 @@ export class ExerciseComponent implements OnInit {
   topic: any;
   activeQuest: number = 0;
   point: number = 0;
+  countWrongAnswers: number = 0;
+  countCorrectAnswers: number = 0;
 
   errorMessage: string = '';
   isDisplayErrorMessage: boolean = false;
@@ -58,6 +60,7 @@ export class ExerciseComponent implements OnInit {
 
   checkAnswer(result: any, point: number = 0) {
     if (result?.point && result.result) {
+      this.countCorrectAnswers += 1;
       this.point = this.point + result.point;
     } else if (
       (result.result != undefined &&
@@ -65,9 +68,13 @@ export class ExerciseComponent implements OnInit {
         (result?.result || result?.point != 0)) ||
       result == true
     ) {
+      this.countCorrectAnswers += 1;
       this.point = this.point + 100;
     } else if (point != 0) {
+      this.countCorrectAnswers += 1;
       this.point = this.point + point;
+    } else {
+      this.countWrongAnswers += 1;
     }
 
     setTimeout(() => {

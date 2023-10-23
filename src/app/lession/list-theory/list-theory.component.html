@@ -1,14 +1,15 @@
-<button
-  style="
-    font-size: 30px;
-    padding: 30px 60px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-  "
-  (click)="goToTheory()"
->
-  {{ this.topicName }}
-</button>
+<div class="list-theory-menu">
+  <div>
+    <button (click)="goToOnlineLecture()">Bài giảng điện tử</button>
+  </div>
+
+  <div>
+    <button (click)="goToVideo()">Video minh họa</button>
+  </div>
+  <div>
+    <button (click)="gotoFlipBook()">Flipbook tương tác</button>
+  </div>
+  <div>
+    <button (click)="gotoMath()">Phần mềm toán học</button>
+  </div>
+</div>

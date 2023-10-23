@@ -5,9 +5,9 @@ import { MathMenuComponent } from './math-menu/math-menu.component';
 import { GeometryMenuComponent } from './geometry-menu/geometry-menu.component';
 import { ListExerciseComponent } from './lession/list-excercise/list-exercise.component';
 import { ListTheoryComponent } from './lession/list-theory/list-theory.component';
-import { TheoryComponent } from './lession/list-theory/theory/theory.component';
 import { ExerciseComponent } from './lession/list-excercise/excercise/exercise.component';
 import { TopicComponent } from './lession/topic.component';
+import { VideoComponent } from './lession/list-theory/video/video.component';
 
 const routes: Routes = [
   {
@@ -16,29 +16,29 @@ const routes: Routes = [
   },
   {
     path: 'math-menu',
-    component: MathMenuComponent
+    component: MathMenuComponent,
   },
   {
     path: 'geometry-menu',
-    component: GeometryMenuComponent
+    component: GeometryMenuComponent,
   },
   {
-    path: "geometry-menu/:topicName/list-exercise",
+    path: 'geometry-menu/:topicName/list-exercise',
     component: ListExerciseComponent,
-    pathMatch: "full"
+    pathMatch: 'full',
   },
   {
-    path: "geometry-menu/:topicName/list-exercise/:exerciseName",
+    path: 'geometry-menu/:topicName/list-exercise/:exerciseName',
     component: ExerciseComponent,
   },
   {
-    path: "geometry-menu/:topicName/list-theory/:theoryName",
-    component: TheoryComponent,
+    path: 'geometry-menu/:topicName/list-theory/:theoryName/video',
+    component: VideoComponent,
   },
   {
-    path: "geometry-menu/:topicName/list-theory",
+    path: 'geometry-menu/:topicName/list-theory',
     component: ListTheoryComponent,
-    pathMatch: "full"
+    pathMatch: 'full',
   },
   {
     path: 'geometry-menu/:topicName',

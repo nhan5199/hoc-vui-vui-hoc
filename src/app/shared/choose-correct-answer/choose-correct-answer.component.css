@@ -18,7 +18,7 @@
   width: 95%;
   text-align: center;
   color: white;
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 0.5em;
   font-family: var(--title-font);
 }
@@ -34,7 +34,7 @@
   border: 8px solid white;
   color: white;
   font-family: var(--title-font);
-  font-size: 1.5em;
+  font-size: 1em;
   border-radius: 20px;
   background-color: #33afb7;
   cursor: pointer;
