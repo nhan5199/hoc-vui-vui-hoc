@@ -1,15 +1,24 @@
-<div class="list-theory-menu">
-  <div>
-    <button (click)="goToOnlineLecture()">Bài giảng điện tử</button>
-  </div>
+<div class="list-theory">
+  <img
+    class="left"
+    src="/assets/imgs/lession/back.png"
+    (click)="returnToBackPage()"
+    alt=""
+    title="quay lại"
+  />
+  <div class="list-theory-menu">
+    <div>
+      <button (click)="goToOnlineLecture()">Bài giảng điện tử</button>
+    </div>
 
-  <div>
-    <button (click)="goToVideo()">Video minh họa</button>
-  </div>
-  <div>
-    <button (click)="gotoFlipBook()">Flipbook tương tác</button>
-  </div>
-  <div>
-    <button (click)="gotoMath()">Phần mềm toán học</button>
+    <div>
+      <button (click)="goToVideo()">Video minh họa</button>
+    </div>
+    <div>
+      <button (click)="gotoFlipBook()">Flipbook tương tác</button>
+    </div>
+    <div>
+      <button (click)="gotoMath()">Phần mềm toán học</button>
+    </div>
   </div>
 </div>

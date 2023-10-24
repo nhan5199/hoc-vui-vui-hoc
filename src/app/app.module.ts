@@ -11,7 +11,6 @@ import { HomeComponent } from './home/home.component';
 import { ExerciseComponent } from './lession/list-excercise/excercise/exercise.component';
 import { ListExerciseComponent } from './lession/list-excercise/list-exercise.component';
 import { ListTheoryComponent } from './lession/list-theory/list-theory.component';
-import { VideoComponent } from './lession/list-theory/video/video.component';
 import { TopicComponent } from './lession/topic.component';
 import { MathMenuComponent } from './math-menu/math-menu.component';
 import { AnswerPointComponent } from './shared/answer-point/answer-point.component';
@@ -30,6 +29,7 @@ import { RightMenuButtonComponent } from './shared/right-menu-button/right-menu-
 import { SummaryResultComponent } from './shared/summary-result/summary-result.component';
 import { WriteAnswerComponent } from './shared/write-answer/write-answer.component';
 import { YesNoQuestionComponent } from './shared/yes-no-question/yes-no-question.component';
+import { VideoComponent } from './lession/list-theory/video/video.component';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,6 @@
 <div class="choose-correct-answer">
-  <div class="question" [innerHTML]="question.questionName">
+  <div class="question">
+    <p [innerHTML]="question.questionName"></p>
     <img
       *ngIf="question?.imgPath?.length > 0"
       [src]="question?.imgPath"

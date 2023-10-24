@@ -1,4 +1,4 @@
-.math-menu{
+.math-menu {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -6,30 +6,45 @@
   position: relative;
 }
 
-.math-menu .geometry, .math-menu .algebra{
+.math-menu .geometry,
+.math-menu .algebra {
   position: relative;
 }
 
-.right-btn, .left-btn{
+.right-btn,
+.left-btn {
   position: absolute;
   top: 55%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-
 }
 
-.right-btn{
+.right-btn {
   right: 10%;
 }
 
-.left-btn{
+.left-btn {
   left: 10%;
 }
 
-.math-menu img{
+.math-menu .background {
   width: 100%;
   height: 100%;
   object-fit: fill;
-  display:block;
+  display: block;
+}
+.left {
+  width: 80px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  top: 5%;
 }
 
+.left:hover {
+  width: 100px;
+}
+
+.left {
+  left: 2%;
+}

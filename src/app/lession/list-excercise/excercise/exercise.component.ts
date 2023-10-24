@@ -49,7 +49,7 @@ export class ExerciseComponent implements OnInit {
         })
         .then((data) => {
           this.topic = data.find((x: any) => x.topicName === this.topicName);
-          this.listQuestions = this.topic?.content?.listExercises[0]?.quests;
+          this.listQuestions = this.topic?.content?.listExercises[0]?.quest;
         });
     }
   }
@@ -96,7 +96,9 @@ export class ExerciseComponent implements OnInit {
     }
   }
 
-  onCheckAnswer() {}
+  reloadQuestionAnswer() {
+    window.location.reload();
+  }
 
   getData() {
     console.log(this._appService.allQuestionAnswer);

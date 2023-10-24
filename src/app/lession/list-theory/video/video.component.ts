@@ -5,6 +5,7 @@ import 'firebase/auth';
 import 'firebase/storage';
 import { DataService } from 'src/app/shared/data';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-theory',
@@ -20,7 +21,8 @@ export class VideoComponent implements OnInit {
   constructor(
     private storage: AngularFireStorage,
     private readonly _dataDervice: DataService,
-    private readonly _route: ActivatedRoute
+    private readonly _route: ActivatedRoute,
+    private readonly _location: Location
   ) {}
 
   ngOnInit() {
@@ -40,7 +42,9 @@ export class VideoComponent implements OnInit {
         this.listVideos = x.videos;
       }
     });
+  }
 
-    console.log('data: ', this.listVideos);
+  returnToBackPage() {
+    this._location.back();
   }
 }

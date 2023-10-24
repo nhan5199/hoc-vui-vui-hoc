@@ -1,11 +1,19 @@
 <div class="geometry-menu">
+  <img
+    class="left"
+    src="/assets/imgs/lession/back.png"
+    (click)="returnToBackPage()"
+    alt=""
+    title="quay lại"
+  />
   <div class="plane-geometry">
-    <img src="/assets//imgs/home/plane_geometry_background.gif" alt="" />
+    <img
+      class="plane-geometry-background"
+      src="/assets//imgs/home/plane_geometry_background.gif"
+      alt=""
+    />
 
-    <div
-      class="plane-geometry-menu"
-
-    >
+    <div class="plane-geometry-menu">
       <left-button
         *ngFor="let item of planeGeometryMenu"
         class="button"
@@ -16,10 +24,12 @@
     </div>
   </div>
   <div class="cube-geometry">
-    <img src="/assets//imgs/home/cube_geometry_background.gif" alt="" />
-    <div
-      class="cube-geometry-menu"
-    >
+    <img
+      class="cube-geometry-background"
+      src="/assets//imgs/home/cube_geometry_background.gif"
+      alt=""
+    />
+    <div class="cube-geometry-menu">
       <right-button
         *ngFor="let item of cubeGeometryMenu"
         class="button"

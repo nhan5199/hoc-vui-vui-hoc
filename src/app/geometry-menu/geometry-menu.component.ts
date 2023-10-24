@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +10,7 @@ export class GeometryMenuComponent implements OnInit {
   planeGeometryMenu: any[] = [];
   cubeGeometryMenu: any[] = [];
 
-  constructor() {}
+  constructor(private readonly _location: Location) {}
 
   ngOnInit(): void {
     this.planeGeometryMenu = [
@@ -42,5 +43,9 @@ export class GeometryMenuComponent implements OnInit {
         name: 'cube',
       },
     ];
+  }
+
+  returnToBackPage() {
+    this._location.back();
   }
 }

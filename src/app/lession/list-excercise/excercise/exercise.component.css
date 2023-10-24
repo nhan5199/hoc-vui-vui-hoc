@@ -6,23 +6,34 @@
   position: relative;
 }
 
-.return {
-  z-index: 10;
-  position: absolute;
-  top: 30px;
-  left: 5px;
+.left,
+.right,
+.restart {
   width: 80px;
+  position: absolute;
   cursor: pointer;
+  z-index: 10;
+  top: 15%;
 }
 
-.return:hover {
+.left:hover,
+.right:hover,
+.restart:hover {
   width: 100px;
 }
 
-.return img {
-  width: 100%;
+.left {
+  left: 15%;
 }
 
+.right {
+  right: 15%;
+}
+
+.restart {
+  top: 5%;
+  left: 2%;
+}
 .welcome-page,
 .list-question {
   width: 100%;
@@ -89,6 +100,9 @@
   position: absolute;
   top: 0.5%;
   right: 10.5%;
+}
+.content {
+  width: 100%;
 }
 
 /* width */

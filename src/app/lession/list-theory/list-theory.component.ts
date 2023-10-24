@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -12,7 +13,8 @@ export class ListTheoryComponent implements OnInit {
 
   constructor(
     private readonly _router: Router,
-    private readonly _route: ActivatedRoute
+    private readonly _route: ActivatedRoute,
+    private readonly _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -41,5 +43,9 @@ export class ListTheoryComponent implements OnInit {
     this._router.navigateByUrl(
       `geometry-menu/${this.topicName}/list-theory/${this.theoryName}/book`
     );
+  }
+
+  returnToBackPage() {
+    this._location.back();
   }
 }
