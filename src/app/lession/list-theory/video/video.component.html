@@ -11,9 +11,10 @@
       <p class="title">Video minh họa</p>
       <div class="video-content" *ngFor="let video of listVideos">
         <video width="320" height="240" controls>
-          <source [src]="video.url" type="video/mp4" />
+          <source [src]="video" type="video/mp4" />
         </video>
       </div>
     </div>
   </ng-container>
 </div>
+<!-- <a *ngIf="abc" [href]="abc" download>Click to download</a> -->

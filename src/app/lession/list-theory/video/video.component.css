@@ -35,17 +35,14 @@
 }
 
 .left {
-  width: 80px;
+  width: 4%;
   position: absolute;
   cursor: pointer;
   z-index: 10;
   top: 5%;
+  left: 2%;
 }
 
 .left:hover {
-  width: 100px;
-}
-
-.left {
-  left: 2%;
+  width: 5%;
 }

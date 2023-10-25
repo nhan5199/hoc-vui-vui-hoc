@@ -22,7 +22,7 @@ export class GeometryMenuComponent implements OnInit {
       {
         label: 'Hình thang',
         imgPath: '/assets/imgs/home/rectangle-button.gif',
-        name: 'rectangle',
+        name: 'trapezoid',
       },
       {
         label: 'Hình tròn',

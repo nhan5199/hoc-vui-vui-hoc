@@ -44,6 +44,7 @@
             <!-- Câu hỏi Chọn đáp án đúng -->
             <ng-container *ngIf="item?.type == 1">
               <app-choose-correct-answer
+                class="question-answer"
                 [question]="item"
                 (result)="checkAnswer($event)"
               ></app-choose-correct-answer>
@@ -52,6 +53,7 @@
             <!-- Câu hỏi Chọn đúng sai -->
             <ng-container *ngIf="item?.type == 2">
               <app-yes-no-question
+                class="question-answer"
                 [question]="item"
                 (result)="validateAnswers($event)"
               ></app-yes-no-question>
@@ -60,6 +62,7 @@
             <!-- Câu hỏi điền đáp án -->
             <ng-container *ngIf="item?.type == 3">
               <app-write-answer
+                class="question-answer"
                 [question]="item"
                 (result)="checkAnswer($event)"
               ></app-write-answer>
@@ -68,6 +71,7 @@
             <!-- Câu hỏi đổi đơn vị đo -->
             <ng-container *ngIf="item?.type == 4">
               <app-exchange-unit
+                class="question-answer"
                 [question]="item"
                 (result)="checkAnswer($event)"
               ></app-exchange-unit>

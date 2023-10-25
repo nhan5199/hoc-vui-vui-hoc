@@ -1,0 +1,19 @@
+<img
+  class="left"
+  src="/assets/imgs/lession/back.png"
+  (click)="returnToBackPage()"
+  alt=""
+  title="quay lại"
+/>
+<div class="lecture">
+  <p class="title">Thư viện bài giảng</p>
+  <div class="content">
+    <ng-container *ngFor="let item of listFile">
+      <app-card-lecture
+        class="item"
+        [imgPath]="item.imgPath"
+        [downloadUrl]="item.downloadUrl"
+      ></app-card-lecture>
+    </ng-container>
+  </div>
+</div>

@@ -8,6 +8,8 @@ import { ListTheoryComponent } from './lession/list-theory/list-theory.component
 import { ExerciseComponent } from './lession/list-excercise/excercise/exercise.component';
 import { TopicComponent } from './lession/topic.component';
 import { VideoComponent } from './lession/list-theory/video/video.component';
+import { LectureComponent } from './lession/list-theory/lecture/lecture.component';
+import { FlipbookComponent } from './lession/list-theory/flipbook/flipbook.component';
 
 const routes: Routes = [
   {
@@ -34,6 +36,14 @@ const routes: Routes = [
   {
     path: 'geometry-menu/:topicName/list-theory/:theoryName/video',
     component: VideoComponent,
+  },
+  {
+    path: 'geometry-menu/:topicName/list-theory/:theoryName/lecture',
+    component: LectureComponent,
+  },
+  {
+    path: 'geometry-menu/:topicName/list-theory/:theoryName/flipbook',
+    component: FlipbookComponent,
   },
   {
     path: 'geometry-menu/:topicName/list-theory',

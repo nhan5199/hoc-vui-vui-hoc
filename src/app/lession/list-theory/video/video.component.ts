@@ -15,33 +15,38 @@ import { Location } from '@angular/common';
 export class VideoComponent implements OnInit {
   videoUrl: string = '';
   topicName: string | null = '';
-  listVideos: any;
-  a =
-    'https://firebasestorage.googleapis.com/v0/b/hoc-vui-vui-hoc-343f8.appspot.com/o/HO%E1%BA%A0T%20H%C3%8CNH.mp4?alt=media&token=f896ebb7-da26-4f99-aa46-5cfc4635f71c';
+  listVideos: string[] = [];
+
   constructor(
     private storage: AngularFireStorage,
-    private readonly _dataDervice: DataService,
     private readonly _route: ActivatedRoute,
     private readonly _location: Location
   ) {}
 
-  ngOnInit() {
-    // Specify the path in Firebase Storage
-    // array.forEach((x) => {
-    //   const videoRef = this.storage.ref(x);
-    //   // Get the download URL for the video
-    //   videoRef.getDownloadURL().subscribe((url: any) => {
-    //     this.videoUrl = url;
-    //     console.log('data title: ', x);
-    //     console.log('data url: ', this.videoUrl);
-    //   });
-    // });
+  async ngOnInit() {
     this.topicName = this._route.snapshot.paramMap.get('topicName');
-    this._dataDervice.videoArray.forEach((x: any) => {
-      if (x.name.toLowerCase() === this.topicName?.toLowerCase()) {
-        this.listVideos = x.videos;
+    await this.fetchData();
+  }
+
+  async fetchData() {
+    try {
+      const folderPath = `/${this.topicName}/videos`;
+      const storageRef = this.storage.ref(folderPath);
+      const result = await storageRef.listAll().toPromise();
+
+      if (result && result?.items?.length > 0) {
+        for (const itemRef of result.items) {
+          const downloadPath = `/${itemRef.fullPath}`;
+          const fileRef = this.storage.ref(downloadPath);
+          const url = await fileRef.getDownloadURL().toPromise();
+          this.listVideos.push(url);
+        }
       }
-    });
+
+      console.log(this.listVideos);
+    } catch (error) {
+      console.error('An error occurred while fetching data:', error);
+    }
   }
 
   returnToBackPage() {

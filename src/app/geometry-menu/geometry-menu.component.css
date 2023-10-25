@@ -32,7 +32,7 @@
   transform: translate(-50%, -50%);
 }
 .left {
-  width: 80px;
+  width: 4%;
   position: absolute;
   cursor: pointer;
   z-index: 10;
@@ -40,7 +40,7 @@
 }
 
 .left:hover {
-  width: 100px;
+  width: 5%;
 }
 
 .left {

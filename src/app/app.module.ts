@@ -30,6 +30,9 @@ import { SummaryResultComponent } from './shared/summary-result/summary-result.c
 import { WriteAnswerComponent } from './shared/write-answer/write-answer.component';
 import { YesNoQuestionComponent } from './shared/yes-no-question/yes-no-question.component';
 import { VideoComponent } from './lession/list-theory/video/video.component';
+import { LectureComponent } from './lession/list-theory/lecture/lecture.component';
+import { FlipbookComponent } from './lession/list-theory/flipbook/flipbook.component';
+import { CardLectureComponent } from './lession/list-theory/lecture/card-lecture/card-lecture.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,9 @@ import { VideoComponent } from './lession/list-theory/video/video.component';
     WriteAnswerComponent,
     SummaryResultComponent,
     ConfirmPopupComponent,
+    LectureComponent,
+    FlipbookComponent,
+    CardLectureComponent,
   ],
   imports: [
     BrowserModule,

@@ -48,8 +48,9 @@ export class ExerciseComponent implements OnInit {
           return response.json();
         })
         .then((data) => {
+          debugger;
           this.topic = data.find((x: any) => x.topicName === this.topicName);
-          this.listQuestions = this.topic?.content?.listExercises[0]?.quest;
+          this.listQuestions = this.topic?.content?.listExercises[0]?.quests;
         });
     }
   }
