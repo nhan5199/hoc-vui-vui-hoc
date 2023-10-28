@@ -101,10 +101,6 @@ export class ExerciseComponent implements OnInit {
     window.location.reload();
   }
 
-  getData() {
-    console.log(this._appService.allQuestionAnswer);
-  }
-
   returnToBackPage() {
     this._location.back();
   }

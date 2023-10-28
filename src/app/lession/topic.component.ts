@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './topic.component.html',
   styleUrls: ['./topic.component.css'],
 })
-export class TopicComponent implements OnInit {
+export class TopicComponent implements OnInit, AfterViewInit {
   theoryImgPath: string = '';
   theoryUrl: string = '';
   theoryLabel: string = 'Lý thuyết';
@@ -17,7 +17,7 @@ export class TopicComponent implements OnInit {
   exerciseLabel: string = 'Bài tập';
 
   topicName: string | null = '';
-
+  isLoading: boolean = true;
   constructor(
     private readonly _route: ActivatedRoute,
     private readonly _location: Location
@@ -25,6 +25,10 @@ export class TopicComponent implements OnInit {
 
   ngOnInit(): void {
     this.topicName = this._route.snapshot.paramMap.get('topicName');
+  }
+
+  ngAfterViewInit(): void {
+    this.isLoading = false;
   }
 
   returnToBackPage() {

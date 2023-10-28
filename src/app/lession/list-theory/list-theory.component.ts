@@ -41,7 +41,7 @@ export class ListTheoryComponent implements OnInit {
 
   gotoFlipBook() {
     this._router.navigateByUrl(
-      `geometry-menu/${this.topicName}/list-theory/${this.theoryName}/book`
+      `geometry-menu/${this.topicName}/list-theory/${this.theoryName}/flipbook`
     );
   }
 

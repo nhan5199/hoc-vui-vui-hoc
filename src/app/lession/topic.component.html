@@ -1,33 +1,36 @@
-<div class="math-menu">
-  <img
-    class="background"
-    src="/assets/imgs/lession/background/triangle-lession-background.gif"
-    alt=""
-  />
-  <img
-    class="left"
-    src="/assets/imgs/lession/back.png"
-    (click)="returnToBackPage()"
-    alt=""
-    title="quay lại"
-  />
-  <div class="left-btn">
-    <left-lession-button
-      class="button"
-      [imgPath]="theoryImgPath"
-      [imgLabel]="theoryLabel"
-      [url]="theoryUrl"
-      [name]="topicName"
-    ></left-lession-button>
+<ng-container *ngIf="isLoading"> Loading... </ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="math-menu">
+    <img
+      class="background"
+      src="/assets/imgs/lession/background/triangle-lession-background.gif"
+      alt=""
+    />
+    <img
+      class="left"
+      src="/assets/imgs/lession/back.png"
+      (click)="returnToBackPage()"
+      alt=""
+      title="quay lại"
+    />
+    <div class="left-btn">
+      <left-lession-button
+        class="button"
+        [imgPath]="theoryImgPath"
+        [imgLabel]="theoryLabel"
+        [url]="theoryUrl"
+        [name]="topicName"
+      ></left-lession-button>
+    </div>
+    <div class="right-btn">
+      <right-lession-button
+        class="button"
+        [imgPath]="exerciseImgPath"
+        [imgLabel]="exerciseLabel"
+        [url]="exerciseUrl"
+        [name]="topicName"
+      ></right-lession-button>
+    </div>
   </div>
-  <div class="right-btn">
-    <right-lession-button
-      class="button"
-      [imgPath]="exerciseImgPath"
-      [imgLabel]="exerciseLabel"
-      [url]="exerciseUrl"
-      [name]="topicName"
-    ></right-lession-button>
-  </div>
-</div>
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</ng-container>

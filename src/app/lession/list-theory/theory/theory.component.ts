@@ -24,23 +24,6 @@ export class TheoryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Specify the path in Firebase Storage
-    // array.forEach((x) => {
-    //   const videoRef = this.storage.ref(x);
-    //   // Get the download URL for the video
-    //   videoRef.getDownloadURL().subscribe((url: any) => {
-    //     this.videoUrl = url;
-    //     console.log('data title: ', x);
-    //     console.log('data url: ', this.videoUrl);
-    //   });
-    // });
     this.topicName = this._route.snapshot.paramMap.get('topicName');
-    this._dataDervice.videoArray.forEach((x: any) => {
-      if (x.name.toLowerCase() === this.topicName?.toLowerCase()) {
-        this.listVideos = x.videos;
-      }
-    });
-
-    console.log('data: ', this.listVideos);
   }
 }

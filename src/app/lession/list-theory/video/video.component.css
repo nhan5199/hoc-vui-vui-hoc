@@ -33,16 +33,3 @@
   text-align: center;
   font-family: var(--title-font);
 }
-
-.left {
-  width: 4%;
-  position: absolute;
-  cursor: pointer;
-  z-index: 10;
-  top: 5%;
-  left: 2%;
-}
-
-.left:hover {
-  width: 5%;
-}

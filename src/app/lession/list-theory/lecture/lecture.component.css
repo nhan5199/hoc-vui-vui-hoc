@@ -17,21 +17,8 @@
   flex-wrap: wrap;
 }
 .content .item {
-  flex: 1 1 45%;
+  flex: 0 0 45%;
   cursor: pointer;
-}
-
-.left {
-  width: 4%;
-  position: absolute;
-  cursor: pointer;
-  z-index: 10;
-  top: 5%;
-  left: 2%;
-}
-
-.left:hover {
-  width: 5%;
 }
 
 .title {

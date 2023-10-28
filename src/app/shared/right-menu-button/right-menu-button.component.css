@@ -1,4 +1,4 @@
-.menu-button{
+.menu-button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -11,41 +11,40 @@
   cursor: pointer;
 }
 
-.menu-button .img-button{
-  background-color: #8BEBCB;
+.menu-button .img-button {
+  background-color: #8bebcb;
   padding: 10px;
-  clip-path: polygon(20% 0, 100% 0, 100% 100% , 20% 100%, 0 50%);
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 20% 100%, 0 50%);
 }
 
-.menu-button img{
+.menu-button img {
   width: 40%;
-  margin-left:-10%;
-  z-index:10;
+  margin-left: -10%;
+  z-index: 10;
 }
 
-.right-menu-button{
-  width: calc(100vw/4.5);
+.right-menu-button {
+  width: calc(100vw / 4.5);
   height: 8.5svh;
   text-align: center;
   font-size: 3vw;
   font-family: var(--title-font);
-  clip-path: polygon(20% 0, 100% 0, 100% 100% , 20% 100%, 0 50%);
-  color: #8BEBCB;
+  clip-path: polygon(21% 0, 100% 0, 100% 100%, 21% 100%, 3% 50%);
+  color: #8bebcb;
   border: none;
-    background: linear-gradient(to right, #fff 50%, #8BEBCB 50%);
-    background-size: 200% 100%;
-    background-position:left bottom;
-    margin-left:10px;
-    transition:all .75s ease;
-    cursor: pointer;
+  background: linear-gradient(to right, #fff 50%, #8bebcb 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  margin-right: 10px;
+  transition: all 0.75s ease;
+  cursor: pointer;
 }
 
-.menu-button:hover .right-menu-button{
+.menu-button:hover .right-menu-button {
   background-position: right bottom;
   color: white;
 }
 
-.menu-button:hover .img-button{
-  background-color: #fff;;
+.menu-button:hover .img-button {
+  background-color: #fff;
 }
-

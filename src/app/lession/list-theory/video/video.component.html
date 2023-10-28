@@ -1,20 +1,22 @@
-<div class="theory">
-  <img
-    class="left"
-    src="/assets/imgs/lession/back.png"
-    (click)="returnToBackPage()"
-    alt=""
-    title="quay lại"
-  />
-  <ng-container>
-    <div class="video">
-      <p class="title">Video minh họa</p>
-      <div class="video-content" *ngFor="let video of listVideos">
-        <video width="320" height="240" controls>
-          <source [src]="video" type="video/mp4" />
-        </video>
+<ng-container *ngIf="isLoading"> Loading... </ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="theory">
+    <img
+      class="left"
+      src="/assets/imgs/lession/back.png"
+      (click)="returnToBackPage()"
+      alt=""
+      title="quay lại"
+    />
+    <ng-container>
+      <div class="video">
+        <p class="title">Video minh họa</p>
+        <div class="video-content" *ngFor="let video of listVideos">
+          <video width="320" height="240" controls>
+            <source [src]="video" type="video/mp4" />
+          </video>
+        </div>
       </div>
-    </div>
-  </ng-container>
-</div>
-<!-- <a *ngIf="abc" [href]="abc" download>Click to download</a> -->
+    </ng-container>
+  </div>
+</ng-container>

@@ -16,7 +16,7 @@ export class VideoComponent implements OnInit {
   videoUrl: string = '';
   topicName: string | null = '';
   listVideos: string[] = [];
-
+  isLoading: boolean = true;
   constructor(
     private storage: AngularFireStorage,
     private readonly _route: ActivatedRoute,
@@ -26,6 +26,9 @@ export class VideoComponent implements OnInit {
   async ngOnInit() {
     this.topicName = this._route.snapshot.paramMap.get('topicName');
     await this.fetchData();
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 0);
   }
 
   async fetchData() {
@@ -42,8 +45,6 @@ export class VideoComponent implements OnInit {
           this.listVideos.push(url);
         }
       }
-
-      console.log(this.listVideos);
     } catch (error) {
       console.error('An error occurred while fetching data:', error);
     }

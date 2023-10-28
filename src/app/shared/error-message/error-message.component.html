@@ -1,5 +1,7 @@
 <div class="error-message" *ngIf="display && displayTime > 0">
+  <i class="fa-solid fa-xmark"></i>
+  <span (click)="closeMessage()">X</span>
   <div class="message">
-    {{message}}
+    {{ message }}
   </div>
 </div>

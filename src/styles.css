@@ -66,3 +66,16 @@ body {
   line-height: 1.6em;
   padding: 0 0.2em;
 }
+
+.left {
+  width: 4%;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  top: 5%;
+  left: 2%;
+}
+
+.left:hover {
+  width: 5%;
+}

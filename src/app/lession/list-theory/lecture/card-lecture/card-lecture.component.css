@@ -7,8 +7,11 @@
   gap: 20px;
 }
 .card img {
+  border-radius: 10px 5px 5px 10px;
   max-width: 40%;
+  height: 100%;
   object-fit: fill;
+  margin: 5px;
 }
 
 .content {
@@ -25,13 +28,18 @@ a {
   padding: 10px 15px;
   color: white;
   background-color: #0576c8;
+  outline: none;
 }
 a:hover {
   background-color: #00a9ff;
 }
 
 .title {
-  font-size: 1.5em;
+  font-size: 1.1em;
   text-align: center;
   font-family: var(--title-font);
+  max-height: 3em; /* Adjust the max height as needed */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

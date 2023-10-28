@@ -1,43 +1,46 @@
-<div class="geometry-menu">
-  <img
-    class="left"
-    src="/assets/imgs/lession/back.png"
-    (click)="returnToBackPage()"
-    alt=""
-    title="quay lại"
-  />
-  <div class="plane-geometry">
+<ng-container *ngIf="isLoading"> Loading... </ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="geometry-menu">
     <img
-      class="plane-geometry-background"
-      src="/assets//imgs/home/plane_geometry_background.gif"
+      class="left"
+      src="/assets/imgs/lession/back.png"
+      (click)="returnToBackPage()"
       alt=""
+      title="quay lại"
     />
+    <div class="plane-geometry">
+      <img
+        class="plane-geometry-background"
+        src="/assets//imgs/home/plane_geometry_background.gif"
+        alt=""
+      />
 
-    <div class="plane-geometry-menu">
-      <left-button
-        *ngFor="let item of planeGeometryMenu"
-        class="button"
-        [imgPath]="item.imgPath"
-        [imgLabel]="item.label"
-        [name]="item.name"
-      ></left-button>
+      <div class="plane-geometry-menu">
+        <left-button
+          *ngFor="let item of planeGeometryMenu"
+          class="button"
+          [imgPath]="item.imgPath"
+          [imgLabel]="item.label"
+          [name]="item.name"
+        ></left-button>
+      </div>
+    </div>
+    <div class="cube-geometry">
+      <img
+        class="cube-geometry-background"
+        src="/assets//imgs/home/cube_geometry_background.gif"
+        alt=""
+      />
+      <div class="cube-geometry-menu">
+        <right-button
+          *ngFor="let item of cubeGeometryMenu"
+          class="button"
+          [imgPath]="item.imgPath"
+          [imgLabel]="item.label"
+          [name]="item.name"
+        ></right-button>
+      </div>
     </div>
   </div>
-  <div class="cube-geometry">
-    <img
-      class="cube-geometry-background"
-      src="/assets//imgs/home/cube_geometry_background.gif"
-      alt=""
-    />
-    <div class="cube-geometry-menu">
-      <right-button
-        *ngFor="let item of cubeGeometryMenu"
-        class="button"
-        [imgPath]="item.imgPath"
-        [imgLabel]="item.label"
-        [name]="item.name"
-      ></right-button>
-    </div>
-  </div>
-</div>
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</ng-container>

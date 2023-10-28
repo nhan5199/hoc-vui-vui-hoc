@@ -1,4 +1,4 @@
-.left-lession-button{
+.left-lession-button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -7,41 +7,40 @@
   margin: 3svh;
 }
 
-.img-lession-button{
-  background-color: #E6C5FE;
-  padding: .8em;
-  clip-path: polygon(0 0, 80% 0, 100% 50% , 80% 100%, 0 100%);
+.img-lession-button {
+  background-color: #e6c5fe;
+  padding: 0.8em;
+  clip-path: polygon(0 0, 80% 0, 100% 50%, 80% 100%, 0 100%);
 }
 
-img{
+img {
   width: 20%;
-  margin-right:-10%;
-  z-index:10;
+  margin-right: -10%;
+  z-index: 10;
 }
 
-button{
-  width: calc(100vw/4);
-  height: 6svh;
+button {
+  width: calc(100vw / 4);
+  height: 6.5svh;
   text-align: center;
   font-size: 2vw;
   font-family: var(--title-font);
-  clip-path: polygon(0 0, 78% 0, 98% 50% , 78% 100%, 0 100%);
-  color: #E6C5FE;
+  clip-path: polygon(0 0, 82% 0, 96% 50%, 82% 100%, 0 100%);
+  color: #e6c5fe;
   border: none;
-  background: linear-gradient(to left, #fff 50%, #E6C5FE 50%);
+  background: linear-gradient(to left, #fff 50%, #e6c5fe 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   margin-left: 10px;
-  transition: all .75s ease;
+  transition: all 0.75s ease;
   cursor: pointer;
 }
 
-.left-lession-button:hover button{
+.left-lession-button:hover button {
   background-position: left bottom;
   color: white;
 }
 
-.left-lession-button:hover .img-button{
+.left-lession-button:hover .img-button {
   background-color: #fff;
 }
-

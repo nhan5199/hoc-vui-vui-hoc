@@ -1,35 +1,38 @@
-<div class="math-menu">
-  <img
-    class="left"
-    src="/assets/imgs/lession/back.png"
-    (click)="returnToBackPage()"
-    alt=""
-    title="quay lại"
-  />
-  <div class="geometry">
+<ng-container *ngIf="isLoading"> Loading... </ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="math-menu">
     <img
-      class="background"
-      src="/assets//imgs/home/geometry_background.gif"
+      class="left"
+      src="/assets/imgs/lession/back.png"
+      (click)="returnToBackPage()"
       alt=""
+      title="quay lại"
     />
-    <left-menu-button
-      class="button"
-      [imgPath]="geometryButtonPath"
-      [imgLabel]="geometryButtonLabel"
-      [url]="geometryUrl"
-    ></left-menu-button>
+    <div class="geometry">
+      <img
+        class="background"
+        src="/assets//imgs/home/geometry_background.gif"
+        alt=""
+      />
+      <left-menu-button
+        class="button"
+        [imgPath]="geometryButtonPath"
+        [imgLabel]="geometryButtonLabel"
+        [url]="geometryUrl"
+      ></left-menu-button>
+    </div>
+    <div class="algebra">
+      <img
+        class="background"
+        src="/assets//imgs/home/algebra_background.gif"
+        alt=""
+      />
+      <right-menu-button
+        class="button"
+        [imgPath]="algrebraButtonPath"
+        [imgLabel]="algrebraButtonLabel"
+        [url]="algebraUrl"
+      ></right-menu-button>
+    </div>
   </div>
-  <div class="algebra">
-    <img
-      class="background"
-      src="/assets//imgs/home/algebra_background.gif"
-      alt=""
-    />
-    <right-menu-button
-      class="button"
-      [imgPath]="algrebraButtonPath"
-      [imgLabel]="algrebraButtonLabel"
-      [url]="algebraUrl"
-    ></right-menu-button>
-  </div>
-</div>
+</ng-container>

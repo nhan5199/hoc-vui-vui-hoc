@@ -1,19 +1,30 @@
-<img
-  class="left"
-  src="/assets/imgs/lession/back.png"
-  (click)="returnToBackPage()"
-  alt=""
-  title="quay lại"
-/>
-<div class="lecture">
-  <p class="title">Thư viện bài giảng</p>
-  <div class="content">
-    <ng-container *ngFor="let item of listFile">
-      <app-card-lecture
-        class="item"
-        [imgPath]="item.imgPath"
-        [downloadUrl]="item.downloadUrl"
-      ></app-card-lecture>
-    </ng-container>
+<ng-container *ngIf="isLoading"> Loading... </ng-container>
+<ng-container *ngIf="!isLoading">
+  <img
+    #myImage
+    class="left"
+    src="/assets/imgs/lession/back.png"
+    (click)="returnToBackPage()"
+    alt=""
+    title="quay lại"
+  />
+  <div #myDiv class="lecture">
+    <p class="title">Thư viện bài giảng</p>
+    <div class="content">
+      <ng-container *ngFor="let item of listFile">
+        <app-card-lecture
+          #myAppCardLecture
+          class="item"
+          [imgPath]="item.imgPath"
+          [downloadUrl]="item.downloadUrl"
+          [name]="item.name"
+        ></app-card-lecture>
+      </ng-container>
+    </div>
   </div>
-</div>
+
+  <app-error-message
+    [display]="errorMessage.length > 0"
+    [message]="errorMessage"
+  ></app-error-message>
+</ng-container>

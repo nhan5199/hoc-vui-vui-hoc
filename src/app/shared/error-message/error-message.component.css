@@ -1,4 +1,4 @@
-.error-message{
+.error-message {
   position: absolute;
   right: 20px;
   bottom: 20px;
@@ -11,4 +11,13 @@
   color: rgb(224 14 14);
   background-color: rgb(230 140 140);
   border-radius: 15px;
+}
+
+span {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-weight: bolder;
+  font-size: 10px;
+  cursor: pointer;
 }
