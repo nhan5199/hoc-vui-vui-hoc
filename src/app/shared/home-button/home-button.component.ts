@@ -4,23 +4,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'home-button',
   templateUrl: './home-button.component.html',
-  styleUrls: ['./home-button.component.css']
+  styleUrls: ['./home-button.component.css'],
 })
 export class HomeButtonComponent implements OnInit {
+  @Input('link') link: string = '';
 
-  @Input('link') link : string = "";
+  errorMessage: string = '';
+  url: string = '';
 
-  constructor(
-    private _router: Router,
-  ){
+  constructor(private _router: Router) {}
 
-  }
-
-  ngOnInit(): void {
-
-  }
-
-  navigateToMenu(){
+  async ngOnInit() {}
+  navigateToMenu() {
     this._router.navigateByUrl(`${this.link}`);
   }
 }

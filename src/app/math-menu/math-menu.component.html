@@ -1,4 +1,6 @@
-<ng-container *ngIf="isLoading"> Loading... </ng-container>
+<ng-container *ngIf="isLoading">
+  <img class="loading" src="/assets/loading.gif" alt="" />
+</ng-container>
 <ng-container *ngIf="!isLoading">
   <div class="math-menu">
     <img
@@ -9,11 +11,7 @@
       title="quay lại"
     />
     <div class="geometry">
-      <img
-        class="background"
-        src="/assets//imgs/home/geometry_background.gif"
-        alt=""
-      />
+      <img class="background" [src]="geometryImgUrl" alt="" />
       <left-menu-button
         class="button"
         [imgPath]="geometryButtonPath"
@@ -22,11 +20,7 @@
       ></left-menu-button>
     </div>
     <div class="algebra">
-      <img
-        class="background"
-        src="/assets//imgs/home/algebra_background.gif"
-        alt=""
-      />
+      <img class="background" [src]="algebraImgUrl" alt="" />
       <right-menu-button
         class="button"
         [imgPath]="algrebraButtonPath"
