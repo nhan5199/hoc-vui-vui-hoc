@@ -46,7 +46,9 @@ export class YesNoQuestionComponent implements OnInit, OnChanges {
 
   onCheckAnswer() {
     this.isClickCheck = true;
-    let choseAnswers = this.listAnswer.filter((x) => x.choice != -1);
+
+    let button = document.getElementById('checkButton') as HTMLButtonElement;
+    if (button) button.disabled = true;
 
     let result: boolean[] = [];
     let childrenNodes = [].slice.call(

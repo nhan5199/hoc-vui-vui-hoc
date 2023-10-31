@@ -1,5 +1,11 @@
 <div class="choose-correct-answer">
   <div class="question">
+    <img
+      class="decorate"
+      *ngIf="question?.decoratePath?.length > 0"
+      [src]="question?.decoratePath"
+      alt=""
+    />
     <p [innerHTML]="question.questionName"></p>
     <img
       *ngIf="question?.imgPath?.length > 0"
@@ -7,12 +13,22 @@
       alt=""
     />
   </div>
-  <div class="list-answers">
-    <ng-container *ngIf="!isAnswerWithImage">
+  <div [class]="isLongAnswer ? 'list-long-answers' : 'list-answers'">
+    <ng-container>
       <button
-        class="answer"
+        [class]="
+          isLongAnswer
+            ? 'long-answer'
+            : isMediumAnswer
+            ? 'medium-answer'
+            : 'answer'
+        "
         *ngFor="let answer of question.choices"
-        (click)="checkAnswer(answer.value, $event)"
+        (click)="
+          isMultipleChoice
+            ? chooseAnswer(answer.value, $event)
+            : checkAnswer(answer.value, $event)
+        "
         [innerHTML]="answer.name"
       ></button>
     </ng-container>
@@ -20,10 +36,17 @@
       <span
         class="answer-img"
         *ngFor="let answer of question.choices"
-        (click)="checkAnswer(answer.value, $event)"
+        (click)="
+          isMultipleChoice
+            ? chooseAnswer(answer.value, $event)
+            : checkAnswer(answer.value, $event)
+        "
       >
         <img [src]="answer.name" />
       </span>
     </ng-container>
+  </div>
+  <div class="check" *ngIf="isMultipleChoice">
+    <button id="checkButton" (click)="checkMultipleAnswers()">Kiểm tra</button>
   </div>
 </div>

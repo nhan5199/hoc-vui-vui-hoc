@@ -1,24 +1,37 @@
-<div class="list-theory">
-  <img
-    class="left"
-    src="/assets/imgs/lession/back.png"
-    (click)="returnToBackPage()"
-    alt=""
-    title="quay lại"
-  />
-  <div class="list-theory-menu">
-    <div>
-      <button (click)="goToOnlineLecture()">Bài giảng điện tử</button>
-    </div>
+<ng-container *ngIf="isLoading">
+  <img class="loading" src="/assets/loading.gif" alt=""
+/></ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="list-theory">
+    <img
+      class="left"
+      src="/assets/imgs/lession/back.png"
+      (click)="returnToBackPage()"
+      alt=""
+      title="quay lại"
+    />
 
-    <div>
-      <button (click)="goToVideo()">Video minh họa</button>
-    </div>
-    <div>
-      <button (click)="gotoFlipBook()">Flipbook tương tác</button>
-    </div>
-    <div>
-      <button (click)="gotoMath()">Phần mềm toán học</button>
+    <img class="background" [src]="url" alt="" />
+    <div class="list-theory-menu">
+      <div class="button">
+        <div>
+          <button class="lecture" (click)="goToOnlineLecture()">
+            Bài giảng điện tử
+          </button>
+        </div>
+
+        <div>
+          <button class="video" (click)="goToVideo()">Video minh họa</button>
+        </div>
+        <div>
+          <button class="flipbook" (click)="gotoFlipBook()">
+            Flipbook tương tác
+          </button>
+        </div>
+        <div>
+          <button class="math" (click)="gotoMath()">Phần mềm toán học</button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>

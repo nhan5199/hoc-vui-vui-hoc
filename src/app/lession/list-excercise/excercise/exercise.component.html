@@ -18,7 +18,7 @@
   <div class="welcome-page" *ngIf="activeQuest == 0">
     <img src="/assets/imgs/lession/welcome-exercise.png" alt="mo-dau" />
 
-    <div class="title">
+    <div class="title-question">
       <p>
         Phiếu bài tập <br />
         {{ this.exerciseName }}
@@ -81,7 +81,7 @@
       </ng-container>
 
       <!-- màn hình kết thúc -->
-      <ng-container *ngIf="activeQuest >= listQuestions?.length">
+      <ng-container *ngIf="activeQuest > listQuestions?.length">
         <app-summary-result
           [point]="point"
           [correctAnswers]="countCorrectAnswers"

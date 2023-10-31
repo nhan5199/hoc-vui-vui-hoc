@@ -1,5 +1,11 @@
 <div class="write-answer">
   <div class="question">
+    <img
+      class="decorate"
+      *ngIf="question?.decoratePath?.length > 0"
+      [src]="question?.decoratePath"
+      alt=""
+    />
     <p [innerHTML]="question.questionName"></p>
     <img
       *ngIf="question?.imgPath?.length > 0"
@@ -13,6 +19,6 @@
     <p [innerHTML]="question.unit"></p>
   </div>
   <div class="check">
-    <button (click)="onCheckAnswer()">Kiểm tra</button>
+    <button id="checkButton" (click)="onCheckAnswer()">Kiểm tra</button>
   </div>
 </div>

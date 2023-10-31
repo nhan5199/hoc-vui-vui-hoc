@@ -10,10 +10,33 @@ export class ChooseCorrectAnswerComponent implements OnInit {
   @Output() result: EventEmitter<boolean> = new EventEmitter();
   isClick: boolean = false;
   isAnswerWithImage: boolean = false;
+  isMediumAnswer: boolean = false;
+  isLongAnswer: boolean = false;
+  isMultipleChoice: boolean = false;
 
+  multipleAnswer: any[] = [];
   ngOnInit(): void {
     if (this.question.choices[0].name.includes('/assets')) {
       this.isAnswerWithImage = true;
+    }
+
+    if (this.question.answer?.length > 1) {
+      this.isMultipleChoice = true;
+    }
+    this.checkLength();
+  }
+
+  checkLength() {
+    let maxLength = 0;
+    this.question.choices.forEach((choice: any) => {
+      if (choice.name.length > maxLength) {
+        maxLength = choice.name.length;
+      }
+    });
+    if (maxLength > 20 && maxLength <= 50) {
+      this.isMediumAnswer = true;
+    } else if (maxLength > 50) {
+      this.isLongAnswer = true;
     }
   }
 
@@ -36,6 +59,50 @@ export class ChooseCorrectAnswerComponent implements OnInit {
       event.target.classList.remove('active');
       event.target.classList.add('false');
       this.result.emit(false);
+    }
+  }
+
+  checkMultipleAnswers() {
+    debugger;
+    let listAnswerDiv = document.querySelector('.list-answers');
+    if (listAnswerDiv == null) {
+      listAnswerDiv = document.querySelector('.list-long-answers');
+    }
+    const buttons = listAnswerDiv?.querySelectorAll('button.active');
+    if (buttons) {
+      buttons.forEach((button: any) => {
+        button.classList.remove('active');
+      });
+    }
+    if (
+      this.multipleAnswer.every(
+        (value, index) => value === this.question.answer[index]
+      )
+    ) {
+      if (buttons) {
+        buttons.forEach((button: any) => {
+          button.classList.add('correct');
+        });
+      }
+      this.result.emit(true);
+    } else {
+      this.result.emit(false);
+
+      if (buttons) {
+        buttons.forEach((button: any) => {
+          button.classList.add('false');
+        });
+      }
+    }
+  }
+
+  chooseAnswer(chosenAnswer: number, event: any) {
+    if (event.target.classList.contains('active')) {
+      event.target.classList.remove('active');
+      this.multipleAnswer.splice(this.multipleAnswer.indexOf(chosenAnswer), 1);
+    } else {
+      event.target.classList.add('active');
+      this.multipleAnswer.push(chosenAnswer);
     }
   }
 }

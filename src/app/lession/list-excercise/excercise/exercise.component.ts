@@ -29,7 +29,6 @@ export class ExerciseComponent implements OnInit {
   ngOnInit() {
     this.exerciseName = this._route.snapshot.paramMap.get('exerciseName');
     this.topicName = this._route.snapshot.paramMap.get('topicName');
-    // this.exerciseName = 'exercise-1';
     this.getQuestionAnswer();
   }
 
@@ -48,7 +47,6 @@ export class ExerciseComponent implements OnInit {
           return response.json();
         })
         .then((data) => {
-          debugger;
           this.topic = data.find((x: any) => x.topicName === this.topicName);
           this.listQuestions = this.topic?.content?.listExercises[0]?.quests;
         });
@@ -98,10 +96,12 @@ export class ExerciseComponent implements OnInit {
   }
 
   reloadQuestionAnswer() {
+    this.activeQuest = 0;
     window.location.reload();
   }
 
   returnToBackPage() {
+    this.activeQuest = 0;
     this._location.back();
   }
 }

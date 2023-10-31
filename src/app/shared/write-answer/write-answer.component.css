@@ -46,6 +46,11 @@
   object-fit: fill;
 }
 
+.decorate {
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
 .point {
   position: absolute;
   top: 0.5%;

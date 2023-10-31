@@ -1,3 +1,8 @@
+.list-theory {
+  width: 100%;
+  position: relative;
+}
+
 .list-theory-menu {
   width: 80%;
   position: absolute;
@@ -18,8 +23,41 @@
   align-items: center;
   width: 100%;
 }
-.list-theory-menu button {
-  font-size: 30px;
-  padding: 30px 60px;
-  cursor: pointer;
+
+.background {
+  width: 100%;
+  height: 100svh;
+  object-fit: fill;
+  display: block;
+}
+.button {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.button button {
+  padding: 0 10px;
+  font-size: var(--title-size);
+  font-weight: bold;
+  width: calc(100vw / 3);
+  text-align: center;
+  border: 10px solid #ff8d64;
+  border-radius: 30px;
+  font-family: var(--title-font);
+  background: #fff;
+  color: #ff8d64;
+  /* Old browsers */
+  background: linear-gradient(to left, #fff 50%, #ff8d64 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.75s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button div:hover button {
+  background-position: left bottom;
+  color: #f9ead3;
+  border-color: #f9ead3;
 }

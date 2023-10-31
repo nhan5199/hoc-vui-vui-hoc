@@ -29,6 +29,8 @@ export class WriteAnswerComponent implements OnInit {
   }
 
   onCheckAnswer() {
+    let button = document.getElementById('checkButton') as HTMLButtonElement;
+    if (button) button.disabled = true;
     let element = document.getElementById('answer');
     if (element) {
       if (this.answer === this.question.answer) {
