@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs';
 
 @Component({
-  selector: 'app-lecture',
-  templateUrl: './lecture.component.html',
-  styleUrls: ['./lecture.component.css'],
+  selector: 'app-math',
+  templateUrl: './math.component.html',
+  styleUrls: ['./math.component.css'],
 })
-export class LectureComponent implements OnInit {
+export class MathComponent implements OnInit {
   listFile: any[] = [];
   topicName: string | null = '';
   fileUrlStorage: string = '';
@@ -23,7 +23,7 @@ export class LectureComponent implements OnInit {
   ) {}
   async ngOnInit() {
     this.topicName = this._route.snapshot.paramMap.get('topicName');
-    this.fileUrlStorage = `https://firebasestorage.googleapis.com/v0/b/hoc-vui-vui-hoc-343f8.appspot.com/o/${this.topicName}%2Ffiles%2F`;
+    this.fileUrlStorage = `https://firebasestorage.googleapis.com/v0/b/hoc-vui-vui-hoc-343f8.appspot.com/o/${this.topicName}%2Fmaths%2F`;
 
     // await this.fetchData();
     await this.getFolderNames();
@@ -33,7 +33,7 @@ export class LectureComponent implements OnInit {
   }
 
   async getFolderNames() {
-    const rootPath = `${this.topicName}/files`;
+    const rootPath = `${this.topicName}/maths`;
 
     // Create a reference to the root path
     const storageRef = this.storage.ref(rootPath);
@@ -83,13 +83,13 @@ export class LectureComponent implements OnInit {
           imgPath: '',
         };
         urls.forEach(async (url) => {
-          if (url.includes('pptx') || url.includes('pdf')) {
-            this.fileUrlStorage = `https://firebasestorage.googleapis.com/v0/b/hoc-vui-vui-hoc-343f8.appspot.com/o/${this.topicName}%2Ffiles%2F`;
+          if (url.includes('gsp')) {
+            this.fileUrlStorage = `https://firebasestorage.googleapis.com/v0/b/hoc-vui-vui-hoc-343f8.appspot.com/o/${this.topicName}%2Fmaths%2F`;
             this.fileUrlStorage = this.fileUrlStorage + lastFolderName + '%2F';
             debugger;
             let name = url.slice(
               url.indexOf(this.fileUrlStorage) + this.fileUrlStorage.length,
-              url.indexOf(url.includes('.pptx') ? '.pptx' : '.pdf')
+              url.indexOf('.gsp')
             );
 
             file.name = decodeURIComponent(name);

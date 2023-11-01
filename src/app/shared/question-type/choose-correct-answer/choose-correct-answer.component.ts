@@ -24,6 +24,7 @@ export class ChooseCorrectAnswerComponent implements OnInit {
       this.isMultipleChoice = true;
     }
     this.checkLength();
+    console.log(this.question);
   }
 
   checkLength() {
@@ -63,7 +64,6 @@ export class ChooseCorrectAnswerComponent implements OnInit {
   }
 
   checkMultipleAnswers() {
-    debugger;
     let listAnswerDiv = document.querySelector('.list-answers');
     if (listAnswerDiv == null) {
       listAnswerDiv = document.querySelector('.list-long-answers');

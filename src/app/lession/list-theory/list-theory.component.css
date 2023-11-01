@@ -37,18 +37,21 @@
   gap: 50px;
 }
 
-.button button {
+.lecture,
+.video,
+.flipbook,
+.math {
   padding: 0 10px;
   font-size: var(--title-size);
   font-weight: bold;
   width: calc(100vw / 3);
   text-align: center;
-  border: 10px solid #ff8d64;
   border-radius: 30px;
   font-family: var(--title-font);
   background: #fff;
-  color: #ff8d64;
   /* Old browsers */
+  border: 10px solid #ff8d64;
+  color: #ff8d64;
   background: linear-gradient(to left, #fff 50%, #ff8d64 50%);
   background-size: 200% 100%;
   background-position: right bottom;
@@ -56,8 +59,66 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.button div:hover button {
+.button .lecture-div:hover .lecture {
   background-position: left bottom;
   color: #f9ead3;
   border-color: #f9ead3;
 }
+
+.video {
+  border: 10px solid #45b737;
+  color: #45b737;
+  background: linear-gradient(to right, #fff 50%, #45b737 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: all 0.75s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button .video-div:hover .video {
+  background-position: right bottom;
+  color: #c2ebbe;
+  border-color: #c2ebbe;
+}
+
+.flipbook {
+  border: 10px solid #527cb1;
+  color: #527cb1;
+  background: linear-gradient(to left, #fff 50%, #527cb1 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.75s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button .flipbook-div:hover .flipbook {
+  background-position: left bottom;
+  color: #adc1db;
+  border-color: #adc1db;
+}
+
+.math {
+  border: 10px solid #9b58b7;
+  color: #9b58b7;
+  background: linear-gradient(to right, #fff 50%, #9b58b7 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: all 0.75s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button .math-div:hover .math {
+  background-position: right bottom;
+  color: #d4bbdf;
+  border-color: #d4bbdf;
+}
+
+/*
+#45b737
+#9ae591
+
+#527cb1
+#81a2cd
+
+#9b58b7
+#be96cf */

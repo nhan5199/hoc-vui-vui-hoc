@@ -10,6 +10,8 @@ import { TopicComponent } from './lession/topic.component';
 import { VideoComponent } from './lession/list-theory/video/video.component';
 import { LectureComponent } from './lession/list-theory/lecture/lecture.component';
 import { FlipbookComponent } from './lession/list-theory/flipbook/flipbook.component';
+import { MathComponent } from './lession/list-theory/math/math.component';
+import { AlgebraMenuComponent } from './algebra-menu/algebra-menu.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,10 @@ const routes: Routes = [
   {
     path: 'geometry-menu',
     component: GeometryMenuComponent,
+  },
+  {
+    path: 'algebra-menu',
+    component: AlgebraMenuComponent,
   },
   {
     path: 'geometry-menu/:topicName/list-exercise',
@@ -44,6 +50,10 @@ const routes: Routes = [
   {
     path: 'geometry-menu/:topicName/list-theory/:theoryName/flipbook',
     component: FlipbookComponent,
+  },
+  {
+    path: 'geometry-menu/:topicName/list-theory/:theoryName/math',
+    component: MathComponent,
   },
   {
     path: 'geometry-menu/:topicName/list-theory',

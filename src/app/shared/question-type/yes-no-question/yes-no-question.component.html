@@ -1,5 +1,18 @@
 <div class="yes-no-question">
-  <div class="question" [innerHTML]="question.questionName"></div>
+  <div class="question">
+    <img
+      class="decorate"
+      *ngIf="question?.decoratePath?.length > 0"
+      [src]="question?.decoratePath"
+      alt=""
+    />
+    <p [innerHTML]="question.questionName"></p>
+    <img
+      *ngIf="question?.imgPath?.length > 0"
+      [src]="question?.imgPath"
+      alt=""
+    />
+  </div>
   <div class="list-answers">
     <div class="answer" *ngFor="let answer of question.choices; let i = index">
       <div class="opinion">

@@ -76,6 +76,15 @@
                 (result)="checkAnswer($event)"
               ></app-exchange-unit>
             </ng-container>
+
+            <!-- Câu hỏi điền đáp án dạng text -->
+            <ng-container *ngIf="item?.type == 5">
+              <app-write-text-answer
+                class="question-answer"
+                [question]="item"
+                (result)="checkAnswer($event)"
+              ></app-write-text-answer>
+            </ng-container>
           </div>
         </div>
       </ng-container>

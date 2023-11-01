@@ -29,6 +29,7 @@ a {
   color: white;
   background-color: #0576c8;
   outline: none;
+  margin-bottom: 10px;
 }
 a:hover {
   background-color: #00a9ff;

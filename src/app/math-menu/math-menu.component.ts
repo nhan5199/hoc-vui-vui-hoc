@@ -14,7 +14,7 @@ export class MathMenuComponent implements OnInit {
   geometryImgUrl: string = '/geometry-menu';
   algrebraButtonPath: string = '/assets/imgs/home/algebra_button.gif';
   algrebraButtonLabel: string = 'Đại lượng';
-  algebraUrl: string = '';
+  algebraUrl: string = '/algebra-menu';
   algebraImgUrl: string = '';
   isLoading: boolean = true;
   errorMessage: string = '';
