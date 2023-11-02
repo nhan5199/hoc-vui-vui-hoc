@@ -40,7 +40,7 @@
 }
 
 .decorate {
-  width: 250px;
+  width: 400px;
   border-radius: 10px;
   margin-bottom: 10px;
 }
@@ -85,7 +85,7 @@
 .answer-img {
   border-radius: 10px;
   height: 200px;
-  width: 250px;
+  width: 400px;
   object-fit: fill;
 }
 

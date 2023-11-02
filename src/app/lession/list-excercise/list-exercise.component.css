@@ -1,0 +1,33 @@
+.list-exercise-content {
+  width: 100%;
+  position: absolute;
+  top: 5%;
+  text-align: center;
+}
+.list-exercise {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.list-exercise .card {
+  flex: 0 0 20%;
+}
+
+.title {
+  font-size: var(--title-size);
+  font-weight: bold;
+  text-align: center;
+  font-family: var(--title-font);
+}
+
+.card {
+  border-radius: 15px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

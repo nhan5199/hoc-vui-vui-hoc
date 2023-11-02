@@ -14,6 +14,6 @@ export class CardLectureComponent implements OnInit {
   ngOnInit(): void {
     this.title = this.name;
     this.name =
-      this.name?.length > 20 ? this.name.slice(0, 18) + '...' : this.name;
+      this.name?.length > 25 ? this.name.slice(0, 25) + '...' : this.name;
   }
 }

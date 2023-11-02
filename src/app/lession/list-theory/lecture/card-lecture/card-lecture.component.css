@@ -36,7 +36,7 @@ a:hover {
 }
 
 .title {
-  font-size: 1.1em;
+  font-size: 20px;
   text-align: center;
   font-family: var(--title-font);
   max-height: 3em; /* Adjust the max height as needed */

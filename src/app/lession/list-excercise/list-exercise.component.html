@@ -1,21 +1,24 @@
-<img
-  class="left"
-  src="/assets/imgs/lession/back.png"
-  (click)="returnToBackPage()"
-  alt=""
-  title="quay lại"
-/>
-<button
-  style="
-    font-size: 30px;
-    padding: 30px 60px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-  "
-  (click)="goToExercise()"
->
-  {{ this.topicName }}
-</button>
+<ng-container *ngIf="isLoading">
+  <img class="loading" src="/assets/loading.gif" alt="" />
+</ng-container>
+<ng-container *ngIf="!isLoading">
+  <img
+    class="left"
+    src="/assets/imgs/lession/back.png"
+    (click)="returnToBackPage()"
+    alt=""
+    title="quay lại"
+  />
+
+  <div class="list-exercise-content">
+    <p class="title">Danh sách bài tập</p>
+    <div class="list-exercise">
+      <ng-container *ngFor="let item of listExcercise">
+        <app-excercise-card
+          class="card"
+          [name]="item.name"
+        ></app-excercise-card>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
