@@ -7,36 +7,42 @@
       alt=""
     />
     <p [innerHTML]="question.questionName"></p>
+  </div>
+  <div class="answer-content">
     <img
+      class="answer-img"
       *ngIf="question?.imgPath?.length > 0"
       [src]="question?.imgPath"
       alt=""
     />
-  </div>
-  <div class="list-answers">
-    <div class="answer" *ngFor="let answer of question.choices; let i = index">
-      <div class="opinion">
-        <p [innerHTML]="answer.name"></p>
-      </div>
-      <div class="value">
-        <button (click)="saveAnswer(i, $event)">Đ</button>
-        <button (click)="saveAnswer(i, $event)">S</button>
-        <img
-          *ngIf="
-            isClickCheck &&
-            this.listAnswer[i].choice == this.listAnswer[i].answer
-          "
-          src="/assets/imgs/lession/correct-icon.png"
-          alt=""
-        />
-        <img
-          *ngIf="
-            isClickCheck &&
-            this.listAnswer[i].choice != this.listAnswer[i].answer
-          "
-          src="/assets/imgs/lession/false-icon.png"
-          alt=""
-        />
+    <div class="list-answers">
+      <div
+        class="answer"
+        *ngFor="let answer of question.choices; let i = index"
+      >
+        <div class="opinion">
+          <p [innerHTML]="answer.name"></p>
+        </div>
+        <div class="value">
+          <button (click)="saveAnswer(i, $event)">Đ</button>
+          <button (click)="saveAnswer(i, $event)">S</button>
+          <img
+            *ngIf="
+              isClickCheck &&
+              this.listAnswer[i].choice == this.listAnswer[i].answer
+            "
+            src="/assets/imgs/lession/correct-icon.png"
+            alt=""
+          />
+          <img
+            *ngIf="
+              isClickCheck &&
+              this.listAnswer[i].choice != this.listAnswer[i].answer
+            "
+            src="/assets/imgs/lession/false-icon.png"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   </div>

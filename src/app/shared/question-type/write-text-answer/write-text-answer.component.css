@@ -5,12 +5,9 @@
   align-items: center;
 }
 
-.answer {
-  font-size: 1.2em;
-  display: flex;
-  flex-direction: initial;
-  gap: 30px;
-  align-items: center;
+p {
+  margin: 0;
+  font-size: 25px;
 }
 
 .answer input {
@@ -19,7 +16,7 @@
   border: none;
   border-bottom: 2px solid white;
   color: white;
-  font-size: 1.2em;
+  font-size: 25px;
   width: 100px;
   margin: 0 10px;
   font-family: var(--title-font);
@@ -29,9 +26,30 @@
   position: relative;
 }
 
+.answer {
+  width: 90%;
+  flex-direction: row;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+}
+
+.answer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.answer-item {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
 .question {
   width: 95%;
-  max-height: 50svh;
   overflow-y: auto;
   text-align: center;
   color: white;
@@ -51,6 +69,13 @@
   margin-bottom: 10px;
 }
 
+.answer-img {
+  border-radius: 10px;
+  width: 250px;
+  height: 200px;
+  object-fit: fill;
+}
+
 .point {
   position: absolute;
   top: 0.5%;
@@ -58,8 +83,8 @@
 }
 
 .check button {
-  padding: 0.8rem;
-  font-size: 1.2rem;
+  padding: 10px 15px;
+  font-size: 20px;
   font-weight: bold;
   font-family: "Calistoga";
   border-radius: 10px;
@@ -72,15 +97,4 @@
 
 .check button:hover {
   background-color: #f17c0c;
-}
-
-/*Bỏ arrow ở inpur*/
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;
 }

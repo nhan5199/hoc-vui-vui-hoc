@@ -22,7 +22,7 @@
 }
 
 .question {
-  height: 35svh;
+  height: 30svh;
   overflow-y: auto;
   width: 95%;
   text-align: center;
@@ -40,6 +40,7 @@
 }
 
 .decorate {
+  width: 250px;
   border-radius: 10px;
   margin-bottom: 10px;
 }
@@ -82,9 +83,17 @@
 }
 
 .answer-img {
+  border-radius: 10px;
   height: 200px;
+  width: 250px;
+  object-fit: fill;
 }
 
+.answer-content {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+}
 .answer-img img {
   width: 80%;
   height: 100%;
@@ -118,8 +127,8 @@
 
 .check button {
   margin-top: 20px;
-  padding: 0.8rem;
-  font-size: 1.2rem;
+  padding: 10px 15px;
+  font-size: 20px;
   font-weight: bold;
   font-family: "Calistoga";
   border-radius: 10px;

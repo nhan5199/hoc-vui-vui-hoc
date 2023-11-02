@@ -21,8 +21,20 @@
   right: 10.5%;
 }
 
+.answer-content {
+  display: flex;
+  width: 90%;
+}
+
+.answer-img {
+  border-radius: 10px;
+  height: 200px;
+  width: 250px;
+  object-fit: fill;
+}
+
 .list-answers {
-  height: 60svh;
+  max-height: 60svh;
   width: 85%;
   overflow-y: auto;
   position: relative;
@@ -47,7 +59,7 @@
 
 .list-answers .opinion p {
   margin: 15px 0;
-  font-size: 1.2rem;
+  font-size: 20px;
 }
 
 .list-answers .answer .value {
@@ -85,8 +97,8 @@
 }
 
 .check button {
-  padding: 0.8rem;
-  font-size: 1.2rem;
+  padding: 10px 15px;
+  font-size: 20px;
   font-weight: bold;
   font-family: "Calistoga";
   border-radius: 10px;
@@ -106,8 +118,6 @@
 
 .question {
   width: 95%;
-  max-height: 30svh;
-  overflow-y: auto;
   text-align: center;
   color: white;
   font-size: 1.5em;

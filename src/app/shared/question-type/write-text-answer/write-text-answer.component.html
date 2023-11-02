@@ -6,17 +6,30 @@
       [src]="question?.decoratePath"
       alt=""
     />
-    <p [innerHTML]="question.questionName"></p>
-    <img
-      *ngIf="question?.imgPath?.length > 0"
-      [src]="question?.imgPath"
-      alt=""
-    />
   </div>
   <div class="answer">
-    <p>Đáp án là:</p>
-    <input type="number" [(ngModel)]="answer" id="answer" />
-    <p [innerHTML]="question.unit"></p>
+    <div class="decorate-img">
+      <img
+        class="answer-img"
+        *ngIf="question?.imgPath?.length > 0"
+        [src]="question?.imgPath"
+        alt=""
+      />
+    </div>
+    <div class="answer-content" *ngIf="question?.questionName?.length > 0">
+      <ng-container *ngFor="let item of question.questionName; let i = index">
+        <div class="answer-item">
+          <p [innerHTML]="item"></p>
+          <input
+            type="text"
+            [(ngModel)]="answer[i]"
+            [maxlength]="10"
+            [id]="'answer-' + i"
+            autocomplete="off"
+          />
+        </div>
+      </ng-container>
+    </div>
   </div>
   <div class="check">
     <button id="checkButton" (click)="onCheckAnswer()">Kiểm tra</button>

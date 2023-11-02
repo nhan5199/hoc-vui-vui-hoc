@@ -34,9 +34,9 @@ export class ChooseCorrectAnswerComponent implements OnInit {
         maxLength = choice.name.length;
       }
     });
-    if (maxLength > 20 && maxLength <= 50) {
+    if (maxLength > 20 && maxLength <= 30) {
       this.isMediumAnswer = true;
-    } else if (maxLength > 50) {
+    } else if (maxLength > 30) {
       this.isLongAnswer = true;
     }
   }

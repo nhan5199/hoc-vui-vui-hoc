@@ -36,6 +36,7 @@ import { WriteAnswerComponent } from './shared/question-type/write-answer/write-
 import { YesNoQuestionComponent } from './shared/question-type/yes-no-question/yes-no-question.component';
 import { SummaryResultComponent } from './shared/summary-result/summary-result.component';
 import { WriteTextAnswerComponent } from './shared/question-type/write-text-answer/write-text-answer.component';
+import { ExcerciseCardComponent } from './lession/list-excercise/excercise/excercise-card/excercise-card.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { WriteTextAnswerComponent } from './shared/question-type/write-text-answ
     MathComponent,
     AlgebraMenuComponent,
     WriteTextAnswerComponent,
+    ExcerciseCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,9 +8,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class WriteTextAnswerComponent implements OnInit {
   @Input('question') question: any;
   @Output('result') result: EventEmitter<boolean> = new EventEmitter();
-  answer: string = '';
+  answer: string[] = [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.answer = this.createArrayWithNullElements(
+      this.question.questionName.length
+    );
+  }
+
+  createArrayWithNullElements(count: number) {
+    return new Array(count).fill(null);
+  }
 
   convertViToEn(str: string, toUpperCase: boolean = false) {
     str = str.toLowerCase();
@@ -29,19 +37,36 @@ export class WriteTextAnswerComponent implements OnInit {
   }
 
   onCheckAnswer() {
+    debugger;
     let button = document.getElementById('checkButton') as HTMLButtonElement;
     if (button) button.disabled = true;
-    let element = document.getElementById('answer');
-    if (element) {
-      if (this.answer === this.question.answer) {
-        element.style.color = 'rgb(21, 182, 21)';
-        element.style.borderColor = 'rgb(21, 182, 21)';
-        this.result.emit(true);
-      } else {
-        element.style.color = 'red';
-        element.style.borderColor = 'red';
-        this.result.emit(false);
+
+    let index = 0;
+    let countCorrect = 0;
+    this.answer.forEach((answer: any) => {
+      let id = 'answer-' + index;
+      const inputElement = document.getElementById(id);
+      if (inputElement) {
+        debugger;
+        if (
+          answer === this.question.answer[index] ||
+          answer?.toUpperCase() === this.question.answer[index]
+        ) {
+          inputElement.style.color = 'green';
+          inputElement.style.borderColor = 'green';
+          countCorrect++;
+        } else {
+          inputElement.style.color = 'red';
+          inputElement.style.borderColor = 'red';
+        }
       }
+      index++;
+    });
+
+    if (countCorrect == this.question.answer.length) {
+      this.result.emit(true);
+    } else {
+      this.result.emit(false);
     }
   }
 }
