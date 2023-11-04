@@ -9,11 +9,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./topic.component.css'],
 })
 export class TopicComponent implements OnInit {
-  theoryImgPath: string = '';
+  theoryImgPath: string = '/assets/imgs/home/theory-button.gif';
   theoryUrl: string = '';
   theoryLabel: string = 'Lý thuyết';
 
-  exerciseImgPath: string = '';
+  exerciseImgPath: string = '/assets/imgs/home/exercise-button.gif';
   exerciseUrl: string = '';
   exerciseLabel: string = 'Bài tập';
 

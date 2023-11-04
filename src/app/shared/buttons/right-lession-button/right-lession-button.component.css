@@ -9,21 +9,21 @@
 
 .img-lession-button {
   background-color: #8bebcb;
-  padding: 0.8em;
+  padding: 15px;
   clip-path: polygon(20% 0, 100% 0, 100% 100%, 20% 100%, 0 50%);
 }
 
 img {
-  width: 20%;
+  width: 130px;
   margin-left: -10%;
   z-index: 10;
 }
 
 button {
   width: calc(100vw / 4);
-  height: 6.5svh;
+  height: 50px;
   text-align: center;
-  font-size: 2vw;
+  font-size: 35px;
   font-family: var(--title-font);
   clip-path: polygon(18% 0, 100% 0, 100% 100%, 18% 100%, 3% 50%);
   color: #8bebcb;
