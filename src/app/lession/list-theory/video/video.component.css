@@ -1,11 +1,13 @@
 .theory {
   width: 100%;
   position: relative;
+  background-image: url("/assets/imgs/home/background.jpg");
+  background-size: cover;
 }
 
 .video {
   margin: 0 auto;
-  margin-top: 30px;
+  padding-top: 20px;
   text-align: center;
   width: 70%;
 }
@@ -17,15 +19,16 @@
 }
 
 .video-content video {
-  width: 100%;
+  width: 95%;
   height: 100%;
   object-fit: fill;
   outline: none;
-  border: none;
+  border: 5px solid white;
   border-radius: 10px;
 }
 
 .title {
+  color: white;
   font-size: var(--title-size);
   font-weight: bold;
   text-align: center;
