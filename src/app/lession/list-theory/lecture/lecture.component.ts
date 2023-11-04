@@ -86,7 +86,6 @@ export class LectureComponent implements OnInit {
           if (url.includes('pptx') || url.includes('pdf')) {
             this.fileUrlStorage = `https://firebasestorage.googleapis.com/v0/b/hoc-vui-vui-hoc-343f8.appspot.com/o/${this.topicName}%2Ffiles%2F`;
             this.fileUrlStorage = this.fileUrlStorage + lastFolderName + '%2F';
-            debugger;
             let name = url.slice(
               url.indexOf(this.fileUrlStorage) + this.fileUrlStorage.length,
               url.indexOf(url.includes('.pptx') ? '.pptx' : '.pdf')

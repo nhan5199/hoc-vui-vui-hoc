@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class WriteTextAnswerComponent implements OnInit {
   @Input('question') question: any;
-  @Output('result') result: EventEmitter<boolean> = new EventEmitter();
+  @Output('result') result: EventEmitter<any> = new EventEmitter();
   answer: string[] = [];
 
   ngOnInit() {
@@ -37,7 +37,6 @@ export class WriteTextAnswerComponent implements OnInit {
   }
 
   onCheckAnswer() {
-    debugger;
     let button = document.getElementById('checkButton') as HTMLButtonElement;
     if (button) button.disabled = true;
 
@@ -47,7 +46,6 @@ export class WriteTextAnswerComponent implements OnInit {
       let id = 'answer-' + index;
       const inputElement = document.getElementById(id);
       if (inputElement) {
-        debugger;
         if (
           answer === this.question.answer[index] ||
           answer?.toUpperCase() === this.question.answer[index]
@@ -64,9 +62,15 @@ export class WriteTextAnswerComponent implements OnInit {
     });
 
     if (countCorrect == this.question.answer.length) {
-      this.result.emit(true);
+      this.result.emit({
+        result: true,
+        point: 100,
+      });
     } else {
-      this.result.emit(false);
+      this.result.emit({
+        result: false,
+        point: Math.round((100 / this.question.answer.length) * countCorrect),
+      });
     }
   }
 }

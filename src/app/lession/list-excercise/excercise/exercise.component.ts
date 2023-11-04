@@ -13,6 +13,7 @@ export class ExerciseComponent implements OnInit {
   topicName: string | null = '';
   listQuestions: any;
   topic: any;
+  exercise: any;
   activeQuest: number = 0;
   point: number = 0;
   countWrongAnswers: number = 0;
@@ -29,6 +30,7 @@ export class ExerciseComponent implements OnInit {
   ngOnInit() {
     this.exerciseName = this._route.snapshot.paramMap.get('exerciseName');
     this.topicName = this._route.snapshot.paramMap.get('topicName');
+
     this.getQuestionAnswer();
   }
 
@@ -48,12 +50,11 @@ export class ExerciseComponent implements OnInit {
         })
         .then((data) => {
           this.topic = data.find((x: any) => x.topicName === this.topicName);
-          debugger;
           let tempExerciseName = this.exerciseName ? this.exerciseName : '';
-          let exercise = this.topic?.content?.listExercises.find(
+          this.exercise = this.topic?.content?.listExercises.find(
             (x: any) => this.convertViToEn(x.name) === tempExerciseName
           );
-          this.listQuestions = exercise.quests;
+          this.listQuestions = this.exercise.quests;
         });
     }
   }
@@ -66,16 +67,31 @@ export class ExerciseComponent implements OnInit {
     if (result?.point && result.result) {
       this.countCorrectAnswers += 1;
       this.point = this.point + result.point;
-    } else if (
+    } else if (!result?.result && result?.point > 0) {
+      this.countWrongAnswers += 1;
+      this.point = this.point + result.point;
+    }
+    //Nếu là câu hỏi trắc nghiệm hoặc điền khuyết
+    else if (
       (result.result != undefined &&
         result.point != undefined &&
-        (result?.result || result?.point != 0)) ||
+        (result?.result || (result?.point != 0 && result?.point == 100))) ||
       result == true
     ) {
       this.countCorrectAnswers += 1;
       this.point = this.point + 100;
-    } else if (point != 0) {
-      this.countCorrectAnswers += 1;
+    }
+    //Nếu là câu hỏi đúng sai
+    else if (point != 0) {
+      //Nếu đúng hết
+      if (point == 100) {
+        this.countCorrectAnswers += 1;
+      }
+      //Nếu có ý sai
+      else {
+        this.countWrongAnswers += 1;
+      }
+
       this.point = this.point + point;
     } else {
       this.countWrongAnswers += 1;
@@ -123,7 +139,6 @@ export class ExerciseComponent implements OnInit {
     str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ''); // Huyền sắc hỏi ngã nặng
     str = str.replace(/\u02C6|\u0306|\u031B/g, ''); // Â, Ê, Ă, Ơ, Ư
     str = str.split(' ').join('-');
-    debugger;
     return toUpperCase ? str.toUpperCase() : str;
   }
 }

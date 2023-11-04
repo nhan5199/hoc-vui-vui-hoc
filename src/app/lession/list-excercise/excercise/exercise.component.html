@@ -19,10 +19,8 @@
     <img src="/assets/imgs/lession/welcome-exercise.png" alt="mo-dau" />
 
     <div class="title-question">
-      <p>
-        Phiếu bài tập <br />
-        {{ this.exerciseName }}
-      </p>
+      <p>Phiếu bài tập <br /></p>
+      <img *ngIf="exercise?.url" [src]="exercise.url" alt="" />
       <button class="start" (click)="changeQuestion()">Bắt đầu</button>
     </div>
   </div>
