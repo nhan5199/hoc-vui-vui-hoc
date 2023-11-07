@@ -19,7 +19,7 @@
 
 .menu-button img {
   width: 40%;
-  margin-left: -10%;
+  margin-left: -13%;
   z-index: 10;
 }
 
@@ -47,4 +47,26 @@
 
 .menu-button:hover .img-button {
   background-color: #fff;
+}
+
+@media screen and (max-width: 900px) {
+  .img-button {
+    padding: 7px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .right-menu-button {
+    width: 200px;
+    font-size: 25px;
+    padding: 0;
+    height: 40px;
+  }
+  .menu-button img {
+    width: 75px;
+  }
+  .menu-button {
+    top: 65%;
+    left: 15%;
+  }
 }

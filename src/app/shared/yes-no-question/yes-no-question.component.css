@@ -1,0 +1,121 @@
+.yes-no-question {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  top: 45%;
+  left: 45%;
+  transform: translate(-45%, -45%);
+}
+
+.question-answer {
+  position: relative;
+}
+
+.question {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  margin: 0.5em;
+  font-family: var(--title-font);
+}
+
+.point {
+  position: absolute;
+  top: 0.5%;
+  right: 10.5%;
+}
+
+.list-answers {
+  height: 60svh;
+  width: 85%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.question {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 1em;
+  font-family: var(--title-font);
+  flex: 0 0 auto;
+}
+
+.list-answers .answer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.check {
+  position: absolute;
+  bottom: -10%;
+}
+
+.list-answers .opinion {
+  flex-grow: 2;
+}
+
+.list-answers .opinion p {
+  margin: 15px 0;
+}
+
+.list-answers .answer .value {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.list-answers .answer .value button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Calistoga";
+  border-radius: 10px;
+  background-color: #33afb7;
+  cursor: pointer;
+  border: 3px solid white;
+  color: white;
+}
+
+.list-answers .answer .value button:hover {
+  background-color: #2f6dac;
+}
+
+.list-answers .answer .value button.correct {
+  background-color: rgb(21, 182, 21);
+}
+
+.list-answers .answer .value button.false {
+  background-color: red;
+}
+
+.list-answers .answer .value button.active {
+  background-color: #2f6dac;
+}
+
+.check button {
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Calistoga";
+  border-radius: 10px;
+  background-color: #e19246;
+  cursor: pointer;
+  border: 3px solid white;
+  color: white;
+}
+
+.check button:hover {
+  background-color: #f17c0c;
+}
+
+.value img {
+  width: 4rem;
+}

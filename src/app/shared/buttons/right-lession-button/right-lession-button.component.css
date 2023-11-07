@@ -44,3 +44,37 @@ button {
 .right-lession-button:hover .img-lession-button {
   background-color: #fff;
 }
+
+@media screen and (max-width: 900px) {
+  button {
+    height: 35px;
+    font-size: 20px;
+    clip-path: polygon(17% 0, 100% 0, 100% 100%, 17% 100%, 3% 50%);
+  }
+
+  .img-lession-button {
+    padding: 10px;
+  }
+
+  img {
+    width: 90px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .title {
+    font-size: 25px;
+  }
+
+  .lecture {
+    padding-top: 25%;
+  }
+
+  .img-lession-button button {
+    width: 200px;
+  }
+
+  .right-lession-button {
+    justify-content: end;
+  }
+}

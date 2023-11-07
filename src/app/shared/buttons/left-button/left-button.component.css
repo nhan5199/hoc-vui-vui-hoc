@@ -14,7 +14,7 @@
 }
 
 img {
-  width: 100px;
+  width: 20%;
   margin-right: -10%;
   z-index: 10;
 }
@@ -43,4 +43,29 @@ button {
 
 .left-lession-button:hover .img-button {
   background-color: #fff;
+}
+
+@media screen and (max-width: 900px) {
+  img {
+    width: 70px;
+  }
+  .img-lession-button {
+    padding: 10px;
+  }
+  button {
+    font-size: 15px;
+    height: 30px;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .img-lession-button {
+    padding: 5px;
+  }
+  button {
+    font-size: 12px;
+    height: 25px;
+    width: 130px;
+  }
 }

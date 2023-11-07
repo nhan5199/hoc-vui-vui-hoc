@@ -33,3 +33,28 @@
   object-fit: fill;
   display: block;
 }
+
+@media screen and (max-width: 900px) {
+  .left-btn,
+  .right-btn {
+    top: 57%;
+  }
+
+  .left-btn {
+    left: 0;
+  }
+
+  .right-btn {
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .left-btn {
+    top: 50%;
+  }
+
+  .right-btn {
+    bottom: 50%;
+  }
+}

@@ -1,0 +1,108 @@
+.exchange-unit {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.question {
+  width: 95%;
+  max-height: 50svh;
+  overflow-y: auto;
+  text-align: center;
+  color: white;
+  font-size: 1em;
+  margin: 0.5em;
+  font-family: var(--title-font);
+}
+
+.list-opinions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  height: 50svh;
+  overflow-y: auto;
+}
+
+.opinion {
+  flex-basis: 45%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.opinion p {
+  font-size: 1em;
+  margin: 0 10px;
+}
+
+.opinion input {
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+  font-size: 1.5em;
+  width: 100px;
+  margin: 0 10px;
+  font-family: var(--title-font);
+}
+
+.unit {
+  display: flex;
+  flex-direction: row;
+}
+
+.answer {
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: initial;
+  gap: 30px;
+  align-items: center;
+}
+/*
+.answer input {
+  font-size: 1em;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid white;
+  outline: none;
+  color: white;
+} */
+
+.check {
+  position: absolute;
+  left: 50%;
+  bottom: -20%;
+  transform: translateX(-50%);
+}
+
+.check button {
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Calistoga";
+  border-radius: 10px;
+  background-color: #e19246;
+  cursor: pointer;
+  border: 3px solid white;
+  color: white;
+}
+
+.check button:hover {
+  background-color: #f17c0c;
+}
+
+/*Bỏ arrow ở inpur*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}

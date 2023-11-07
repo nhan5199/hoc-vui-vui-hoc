@@ -1,0 +1,46 @@
+.right-lession-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 3svh;
+}
+
+.img-lession-button {
+  background-color: #8bebcb;
+  padding: 0.8em;
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 20% 100%, 0 50%);
+}
+
+img {
+  width: 20%;
+  margin-left: -10%;
+  z-index: 10;
+}
+
+button {
+  width: calc(100vw / 4);
+  height: 6.5svh;
+  text-align: center;
+  font-size: 2vw;
+  font-family: var(--title-font);
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 18% 100%, 3% 50%);
+  color: #8bebcb;
+  border: none;
+  background: linear-gradient(to right, #fff 50%, #8bebcb 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  margin-right: 10px;
+  transition: all 0.75s ease;
+  cursor: pointer;
+}
+
+.right-lession-button:hover button {
+  background-position: right bottom;
+  color: white;
+}
+
+.right-lession-button:hover .img-lession-button {
+  background-color: #fff;
+}

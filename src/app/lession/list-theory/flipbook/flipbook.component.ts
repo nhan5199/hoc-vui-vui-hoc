@@ -1,13 +1,37 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  HostListener,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
+
 @Component({
   selector: 'app-flipbook',
   templateUrl: './flipbook.component.html',
   styleUrls: ['./flipbook.component.css'],
 })
-export class FlipbookComponent implements OnInit {
-  constructor(private readonly _location: Location) {}
-  ngOnInit(): void {
+export class FlipbookComponent implements OnInit, AfterViewInit {
+  isPhoneAndOrientation: boolean = false;
+  isLoading: boolean = false;
+  content: any[] = [
+    {
+      front: '/assets/imgs/lession/welcome-exercise.png',
+      back: '/assets/imgs/lession/question.png',
+    },
+    {
+      front: '/assets/imgs/lession/welcome-exercise.png',
+      back: '/assets/imgs/lession/question.png',
+    },
+    {
+      front: '/assets/imgs/lession/welcome-exercise.png',
+      back: '/assets/imgs/lession/question.png',
+    },
+  ];
+  @ViewChildren('panelRef') panels: QueryList<any> = new QueryList();
+  ngAfterViewInit(): void {
     const panels: HTMLElement[] = Array.from(
       document.querySelectorAll('.panel')
     );
@@ -34,7 +58,9 @@ export class FlipbookComponent implements OnInit {
       panel.dataset['zIdx'] = zIdx.toString();
     });
 
-    const imgs: HTMLElement[] = Array.from(document.querySelectorAll('img'));
+    const imgs: HTMLElement[] = Array.from(
+      document.querySelectorAll('.panel img')
+    );
 
     imgs.forEach((img) => {
       img.addEventListener('click', (event) => {
@@ -53,8 +79,45 @@ export class FlipbookComponent implements OnInit {
       });
     });
   }
+  constructor(private readonly _location: Location) {}
+  ngOnInit(): void {
+    if (window.screen.width < 900) {
+      if (window.orientation === 90 || window.orientation === -90) {
+        let flipbook = document.getElementById('flipbook');
+        if (flipbook) {
+          flipbook.style.display = 'flex';
+        }
+        this.isPhoneAndOrientation = false;
+      } else {
+        let flipbook = document.getElementById('flipbook');
+        if (flipbook) {
+          flipbook.style.display = 'none';
+        }
+        this.isPhoneAndOrientation = true;
+      }
+    }
+  }
 
   returnToBackPage() {
     this._location.back();
+  }
+
+  @HostListener('window:orientationchange', ['$event'])
+  onOrientationChange(event: Event): void {
+    if (window.screen.width < 900) {
+      if (window.orientation === 90 || window.orientation === -90) {
+        let flipbook = document.getElementById('flipbook');
+        if (flipbook) {
+          flipbook.style.display = 'flex';
+        }
+        this.isPhoneAndOrientation = false;
+      } else {
+        let flipbook = document.getElementById('flipbook');
+        if (flipbook) {
+          flipbook.style.display = 'none';
+        }
+        this.isPhoneAndOrientation = true;
+      }
+    }
   }
 }

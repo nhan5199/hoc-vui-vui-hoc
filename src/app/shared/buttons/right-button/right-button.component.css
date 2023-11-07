@@ -14,7 +14,7 @@
 }
 
 img {
-  width: 100px;
+  width: 20%;
   margin-left: -10%;
   z-index: 10;
 }
@@ -25,7 +25,7 @@ button {
   text-align: center;
   font-size: 2vw;
   font-family: var(--title-font);
-  clip-path: polygon(18% 0, 100% 0, 100% 100%, 18% 100%, 3% 50%);
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 21% 100%, 5% 50%);
   color: #8bebcb;
   border: none;
   background: linear-gradient(to right, #fff 50%, #8bebcb 50%);
@@ -43,4 +43,29 @@ button {
 
 .right-button:hover .img-button {
   background-color: #fff;
+}
+
+@media screen and (max-width: 900px) {
+  img {
+    width: 70px;
+  }
+  .img-button {
+    padding: 10px;
+  }
+  button {
+    font-size: 15px;
+    height: 30px;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .img-button {
+    padding: 5px;
+  }
+  button {
+    font-size: 12px;
+    height: 25px;
+    width: 130px;
+  }
 }

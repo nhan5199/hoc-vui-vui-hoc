@@ -1,4 +1,4 @@
-.home-button {
+.home-button{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -6,33 +6,33 @@
   cursor: pointer;
 }
 
-.home-button img {
+.home-button img{
   width: 35%;
   margin-right: -20%;
   margin-top: -2%;
   z-index: 10;
 }
 
-.home-button button {
+.home-button button{
   padding: 0 10px;
   font-size: var(--title-size);
   font-weight: bold;
-  width: calc(100vw / 4.5);
-  text-align: center;
-  border: 10px solid #ff8d64;
+  width: calc(100vw/4.5);
+  text-align:center;
+  border: 10px solid #FF8D64;
   border-radius: 30px;
   font-family: var(--title-font);
   background: #fff;
-  color: #ff8d64;
+  color: #FF8D64;
   /* Old browsers */
-  background: linear-gradient(to left, #fff 50%, #ff8d64 50%);
+  background: linear-gradient(to left, #fff 50%, #FF8D64 50%);
   background-size: 200% 100%;
-  background-position: right bottom;
-  transition: all 0.75s ease;
+  background-position:right bottom;
+  transition:all .75s ease;
 }
 
-.home-button:hover .button {
-  background-position: left bottom;
-  color: #f9ead3;
-  border-color: #f9ead3;
+ .home-button:hover .button{
+  background-position:left bottom;
+  color: #F9EAD3;
+  border-color: #F9EAD3;
 }

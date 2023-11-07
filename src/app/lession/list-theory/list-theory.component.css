@@ -113,12 +113,25 @@
   border-color: #d4bbdf;
 }
 
-/*
-#45b737
-#9ae591
+@media screen and (max-width: 900px) {
+  .lecture,
+  .video,
+  .flipbook,
+  .math {
+    font-size: 20px;
+    border-width: 4px;
+  }
+}
 
-#527cb1
-#81a2cd
-
-#9b58b7
-#be96cf */
+@media screen and (max-width: 500px) {
+  .list-theory-menu div {
+    flex: 1 1 100%;
+  }
+  .lecture,
+  .video,
+  .flipbook,
+  .math {
+    font-size: 20px;
+    width: 100%;
+  }
+}

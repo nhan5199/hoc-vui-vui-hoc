@@ -1,60 +1,39 @@
-<div class="flipbook-content">
-  <img
-    class="left"
-    src="/assets/imgs/lession/back.png"
-    (click)="returnToBackPage()"
-    alt=""
-    title="quay lại"
-  />
-  <div class="flipbook">
-    <div class="flip-panel">
-      <div class="panel">
-        <div class="front">
-          <div class="content">
-            <span class="fold"></span>
-            <img src="/assets/imgs/lession/welcome-exercise.png" alt="" />
-          </div>
-        </div>
+<ng-container *ngIf="isLoading"> </ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="flipbook-content">
+    <img
+      class="left"
+      src="/assets/imgs/lession/back.png"
+      (click)="returnToBackPage()"
+      alt=""
+      title="quay lại"
+    />
 
-        <div class="back">
-          <div class="content">
-            <span class="fold1"></span>
-            <img src="/assets/imgs/lession/question.png" alt="" />
-          </div>
+    <ng-container *ngIf="!isPhoneAndOrientation">
+      <div class="flipbook" id="flipbook">
+        <div class="flip-panel">
+          <ng-container *ngFor="let item of content; let i = index">
+            <div class="panel" #panelRef>
+              <div class="front">
+                <div class="content">
+                  <span class="fold"></span>
+                  <img [src]="item.front" alt="" />
+                </div>
+              </div>
+
+              <div class="back">
+                <div class="content">
+                  <span class="fold1"></span>
+                  <img [src]="item.back" alt="" />
+                </div>
+              </div>
+            </div>
+          </ng-container>
         </div>
       </div>
-
-      <div class="panel">
-        <div class="front">
-          <div class="content">
-            <span class="fold"></span>
-            <img src="/assets/imgs/lession/welcome-exercise.png" alt="" />
-          </div>
-        </div>
-
-        <div class="back">
-          <div class="content">
-            <span class="fold1"></span>
-            <img src="/assets/imgs/lession/question.png" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="front">
-          <div class="content">
-            <span class="fold"></span>
-            <img src="/assets/imgs/lession/welcome-exercise.png" alt="" />
-          </div>
-        </div>
-
-        <div class="back">
-          <div class="content">
-            <span class="fold1"></span>
-            <img src="/assets/imgs/lession/question.png" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
+    </ng-container>
+    <ng-container *ngIf="isPhoneAndOrientation">
+      <img class="flip-phone" src="/assets/flip-phone.png" alt="" />
+    </ng-container>
   </div>
-</div>
+</ng-container>

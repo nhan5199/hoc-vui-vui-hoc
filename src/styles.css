@@ -95,3 +95,15 @@ input {
 .not-found {
   width: 350px;
 }
+
+@media screen and (max-width: 800px) {
+  .not-found {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .left {
+    width: 30px;
+  }
+}

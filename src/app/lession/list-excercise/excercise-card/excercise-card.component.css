@@ -28,3 +28,12 @@ button {
 button:hover {
   background-color: #00a9ff;
 }
+
+@media screen and (max-width: 900px) {
+  .exercise-title {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+}

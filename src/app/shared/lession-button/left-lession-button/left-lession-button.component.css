@@ -1,0 +1,46 @@
+.left-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 3svh;
+}
+
+.img-button {
+  background-color: #e6c5fe;
+  padding: 0.8em;
+  clip-path: polygon(0 0, 80% 0, 100% 50%, 80% 100%, 0 100%);
+}
+
+img {
+  width: 20%;
+  margin-right: -10%;
+  z-index: 10;
+}
+
+button {
+  width: calc(100vw / 4);
+  height: 6.5svh;
+  text-align: center;
+  font-size: 2vw;
+  font-family: var(--title-font);
+  clip-path: polygon(0 0, 82% 0, 96% 50%, 82% 100%, 0 100%);
+  color: #e6c5fe;
+  border: none;
+  background: linear-gradient(to left, #fff 50%, #e6c5fe 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  margin-left: 10px;
+  transition: all 0.75s ease;
+  cursor: pointer;
+}
+
+.left-button:hover button {
+  background-position: left bottom;
+  color: white;
+}
+
+.left-button:hover .img-button {
+  background-color: #fff;
+}

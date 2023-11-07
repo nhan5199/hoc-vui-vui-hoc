@@ -13,11 +13,17 @@
     <ng-container>
       <div class="video">
         <p class="title">Video minh họa</p>
-        <div class="video-content" *ngFor="let video of listVideos">
-          <video controls>
-            <source [src]="video" type="video/mp4" />
-          </video>
-        </div>
+
+        <ng-container *ngIf="listVideos.length != 0">
+          <div class="video-content" *ngFor="let video of listVideos">
+            <video controls>
+              <source [src]="video" type="video/mp4" />
+            </video>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="listVideos.length == 0">
+          <img class="not-found" src="/assets/notfound.png" alt="" />
+        </ng-container>
       </div>
     </ng-container>
   </div>
