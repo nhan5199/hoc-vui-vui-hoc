@@ -24,6 +24,7 @@ export class ChooseCorrectAnswerComponent implements OnInit {
       this.isMultipleChoice = true;
     }
     this.checkLength();
+    console.log(this.question);
   }
 
   checkLength() {

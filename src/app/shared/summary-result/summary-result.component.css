@@ -71,3 +71,15 @@ p {
 .action button:hover {
   background-color: #f17c0c;
 }
+
+@media screen and (max-width: 1000px) {
+  .result div {
+    height: 25px;
+  }
+  .result {
+    top: 15%;
+  }
+  p {
+    font-size: 18px;
+  }
+}

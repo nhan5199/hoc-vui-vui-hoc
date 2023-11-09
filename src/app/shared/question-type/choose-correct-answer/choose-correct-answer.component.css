@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  gap: 30px;
+  gap: 15px;
 }
 
 .list-long-answers {
@@ -40,7 +40,7 @@
 }
 
 .decorate {
-  width: 400px;
+  width: 250px;
   border-radius: 10px;
   margin-bottom: 10px;
 }
@@ -48,7 +48,8 @@
 .answer,
 .medium-answer,
 .long-answer {
-  padding: 25px;
+  flex: 0 0 22%;
+  padding: 20px;
   border: 5px solid white;
   color: white;
   font-family: var(--title-font);
@@ -85,14 +86,14 @@
 .answer-img {
   border-radius: 10px;
   height: 200px;
-  width: 400px;
+  width: 250px;
   object-fit: fill;
 }
 
 .answer-content {
   display: flex;
   flex-direction: row;
-  width: 90%;
+  width: 95%;
 }
 .answer-img img {
   width: 80%;
@@ -101,6 +102,7 @@
   border-radius: 10px;
   cursor: pointer;
   border: 8px solid white;
+  margin-right: 10px;
 }
 
 .answer-img img:hover {
@@ -140,4 +142,24 @@
 
 .check button:hover {
   background-color: #f17c0c;
+}
+
+@media screen and (max-width: 1000px) {
+  .list-answers .answer,
+  .long-answer,
+  .medium-answer {
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    border-width: 3px;
+  }
+
+  .question {
+    font-size: 20px;
+  }
+
+  .answer-img {
+    width: 150px;
+    height: 100px;
+  }
 }

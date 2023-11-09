@@ -1,4 +1,6 @@
-<ng-container *ngIf="isLoading"> </ng-container>
+<ng-container *ngIf="isLoading">
+  <img class="loading" src="/assets/loading.gif" alt="" />
+</ng-container>
 <ng-container *ngIf="!isLoading">
   <div class="flipbook-content">
     <img
@@ -10,27 +12,33 @@
     />
 
     <ng-container *ngIf="!isPhoneAndOrientation">
-      <div class="flipbook" id="flipbook">
-        <div class="flip-panel">
-          <ng-container *ngFor="let item of content; let i = index">
-            <div class="panel" #panelRef>
-              <div class="front">
-                <div class="content">
-                  <span class="fold"></span>
-                  <img [src]="item.front" alt="" />
+      <ng-container *ngIf="content.length > 0">
+        <div class="flipbook" id="flipbook">
+          <div class="flip-panel">
+            <ng-container *ngFor="let item of content; let i = index">
+              <div class="panel" #panelRef>
+                <div class="front">
+                  <div class="content">
+                    <span class="fold"></span>
+                    <img [src]="item.front" alt="" />
+                  </div>
                 </div>
-              </div>
 
-              <div class="back">
-                <div class="content">
-                  <span class="fold1"></span>
-                  <img [src]="item.back" alt="" />
+                <div class="back">
+                  <div class="content">
+                    <span class="fold1"></span>
+                    <img [src]="item.back" alt="" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </ng-container>
+            </ng-container>
+          </div>
         </div>
-      </div>
+      </ng-container>
+
+      <ng-container *ngIf="content.length <= 0">
+        <img class="not-found" src="/assets/notfound.png" alt="" />
+      </ng-container>
     </ng-container>
     <ng-container *ngIf="isPhoneAndOrientation">
       <img class="flip-phone" src="/assets/flip-phone.png" alt="" />

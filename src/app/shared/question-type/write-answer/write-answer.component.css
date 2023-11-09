@@ -29,7 +29,7 @@ p {
 .answer-img {
   border-radius: 10px;
   height: 200px;
-  width: 400px;
+  width: 250px;
   object-fit: fill;
 }
 
@@ -103,4 +103,21 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+@media screen and (max-width: 1000px) {
+  .answer-img {
+    width: 150px;
+    height: 100px;
+  }
+
+  p,
+  .answer input {
+    font-size: 15px;
+  }
+
+  .check button {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
 }

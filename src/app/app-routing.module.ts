@@ -12,6 +12,7 @@ import { LectureComponent } from './lession/list-theory/lecture/lecture.componen
 import { FlipbookComponent } from './lession/list-theory/flipbook/flipbook.component';
 import { MathComponent } from './lession/list-theory/math/math.component';
 import { AlgebraMenuComponent } from './algebra-menu/algebra-menu.component';
+import { ExerciseShapeComponent } from './lession/exercise-shape/exercise-shape.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path: 'geometry-menu/:topicName',
     component: TopicComponent,
+  },
+  {
+    path: 'exercise-shape',
+    component: ExerciseShapeComponent,
   },
   // { path: '403', component: PageAccessDeniedComponent },
   // { path: '404', component: PageNotFoundComponent },

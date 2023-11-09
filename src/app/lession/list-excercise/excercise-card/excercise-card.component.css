@@ -33,7 +33,9 @@ button:hover {
   .exercise-title {
     font-size: 15px;
   }
-}
 
-@media screen and (max-width: 500px) {
+  button {
+    font-size: 15px;
+    padding: 5px 10px;
+  }
 }

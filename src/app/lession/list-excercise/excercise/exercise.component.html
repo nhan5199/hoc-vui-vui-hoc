@@ -1,104 +1,128 @@
-<div class="exercise">
-  <img
-    *ngIf="activeQuest == 0"
-    class="left"
-    src="/assets/imgs/lession/back.png"
-    (click)="returnToBackPage()"
-    alt=""
-    title="quay lại"
-  />
-  <img
-    *ngIf="activeQuest == 0"
-    class="right"
-    src="/assets/imgs/lession/return.png"
-    (click)="returnToBackPage()"
-    alt=""
-    title="quay lại"
-  />
-  <div class="welcome-page" *ngIf="activeQuest == 0">
-    <img src="/assets/imgs/lession/welcome-exercise.png" alt="mo-dau" />
+<ng-container *ngIf="listQuestions?.length <= 0">
+  <img class="loading" src="/assets/loading.gif" alt=""
+/></ng-container>
+<ng-container *ngIf="listQuestions?.length > 0">
+  <ng-container *ngIf="!isPhoneAndOrientation">
+    <div class="exercise">
+      <img
+        *ngIf="activeQuest == 0"
+        class="left"
+        src="/assets/imgs/lession/back.png"
+        (click)="returnToBackPage()"
+        alt=""
+        title="quay lại"
+      />
+      <img
+        *ngIf="activeQuest == 0"
+        class="right"
+        src="/assets/imgs/lession/return.png"
+        (click)="returnToBackPage()"
+        alt=""
+        title="quay lại"
+      />
+      <div class="welcome-page" *ngIf="activeQuest == 0">
+        <img src="/assets/imgs/lession/welcome-exercise.png" alt="mo-dau" />
 
-    <div class="title-question">
-      <p>Phiếu bài tập <br /></p>
-      <img *ngIf="exercise?.url" [src]="exercise.url" alt="" />
-      <button class="start" (click)="changeQuestion()">Bắt đầu</button>
-    </div>
-  </div>
-  <ng-container *ngIf="activeQuest != 0">
-    <img
-      *ngIf="activeQuest != 0"
-      class="restart"
-      src="/assets/imgs/lession/back.png"
-      (click)="reloadQuestionAnswer()"
-      alt=""
-      title="quay lại"
-    />
-    <div class="list-question">
-      <img src="/assets/imgs/lession/question.png" alt="cau-hoi" />
-      <app-answer-point class="point" [pointPlus]="point"></app-answer-point>
-      <ng-container *ngFor="let item of listQuestions; let i = index">
-        <div class="question" *ngIf="activeQuest == i + 1">
-          <div class="content">
-            <!-- Câu hỏi Chọn đáp án đúng -->
-            <ng-container *ngIf="item?.type == 1">
-              <app-choose-correct-answer
-                class="question-answer"
-                [question]="item"
-                (result)="checkAnswer($event)"
-              ></app-choose-correct-answer>
-            </ng-container>
+        <div class="title-question">
+          <p>Phiếu bài tập</p>
+          <img *ngIf="exercise?.url" [src]="exercise.url" alt="" />
+          <button class="start" (click)="changeQuestion()">Bắt đầu</button>
+        </div>
+      </div>
+      <ng-container *ngIf="activeQuest != 0">
+        <img
+          *ngIf="activeQuest != 0"
+          class="restart"
+          src="/assets/imgs/lession/back.png"
+          (click)="reloadQuestionAnswer()"
+          alt=""
+          title="quay lại"
+        />
+        <div class="list-question">
+          <img src="/assets/imgs/lession/question.png" alt="cau-hoi" />
+          <app-answer-point
+            class="point"
+            [pointPlus]="point"
+          ></app-answer-point>
+          <ng-container *ngFor="let item of listQuestions; let i = index">
+            <div class="question" *ngIf="activeQuest == i + 1">
+              <div class="content">
+                <!-- Câu hỏi Chọn đáp án đúng -->
+                <ng-container *ngIf="item?.type == 1">
+                  <app-choose-correct-answer
+                    class="question-answer"
+                    [question]="item"
+                    (result)="checkAnswer($event)"
+                  ></app-choose-correct-answer>
+                </ng-container>
 
-            <!-- Câu hỏi Chọn đúng sai -->
-            <ng-container *ngIf="item?.type == 2">
-              <app-yes-no-question
-                class="question-answer"
-                [question]="item"
-                (result)="validateAnswers($event)"
-              ></app-yes-no-question>
-            </ng-container>
+                <!-- Câu hỏi Chọn đúng sai -->
+                <ng-container *ngIf="item?.type == 2">
+                  <app-yes-no-question
+                    class="question-answer"
+                    [question]="item"
+                    (result)="validateAnswers($event)"
+                  ></app-yes-no-question>
+                </ng-container>
 
-            <!-- Câu hỏi điền đáp án -->
-            <ng-container *ngIf="item?.type == 3">
-              <app-write-answer
-                class="question-answer"
-                [question]="item"
-                (result)="checkAnswer($event)"
-              ></app-write-answer>
-            </ng-container>
+                <!-- Câu hỏi điền đáp án -->
+                <ng-container *ngIf="item?.type == 3">
+                  <app-write-answer
+                    class="question-answer"
+                    [question]="item"
+                    (result)="checkAnswer($event)"
+                  ></app-write-answer>
+                </ng-container>
 
-            <!-- Câu hỏi đổi đơn vị đo -->
-            <ng-container *ngIf="item?.type == 4">
-              <app-exchange-unit
-                class="question-answer"
-                [question]="item"
-                (result)="checkAnswer($event)"
-              ></app-exchange-unit>
-            </ng-container>
+                <!-- Câu hỏi đổi đơn vị đo -->
+                <ng-container *ngIf="item?.type == 4">
+                  <app-exchange-unit
+                    class="question-answer"
+                    [question]="item"
+                    (result)="checkAnswer($event)"
+                  ></app-exchange-unit>
+                </ng-container>
 
-            <!-- Câu hỏi điền đáp án dạng text -->
-            <ng-container *ngIf="item?.type == 5">
-              <app-write-text-answer
-                class="question-answer"
-                [question]="item"
-                (result)="checkAnswer($event)"
-              ></app-write-text-answer>
-            </ng-container>
-          </div>
+                <!-- Câu hỏi điền đáp án dạng text -->
+                <ng-container *ngIf="item?.type == 5">
+                  <app-write-text-answer
+                    class="question-answer"
+                    [question]="item"
+                    (result)="checkAnswer($event)"
+                  ></app-write-text-answer>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- màn hình kết thúc -->
+          <ng-container *ngIf="activeQuest > listQuestions?.length">
+            <app-summary-result
+              [point]="point"
+              [correctAnswers]="countCorrectAnswers"
+              [wrongAnswers]="countWrongAnswers"
+            ></app-summary-result>
+          </ng-container>
         </div>
       </ng-container>
-
-      <!-- màn hình kết thúc -->
-      <ng-container *ngIf="activeQuest > listQuestions?.length">
-        <app-summary-result
-          [point]="point"
-          [correctAnswers]="countCorrectAnswers"
-          [wrongAnswers]="countWrongAnswers"
-        ></app-summary-result>
-      </ng-container>
     </div>
+    <app-error-message
+      [display]="isDisplayErrorMessage"
+      [message]="errorMessage"
+    ></app-error-message>
   </ng-container>
-</div>
-<app-error-message
-  [display]="isDisplayErrorMessage"
-  [message]="errorMessage"
-></app-error-message>
+  <ng-container *ngIf="isPhoneAndOrientation">
+    <div class="orientation">
+      <img
+        *ngIf="activeQuest == 0"
+        class="left"
+        src="/assets/imgs/lession/back.png"
+        (click)="returnToBackPage()"
+        alt=""
+        title="quay lại"
+      />
+      <img class="flip-phone" src="/assets/flip-phone.png" alt="" />
+    </div>
+    /></ng-container
+  >
+</ng-container>

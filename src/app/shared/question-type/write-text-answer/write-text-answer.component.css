@@ -98,3 +98,20 @@ p {
 .check button:hover {
   background-color: #f17c0c;
 }
+
+@media screen and (max-width: 1000px) {
+  .answer-img {
+    width: 150px;
+    height: 100px;
+  }
+
+  p,
+  .answer input {
+    font-size: 15px;
+  }
+
+  .check-button {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+}

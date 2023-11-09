@@ -1,29 +1,40 @@
-.point-display{
+.point-display {
   width: 150px;
-  position: relative
+  position: relative;
 }
 
-.point-display img{
+.point-display img {
   width: 100%;
 }
 
-.point{
+.point {
   position: absolute;
   top: 35%;
   color: white;
   left: 30%;
-  transform: translate(-35%,-30%);
+  transform: translate(-35%, -30%);
   font-size: 1.5em;
-  font-family: 'Baloo Bhai 2';
+  font-family: "Baloo Bhai 2";
   font-weight: 500;
 }
 
-.point-plus{
+.point-plus {
   position: absolute;
   color: white;
   font-size: 1.5rem;
-  font-family: 'Baloo Bhai 2';
+  font-family: "Baloo Bhai 2";
   font-weight: 500;
   bottom: -40%;
   transform: translateX(40%);
+}
+
+@media screen and (max-width: 1100px) {
+  .point-display {
+    width: 80px;
+  }
+
+  .point,
+  .point-plus {
+    font-size: 13px;
+  }
 }

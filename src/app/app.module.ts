@@ -28,16 +28,19 @@ import { LeftMenuButtonComponent } from './shared/buttons/left-menu-button/left-
 import { RightButtonComponent } from './shared/buttons/right-button/right-button.component';
 import { RightLessionButtonComponent } from './shared/buttons/right-lession-button/right-lession-button.component';
 import { RightMenuButtonComponent } from './shared/buttons/right-menu-button/right-menu-button.component';
-import { ChooseCorrectAnswerComponent } from './shared/choose-correct-answer/choose-correct-answer.component';
 import { ConfirmPopupComponent } from './shared/confirm-popup/confirm-popup.component';
 import { DataService } from './shared/data';
 import { ErrorMessageComponent } from './shared/error-message/error-message.component';
-import { ExchangeUnitComponent } from './shared/exchange-unit/exchange-unit.component';
+import { ChooseCorrectAnswerComponent } from './shared/question-type/choose-correct-answer/choose-correct-answer.component';
+import { ExchangeUnitComponent } from './shared/question-type/exchange-unit/exchange-unit.component';
+import { WriteAnswerComponent } from './shared/question-type/write-answer/write-answer.component';
 import { WriteTextAnswerComponent } from './shared/question-type/write-text-answer/write-text-answer.component';
+import { YesNoQuestionComponent } from './shared/question-type/yes-no-question/yes-no-question.component';
 import { SummaryResultComponent } from './shared/summary-result/summary-result.component';
-import { WriteAnswerComponent } from './shared/write-answer/write-answer.component';
-import { YesNoQuestionComponent } from './shared/yes-no-question/yes-no-question.component';
+import { ExerciseShapeComponent } from './lession/exercise-shape/exercise-shape.component';
 
+import { ResizableModule } from 'angular-resizable-element';
+import { KonvaModule } from 'ng2-konva';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,8 +74,11 @@ import { YesNoQuestionComponent } from './shared/yes-no-question/yes-no-question
     AlgebraMenuComponent,
     WriteTextAnswerComponent,
     ExcerciseCardComponent,
+    ExerciseShapeComponent,
   ],
   imports: [
+    KonvaModule,
+    ResizableModule,
     BrowserModule,
     AppRoutingModule,
     CommonModule,
