@@ -1,36 +1,11 @@
+import { Location } from '@angular/common';
 import { AfterViewInit, Component } from '@angular/core';
 
 import Konva from 'konva';
 @Component({
   selector: 'app-exercise-shape',
-  // templateUrl: './exercise-shape.component.html',
-  // styleUrls: ['./exercise-shape.component.css'],
-  template: `
-    <div>
-      <div id="container"></div>
-      <button (click)="addRectangle()">Add Rectangle</button>
-      <button (click)="addTriangle()">Add Triangle</button>
-      <button (click)="addCircle()">Add Circle</button>
-    </div>
-  `,
-  styles: [
-    `
-      body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #f0f0f0;
-      }
-      div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      button {
-        margin: 5px;
-      }
-    `,
-  ],
+  templateUrl: './exercise-shape.component.html',
+  styleUrls: ['./exercise-shape.component.css'],
 })
 export class ExerciseShapeComponent implements AfterViewInit {
   stage!: Konva.Stage;
@@ -43,14 +18,16 @@ export class ExerciseShapeComponent implements AfterViewInit {
   x2: number | undefined;
   y2: number | undefined;
 
-  ngAfterViewInit(): void {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+  width = window.innerWidth;
+  height = window.innerHeight;
 
+  constructor(private readonly _location: Location) {}
+
+  ngAfterViewInit(): void {
     this.stage = new Konva.Stage({
       container: 'container',
-      width,
-      height,
+      width: this.width,
+      height: this.height,
     });
 
     this.layer = new Konva.Layer();
@@ -58,12 +35,6 @@ export class ExerciseShapeComponent implements AfterViewInit {
 
     this.tr = new Konva.Transformer();
     this.layer.add(this.tr);
-
-    // Add initial shapes (optional)
-    // Add initial shapes (optional)
-    this.addRectangle(100, 100); // Example: Add rectangle at position (100, 100)
-    this.addTriangle(100, 200); // Example: Add triangle at position (200, 200)
-    this.addCircle(100, 300); // Example: Add circle at position (300, 300)
 
     this.selectionRectangle = new Konva.Rect({
       fill: 'rgba(0,0,255,0.5)',
@@ -159,10 +130,10 @@ export class ExerciseShapeComponent implements AfterViewInit {
     }
   }
 
-  addRectangle(x: number = 100, y: number = 100) {
+  addRectangle(x: number) {
     const rectangle = new Konva.Rect({
       x,
-      y,
+      y: 30, // Adjust the y-coordinate for the desired position on top
       width: 100,
       height: 80,
       fill: 'red',
@@ -173,10 +144,10 @@ export class ExerciseShapeComponent implements AfterViewInit {
     this.shapes.push(rectangle);
   }
 
-  addTriangle(x: number = 100, y: number = 100) {
+  addTriangle(x: number) {
     const triangle = new Konva.RegularPolygon({
       x,
-      y,
+      y: 80,
       sides: 3,
       radius: 50,
       fill: 'blue',
@@ -187,16 +158,41 @@ export class ExerciseShapeComponent implements AfterViewInit {
     this.shapes.push(triangle);
   }
 
-  addCircle(x: number = 100, y: number = 100) {
+  addCircle(x: number) {
     const circle = new Konva.Circle({
       x,
-      y,
+      y: 70, // Adjust the y-coordinate for the desired position on top
       radius: 40,
-      fill: 'green',
+      fill: 'yellow',
       name: 'shape',
       draggable: true,
     });
     this.layer.add(circle);
     this.shapes.push(circle);
+  }
+
+  deleteSelected() {
+    const selectedNodes = this.tr.nodes();
+    selectedNodes.forEach((node) => {
+      // Ensure the node is a Konva.Shape before attempting to remove
+      if (node instanceof Konva.Shape) {
+        // Remove the shape from the Konva layer
+        node.remove();
+        // Remove the shape from the array that tracks shapes
+        const index = this.shapes.indexOf(node);
+        if (index !== -1) {
+          this.shapes.splice(index, 1);
+        }
+      }
+    });
+
+    // Clear the transformer selection
+    this.tr.nodes([]);
+    // Batch draw to update the stage
+    this.layer.batchDraw();
+  }
+
+  returnToBackPage() {
+    this._location.back();
   }
 }
