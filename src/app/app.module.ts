@@ -41,6 +41,7 @@ import { ExerciseShapeComponent } from './lession/exercise-shape/exercise-shape.
 
 import { ResizableModule } from 'angular-resizable-element';
 import { KonvaModule } from 'ng2-konva';
+import { ExerciseShapeInfoComponent } from './lession/exercise-shape/exercise-shape-info/exercise-shape-info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +76,7 @@ import { KonvaModule } from 'ng2-konva';
     WriteTextAnswerComponent,
     ExcerciseCardComponent,
     ExerciseShapeComponent,
+    ExerciseShapeInfoComponent,
   ],
   imports: [
     KonvaModule,

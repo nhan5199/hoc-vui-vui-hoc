@@ -21,7 +21,14 @@ export class ExerciseShapeComponent implements AfterViewInit {
   width = window.innerWidth;
   height = window.innerHeight;
 
-  constructor(private readonly _location: Location) {}
+  selectedPic: number = 1;
+  picUrl: string = '';
+
+  isDisplayInfo: boolean = false;
+
+  constructor(private readonly _location: Location) {
+    this.picUrl = `/assets/imgs/puzzle/${this.selectedPic}.png`;
+  }
 
   ngAfterViewInit(): void {
     this.stage = new Konva.Stage({
@@ -130,10 +137,10 @@ export class ExerciseShapeComponent implements AfterViewInit {
     }
   }
 
-  addRectangle(x: number) {
+  addRectangle(x: number, y: number) {
     const rectangle = new Konva.Rect({
       x,
-      y: 30, // Adjust the y-coordinate for the desired position on top
+      y, // Adjust the y-coordinate for the desired position on top
       width: 100,
       height: 80,
       fill: 'red',
@@ -144,10 +151,52 @@ export class ExerciseShapeComponent implements AfterViewInit {
     this.shapes.push(rectangle);
   }
 
-  addTriangle(x: number) {
+  addSquare(x: number, y: number) {
+    // Create a Konva.Rect for the square
+    const square = new Konva.Rect({
+      x,
+      y,
+      width: 80, // Width and height are the same to make it a square
+      height: 80,
+      fill: 'purple', // Fill color
+      name: 'shape',
+      draggable: true,
+    });
+
+    this.layer.add(square);
+    this.shapes.push(square);
+  }
+
+  addTrapezoid(x: number, y: number) {
+    // Define the coordinates for the vertices of the trapezoid
+    const points = [
+      x,
+      y, // Vertex 1 (top-left)
+      x + 80,
+      y, // Vertex 2 (top-right)
+      x + 130,
+      y + 80, // Vertex 3 (bottom-right)
+      x + -50,
+      y + 80, // Vertex 4 (bottom-left)
+    ];
+
+    // Create a Konva.Line to draw the trapezoid
+    const trapezoid = new Konva.Line({
+      points: points,
+      closed: true, // Close the path to create a filled trapezoid
+      fill: 'orange', // Fill color
+      name: 'shape',
+      draggable: true,
+    });
+
+    this.layer.add(trapezoid);
+    this.shapes.push(trapezoid);
+  }
+
+  addTriangle(x: number, y: number) {
     const triangle = new Konva.RegularPolygon({
       x,
-      y: 80,
+      y,
       sides: 3,
       radius: 50,
       fill: 'blue',
@@ -158,10 +207,34 @@ export class ExerciseShapeComponent implements AfterViewInit {
     this.shapes.push(triangle);
   }
 
-  addCircle(x: number) {
+  addLeftAngleTriangle(x: number, y: number) {
+    // Define the coordinates for the vertices of the left-angled triangle
+    const points = [
+      x,
+      y, // Vertex 1 (top)
+      x,
+      y + 80, // Vertex 2 (left)
+      x + 80,
+      y + 80, // Vertex 3 (bottom)
+    ];
+
+    // Create a Konva.Line to draw the left-angled triangle
+    const triangle = new Konva.Line({
+      points: points,
+      closed: true, // Close the path to create a filled triangle
+      fill: '#38DDC4', // Fill color
+      name: 'shape',
+      draggable: true,
+    });
+
+    this.layer.add(triangle);
+    this.shapes.push(triangle);
+  }
+
+  addCircle(x: number, y: number) {
     const circle = new Konva.Circle({
       x,
-      y: 70, // Adjust the y-coordinate for the desired position on top
+      y, // Adjust the y-coordinate for the desired position on top
       radius: 40,
       fill: 'yellow',
       name: 'shape',
@@ -192,7 +265,40 @@ export class ExerciseShapeComponent implements AfterViewInit {
     this.layer.batchDraw();
   }
 
+  clearAllShapes() {
+    // Iterate through the array of shapes
+    this.shapes.forEach((shape) => {
+      // Remove the shape from the Konva layer
+      shape.remove();
+    });
+
+    // Clear the array of shapes
+    this.shapes = [];
+
+    // Clear the transformer selection
+    this.tr.nodes([]);
+
+    // Batch draw to update the stage
+    this.layer.batchDraw();
+  }
+
+  onChangePic() {
+    this.clearAllShapes();
+
+    this.selectedPic += 1;
+    if (this.selectedPic > 10) this.selectedPic = 1;
+    this.picUrl = `/assets/imgs/puzzle/${this.selectedPic}.png`;
+  }
+
   returnToBackPage() {
     this._location.back();
+  }
+
+  onOpenInfoPopup() {
+    this.isDisplayInfo = true;
+  }
+
+  onCloseInfoPopup(event: boolean) {
+    if (event) this.isDisplayInfo = false;
   }
 }

@@ -39,21 +39,20 @@ button {
 }
 
 canvas {
-  width: 50%;
+  width: 100% !important;
   height: 100svh;
 }
 
 .buttons {
   display: flex;
   position: absolute;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: start;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 10px;
+  transform: translateX(-50%);
   padding: 10px;
-  left: 10px;
-  border-radius: 20px;
+  left: 50%;
   z-index: 100;
   gap: 20px;
 }
@@ -66,16 +65,70 @@ button {
 }
 
 .buttons button img {
-  width: 50px;
-  border-radius: 5px;
+  width: 60px;
+  height: 50px;
   transition: 0.25s ease;
+}
+
+.buttons button.square img {
+  width: 50px;
 }
 
 .buttons button img:hover {
   width: 70px;
-  border-radius: 5px;
+  height: 58.3px;
+}
+
+.buttons button.square img:hover {
+  width: 70px;
+  height: 70px;
 }
 
 .left {
   z-index: 1000;
+}
+
+.change-pic {
+  left: 50%;
+  position: absolute;
+  bottom: 15%;
+  transform: translateX(-50%);
+  width: 70px;
+  z-index: 1000;
+}
+
+.change-pic:hover {
+  width: 80px;
+  left: 49.8%;
+  transform: translateX(-49.8%);
+}
+
+.puzzle {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 400px;
+}
+
+.info {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  width: 60px;
+  z-index: 1000;
+}
+
+.info img {
+  cursor: pointer;
+}
+
+.info img:hover {
+  width: 70px;
+}
+
+.change-pic img,
+.puzzle img,
+.info img {
+  width: 100%;
 }
