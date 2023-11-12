@@ -7,6 +7,28 @@
   background-color: #f0f0f0;
 }
 
+.orientation {
+  width: 100%;
+  height: 100svh;
+  object-fit: fill;
+
+  background-image: url("/assets/imgs/home/background.jpg");
+  background-size: cover;
+}
+
+.flip-phone {
+  width: 50%;
+  margin: 0 auto;
+  height: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  border: 5px solid black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 img.background {
   width: 100%;
   height: 100svh;
@@ -131,4 +153,80 @@ button {
 .puzzle img,
 .info img {
   width: 100%;
+}
+
+@media screen and (max-width: 950px) {
+  .info {
+    width: 40px;
+  }
+  .buttons {
+    padding: 0;
+    top: 0;
+  }
+  .buttons button img {
+    width: 40px;
+    height: 30px;
+  }
+
+  .buttons button.square img {
+    width: 40px;
+  }
+
+  .buttons button img:hover {
+    width: 50px;
+    height: 43px;
+  }
+
+  .buttons button.square img:hover {
+    width: 50px;
+    height: 50px;
+  }
+  .puzzle {
+    width: 200px;
+  }
+  .change-pic {
+    width: 40px;
+  }
+
+  .change-pic:hover {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .info {
+    width: 30px;
+  }
+  .buttons {
+    padding: 0;
+    top: 0;
+  }
+  .buttons button img {
+    width: 30px;
+    height: 20px;
+  }
+
+  .buttons button.square img {
+    width: 30px;
+  }
+
+  .buttons button img:hover {
+    width: 40px;
+    height: 26.7px;
+  }
+
+  .buttons button.square img:hover {
+    width: 40px;
+    height: 40px;
+  }
+  .puzzle {
+    width: 170px;
+  }
+  .change-pic {
+    width: 30px;
+  }
+
+  .change-pic:hover {
+    width: 40px;
+  }
 }

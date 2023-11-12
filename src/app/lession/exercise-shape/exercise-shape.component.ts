@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 import Konva from 'konva';
 @Component({
@@ -7,7 +7,8 @@ import Konva from 'konva';
   templateUrl: './exercise-shape.component.html',
   styleUrls: ['./exercise-shape.component.css'],
 })
-export class ExerciseShapeComponent implements AfterViewInit {
+export class ExerciseShapeComponent implements OnInit, AfterViewInit {
+  isPhoneAndOrientation: boolean = false;
   stage!: Konva.Stage;
   layer!: Konva.Layer;
   tr!: Konva.Transformer;
@@ -28,6 +29,24 @@ export class ExerciseShapeComponent implements AfterViewInit {
 
   constructor(private readonly _location: Location) {
     this.picUrl = `/assets/imgs/puzzle/${this.selectedPic}.png`;
+  }
+
+  ngOnInit(): void {
+    if (window.screen.width < 800) {
+      if (window.orientation === 90 || window.orientation === -90) {
+        let flipbook = document.getElementById('flipbook');
+        if (flipbook) {
+          flipbook.style.display = 'flex';
+        }
+        this.isPhoneAndOrientation = false;
+      } else {
+        let flipbook = document.getElementById('flipbook');
+        if (flipbook) {
+          flipbook.style.display = 'none';
+        }
+        this.isPhoneAndOrientation = true;
+      }
+    }
   }
 
   ngAfterViewInit(): void {
