@@ -2,19 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 
+import * as emailjs from 'emailjs-com';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  listAdminEmails: string[] = ['nhannguyenn510@gmail.com'];
   goToMath: string = '/math-menu';
   isLoading: boolean = true;
   errorMessage: string = '';
   url: string = '';
+
   constructor(
     private readonly titleService: Title,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private _db: AngularFireDatabase
   ) {
     this.titleService.setTitle('Học vui - Vui học');
   }
@@ -35,5 +40,46 @@ export class HomeComponent implements OnInit {
     } catch (error) {
       this.errorMessage = 'Lỗi khi lấy dữ liệu';
     }
+  }
+  sendEmail(authorize: string) {
+    this.listAdminEmails.forEach((email: string) => {
+      emailjs
+        .send(
+          'service_gyi1nqd',
+          'template_96x6cyn',
+          {
+            to_name: email,
+            authorize: authorize,
+          },
+          '_OMpeInpwPG_qlFA6'
+        )
+        .then(
+          (response) => {
+            console.log('Email sent:', response);
+          },
+          (error) => {
+            console.error('Error sending email:', error);
+          }
+        );
+    });
+  }
+
+  onLogin() {
+    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+    const numberChars = '0123456789';
+    const specialChars = '!@#$';
+
+    const allChars =
+      uppercaseChars + lowercaseChars + numberChars + specialChars;
+
+    let password = '';
+    for (let i = 0; i < 10; i++) {
+      const randomIndex = Math.floor(Math.random() * allChars.length);
+      password += allChars.charAt(randomIndex);
+    }
+
+    this._db.object('login').set(password);
+    this.sendEmail(password);
   }
 }

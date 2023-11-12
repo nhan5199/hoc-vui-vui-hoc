@@ -13,6 +13,8 @@ import { FlipbookComponent } from './lession/list-theory/flipbook/flipbook.compo
 import { MathComponent } from './lession/list-theory/math/math.component';
 import { AlgebraMenuComponent } from './algebra-menu/algebra-menu.component';
 import { ExerciseShapeComponent } from './lession/exercise-shape/exercise-shape.component';
+import { LogInComponent } from './management/log-in/log-in.component';
+import { ManageQuestionComponent } from './management/manage-question/manage-question.component';
 
 const routes: Routes = [
   {
@@ -68,6 +70,14 @@ const routes: Routes = [
   {
     path: 'exercise-shape',
     component: ExerciseShapeComponent,
+  },
+  {
+    path: 'log-in/:authorize',
+    component: LogInComponent,
+  },
+  {
+    path: 'log-in/:authorize/manage-question',
+    component: ManageQuestionComponent,
   },
   // { path: '403', component: PageAccessDeniedComponent },
   // { path: '404', component: PageNotFoundComponent },

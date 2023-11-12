@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { AlgebraMenuComponent } from './algebra-menu/algebra-menu.component';
@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GeometryMenuComponent } from './geometry-menu/geometry-menu.component';
 import { HomeComponent } from './home/home.component';
+import { ExerciseShapeComponent } from './lession/exercise-shape/exercise-shape.component';
 import { ExcerciseCardComponent } from './lession/list-excercise/excercise-card/excercise-card.component';
 import { ExerciseComponent } from './lession/list-excercise/excercise/exercise.component';
 import { ListExerciseComponent } from './lession/list-excercise/list-exercise.component';
@@ -37,11 +38,12 @@ import { WriteAnswerComponent } from './shared/question-type/write-answer/write-
 import { WriteTextAnswerComponent } from './shared/question-type/write-text-answer/write-text-answer.component';
 import { YesNoQuestionComponent } from './shared/question-type/yes-no-question/yes-no-question.component';
 import { SummaryResultComponent } from './shared/summary-result/summary-result.component';
-import { ExerciseShapeComponent } from './lession/exercise-shape/exercise-shape.component';
 
 import { ResizableModule } from 'angular-resizable-element';
 import { KonvaModule } from 'ng2-konva';
 import { ExerciseShapeInfoComponent } from './lession/exercise-shape/exercise-shape-info/exercise-shape-info.component';
+import { LogInComponent } from './management/log-in/log-in.component';
+import { ManageQuestionComponent } from './management/manage-question/manage-question.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +79,8 @@ import { ExerciseShapeInfoComponent } from './lession/exercise-shape/exercise-sh
     ExcerciseCardComponent,
     ExerciseShapeComponent,
     ExerciseShapeInfoComponent,
+    LogInComponent,
+    ManageQuestionComponent,
   ],
   imports: [
     KonvaModule,
@@ -85,6 +89,7 @@ import { ExerciseShapeInfoComponent } from './lession/exercise-shape/exercise-sh
     AppRoutingModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [DataService],

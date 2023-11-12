@@ -26,3 +26,23 @@ img {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+
+.setting {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.setting:hover {
+  width: 90px;
+  height: 90px;
+}
+
+.setting img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}

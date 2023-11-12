@@ -1,0 +1,13 @@
+.manage-question {
+  width: 100%;
+  height: 100svh;
+  background-image: url("/assets/imgs/home/background.jpg");
+  background-size: cover;
+}
+
+.not-found {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -4,6 +4,9 @@
 <ng-container *ngIf="!isLoading">
   <div class="home-img">
     <img [src]="url" alt="ảnh nền" />
+    <div class="setting" (click)="onLogin()">
+      <img src="/assets/settings.png" alt="" />
+    </div>
     <home-button [link]="goToMath" class="home-button"></home-button>
   </div>
 </ng-container>

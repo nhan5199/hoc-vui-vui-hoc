@@ -1,0 +1,51 @@
+<ng-container *ngIf="isLoading">
+  <img class="loading" src="/assets/loading.gif" alt="" />
+</ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="log-in">
+    <ng-container *ngIf="isAuthorize">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="login-form">
+          <p class="title">Đăng nhập</p>
+          <p class="invalid" *ngIf="isInvalidInput">
+            *Vui lòng điền đầy đủ thông tin!
+          </p>
+          <p class="invalid" *ngIf="isWrongCredential">
+            *Tên đăng nhập hoặc mật khẩu không chính xác!
+          </p>
+          <div class="item">
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" id="username" formControlName="username" auto />
+          </div>
+          <div class="item">
+            <label for="password">Email:</label>
+            <div class="password-input">
+              <input
+                type="{{ passwordVisible ? 'text' : 'password' }}"
+                id="password"
+                formControlName="password"
+              />
+              <button
+                class="hide-unhide"
+                type="button"
+                (click)="togglePasswordVisibility()"
+              >
+                <i
+                  class="fa-solid"
+                  [ngClass]="{
+                    'fa-eye': passwordVisible,
+                    'fa-eye-slash': !passwordVisible
+                  }"
+                ></i>
+              </button>
+            </div>
+          </div>
+          <button class="submit" type="submit">Đăng nhập</button>
+        </div>
+      </form>
+    </ng-container>
+    <ng-container *ngIf="!isAuthorize">
+      <img class="not-found" src="/assets/notfound.png" alt="" />
+    </ng-container>
+  </div>
+</ng-container>

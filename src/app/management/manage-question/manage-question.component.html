@@ -1,0 +1,11 @@
+<ng-container *ngIf="isLoading">
+  <img class="loading" src="/assets/loading.gif" alt="" />
+</ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="manage-question">
+    <ng-container *ngIf="isAuthorize"> </ng-container>
+    <ng-container *ngIf="!isAuthorize">
+      <img class="not-found" src="/assets/notfound.png" alt="" />
+    </ng-container>
+  </div>
+</ng-container>

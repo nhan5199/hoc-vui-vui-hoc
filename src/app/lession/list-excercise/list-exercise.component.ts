@@ -19,7 +19,6 @@ export class ListExerciseComponent implements OnInit {
     private readonly _router: Router,
     private readonly _route: ActivatedRoute,
     private readonly _location: Location,
-
     private readonly _appService: AppComponent
   ) {}
 
