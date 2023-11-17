@@ -17,6 +17,9 @@ export class GeometryMenuComponent implements OnInit {
   cubeUrl: string = '';
   errorMessage: string = '';
 
+  gameName: string = 'Trò chơi tương tác';
+  gameUrl: string = '/exercise-shape';
+
   constructor(
     private readonly _location: Location,
     private readonly _dataService: DataService,
