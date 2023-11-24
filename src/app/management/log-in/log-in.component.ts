@@ -46,7 +46,6 @@ export class LogInComponent implements OnInit {
             })
             .then((data) => {
               this.listUsers = data;
-              console.log(this.listUsers);
             });
         } else {
           this.isLoading = false;

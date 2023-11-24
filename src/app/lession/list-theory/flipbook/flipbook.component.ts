@@ -136,7 +136,6 @@ export class FlipbookComponent implements OnInit, AfterViewInit {
     } catch (error) {
       console.error('An error occurred while fetching data:', error);
     }
-    console.log(this.content);
   }
 
   returnToBackPage() {

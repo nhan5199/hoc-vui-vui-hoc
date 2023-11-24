@@ -31,9 +31,7 @@ export class YesNoQuestionComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit(): void {
-    console.log(this.question);
-  }
+  ngOnInit(): void {}
 
   saveAnswer(i: number, event: any) {
     let parentElement = event.target.parentNode;

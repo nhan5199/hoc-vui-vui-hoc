@@ -51,7 +51,12 @@ export class ListExerciseComponent implements OnInit {
         })
         .then((data) => {
           this.topic = data.find((x: any) => x.topicName === this.topicName);
-          this.listExcercise = this.topic.content.listExercises;
+          this.listExcercise = Object.keys(
+            this.topic.content.listExercises
+          ).map((key) => ({
+            key,
+            ...this.topic.content.listExercises[key],
+          }));
         });
     }
   }

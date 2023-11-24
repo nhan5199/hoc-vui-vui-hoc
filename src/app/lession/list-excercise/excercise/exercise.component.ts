@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 
@@ -23,10 +24,14 @@ export class ExerciseComponent implements OnInit {
   isDisplayErrorMessage: boolean = false;
 
   isPhoneAndOrientation: boolean = false;
+  storageLevel: string = '';
+  isLoading: boolean = true;
   constructor(
     private readonly _route: ActivatedRoute,
     private readonly _appService: AppComponent,
-    private readonly _location: Location
+    private readonly _location: Location,
+
+    private storage: AngularFireStorage
   ) {}
 
   ngOnInit() {
@@ -66,13 +71,58 @@ export class ExerciseComponent implements OnInit {
         .then((response) => {
           return response.json();
         })
-        .then((data) => {
+        .then(async (data) => {
           this.topic = data.find((x: any) => x.topicName === this.topicName);
           let tempExerciseName = this.exerciseName ? this.exerciseName : '';
-          this.exercise = this.topic?.content?.listExercises.find(
+          let questionsList = Object.keys(
+            this.topic?.content?.listExercises
+          ).map((key) => ({
+            key,
+            ...this.topic?.content?.listExercises[key],
+          }));
+          this.exercise = questionsList.find(
             (x: any) => this.convertViToEn(x.name) === tempExerciseName
           );
           this.listQuestions = this.exercise.quests;
+
+          //get folder img path for question
+          this.storageLevel =
+            `level` + (+this.exercise?.name?.split(' ')[3] - 1);
+
+          let urls: any[] = [];
+          //Get list img from folder
+          const folderPath = `/${this.topicName}/quests/${this.storageLevel}`;
+          const storageRef = this.storage.ref(folderPath);
+          const result = await storageRef.listAll().toPromise();
+
+          if (result && result?.items?.length > 0) {
+            for (const itemRef of result.items) {
+              const downloadPath = `/${itemRef.fullPath}`;
+              const fileRef = this.storage.ref(downloadPath);
+              const url = await fileRef.getDownloadURL().toPromise();
+              urls.push(url);
+            }
+          }
+
+          this.listQuestions.forEach((question: any) => {
+            if (question.decoratePath) {
+              let decoratepath = question.decoratePath
+                .split('/')[1]
+                .split('.')[0];
+              question.decoratePath = urls.find((x) =>
+                x.includes(decoratepath)
+              );
+            }
+
+            if (question.imgPath) {
+              let imgPath = question.imgPath.split('/')[1].split('.')[0];
+              question.imgPath = urls.find((x) => x.includes(imgPath));
+            }
+          });
+
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 500);
         });
     }
   }

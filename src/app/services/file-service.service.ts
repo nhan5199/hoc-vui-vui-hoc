@@ -65,4 +65,31 @@ export class FileUploadService {
     const storageRef = this.storage.ref(this.basePath);
     storageRef.child(name).delete();
   }
+
+  uploadFiles(files: FileList, path: string): Promise<string[]> {
+    const uploadPromises: Promise<string>[] = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files.item(i);
+      const filePath = `${path}/${file?.name}`;
+      const storageRef = this.storage.ref(filePath);
+      const uploadTask = storageRef.put(file);
+
+      uploadPromises.push(
+        new Promise((resolve, reject) => {
+          uploadTask
+            .then((snapshot) => {
+              snapshot.ref.getDownloadURL().then((downloadURL) => {
+                resolve(downloadURL);
+              });
+            })
+            .catch((error) => {
+              reject(error);
+            });
+        })
+      );
+    }
+
+    return Promise.all(uploadPromises);
+  }
 }

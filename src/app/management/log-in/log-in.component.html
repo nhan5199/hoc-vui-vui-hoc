@@ -15,7 +15,12 @@
           </p>
           <div class="item">
             <label for="username">Tên đăng nhập:</label>
-            <input type="text" id="username" formControlName="username" auto />
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              autocomplete="nope"
+            />
           </div>
           <div class="item">
             <label for="password">Email:</label>
@@ -24,6 +29,7 @@
                 type="{{ passwordVisible ? 'text' : 'password' }}"
                 id="password"
                 formControlName="password"
+                autocomplete="nope"
               />
               <button
                 class="hide-unhide"
@@ -33,8 +39,8 @@
                 <i
                   class="fa-solid"
                   [ngClass]="{
-                    'fa-eye': passwordVisible,
-                    'fa-eye-slash': !passwordVisible
+                    'fa-eye': !passwordVisible,
+                    'fa-eye-slash': passwordVisible
                   }"
                 ></i>
               </button>

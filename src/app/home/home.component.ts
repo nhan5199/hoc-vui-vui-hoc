@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   isLoading: boolean = true;
   errorMessage: string = '';
   url: string = '';
-
+  envLink: string = '';
   constructor(
     private readonly titleService: Title,
     private storage: AngularFireStorage,
@@ -29,6 +29,12 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.isLoading = false;
     }, 0);
+
+    //Test environment
+    // this.envLink = 'http://localhost:4200';
+
+    //product environment
+    this.envLink = 'https://hoc-vui-vui-hoc.vercel.app/';
   }
 
   async fetchData() {
@@ -50,6 +56,7 @@ export class HomeComponent implements OnInit {
           {
             to_name: email,
             authorize: authorize,
+            link: this.envLink,
           },
           '_OMpeInpwPG_qlFA6'
         )

@@ -3,7 +3,86 @@
 </ng-container>
 <ng-container *ngIf="!isLoading">
   <div class="manage-question">
-    <ng-container *ngIf="isAuthorize"> </ng-container>
+    <ng-container *ngIf="isAuthorize">
+      <div class="create-form">
+        <p class="title">Tạo câu hỏi</p>
+        <div class="form-content">
+          <label class="downloadUrl" for="downloadUrl">
+            <img src="/assets/imgs/manage-question/excel-file.png" alt="" />
+            <a [href]="templateDownloadUrl">Tải template tại đây</a></label
+          >
+
+          <div class="item">
+            <label>Chủ đề <span class="required">*</span>:</label>
+            <select [(ngModel)]="selectedOption" (change)="onTopicChange()">
+              <option value="0" disabled class="placeholder">
+                Chọn chủ đề câu hỏi
+              </option>
+              <option *ngFor="let option of options" [value]="option.value">
+                {{ option.label }}
+              </option>
+            </select>
+          </div>
+
+          <div class="item">
+            <label for="uploadFile"
+              >Chọn file câu hỏi <span class="required">*</span>:</label
+            >
+            <div class="file-display">
+              <input
+                #inputFile
+                type="file"
+                (change)="onFileChange($event)"
+                accept=".xlsx, .xls"
+                multiple="false"
+                [disabled]="selectedOption == '0'"
+                style="display: none"
+              />
+
+              <div class="file-upload-container" (click)="inputFile.click()">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <p *ngIf="!selectedFile">click để tải file lên</p>
+                <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <label for="uploadImages">Chọn hình ảnh: </label>
+            <div class="file-display">
+              <input
+                style="display: none"
+                #inputImages
+                type="file"
+                [disabled]="selectedOption == '0'"
+                (change)="onImagesSelected($event)"
+                multiple
+              />
+
+              <div class="file-upload-container" (click)="inputImages.click()">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <p *ngIf="!selectedImgFiles">click để tải file lên</p>
+                <ng-container *ngIf="selectedImgFiles">
+                  <div class="list-img">
+                    <span *ngFor="let img of selectedImagesArray">{{
+                      img.name
+                    }}</span>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          [disabled]="!selectedOption || !selectedFile"
+          class="submit"
+          (click)="onCreateQuestions()"
+        >
+          Hoàn tất
+        </button>
+      </div>
+    </ng-container>
     <ng-container *ngIf="!isAuthorize">
       <img class="not-found" src="/assets/notfound.png" alt="" />
     </ng-container>

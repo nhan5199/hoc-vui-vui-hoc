@@ -23,7 +23,7 @@
   position: absolute;
   top: 50%;
   width: 400px;
-  height: 350px;
+  height: 400px;
   background-color: #faf9f6;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -89,11 +89,11 @@ input {
   border: none;
   outline: none;
   text-align: start;
-  padding: 5px;
-  font-size: 15px;
+  padding: 10px;
+  font-size: 20px;
   background-color: #f1f0ed;
 }
 
 input:focus {
-  border: 2px solid #b2beb5;
+  border: 1px solid #b2beb5;
 }
