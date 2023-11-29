@@ -1,30 +1,23 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import {
   AngularFireDatabase,
   AngularFireList,
 } from '@angular/fire/compat/database';
-
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FileUploadService } from 'src/app/services/file-service.service';
 
-import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-manage-question',
   templateUrl: './manage-question.component.html',
   styleUrls: ['./manage-question.component.css'],
 })
 export class ManageQuestionComponent implements OnInit {
+  isLoading: boolean = false;
   authorize: string | null = '';
-  isAuthorize: boolean = false;
-  isLoading: boolean = true;
-  listUsers: any[] = [];
-  passwordVisible: boolean = false;
 
-  isInvalidInput: boolean = false;
-  isWrongCredential: boolean = false;
-
-  options: any[] = [
+  topics: any[] = [
     { value: 'triangle', label: 'Hình tam giác' },
     { value: 'trapezoid', label: 'Hình thang' },
     { value: 'circle', label: 'Hình tròn' },
@@ -32,259 +25,157 @@ export class ManageQuestionComponent implements OnInit {
     { value: 'cube', label: 'Hình lập phương' },
   ];
 
-  templateDownloadUrl: string = '';
-  listQuestions: any = {
-    imgPath: '',
-    name: 'Phiếu bài tập ',
-    url: '',
-    quests: [],
-  };
-
-  newListQuestionsIndex: number = 0;
-
-  selectedFile: File | null = null;
-
+  listTopics: any[] = [];
+  isExpand: boolean[] = [false, false, false, false, false];
+  displayConfirmDelete: boolean = false;
+  selectedDelete: any = {};
   itemList!: AngularFireList<any>;
   insertDbPath: string = '';
-  selectedImgFiles!: FileList;
-  selectedImagesArray: any[] = [];
-  downloadUrls!: string[];
-
-  @ViewChild('inputFile') inputFile!: ElementRef;
-  @ViewChild('inputImages') inputImages!: ElementRef;
-
   constructor(
-    private _route: ActivatedRoute,
+    private readonly _router: Router,
+    private readonly _route: ActivatedRoute,
+    private readonly _location: Location,
     private _db: AngularFireDatabase,
     private storage: AngularFireStorage,
     private fileUploadService: FileUploadService
   ) {}
 
-  async ngOnInit() {
+  ngOnInit(): void {
     this.authorize = this._route.snapshot.paramMap.get('authorize');
-    this._db
-      .object('login')
-      .valueChanges()
-      .subscribe((data: any) => {
-        if (data.toLowerCase() === this.authorize?.toLowerCase()) {
-          this.isAuthorize = true;
-          this.isLoading = false;
-          fetch(
-            `https://hoc-vui-vui-hoc-343f8-default-rtdb.asia-southeast1.firebasedatabase.app/user.json`
-          )
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => {
-              this.listUsers = data;
-            });
-        } else {
-          this.isLoading = false;
-        }
-      });
-
-    this.selectedOption = '0';
-    this.getTemplateFile();
+    this.fetchData();
   }
 
-  selectedOption: string | null = null;
-
-  onTopicChange(): void {
-    let listItems: any[] = [];
-    let indexTopic = this.getTopicIndex(
-      this.selectedOption ? this.selectedOption : 'triangle'
-    );
-    this.insertDbPath = `/questionAnswer/${indexTopic}/content/listExercises`;
+  fetchData() {
     fetch(
-      `https://hoc-vui-vui-hoc-343f8-default-rtdb.asia-southeast1.firebasedatabase.app/${this.insertDbPath}.json`
+      `https://hoc-vui-vui-hoc-343f8-default-rtdb.asia-southeast1.firebasedatabase.app/questionAnswer.json`
     )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        listItems = Object.keys(data).map((key) => ({ key, ...data[key] }));
-        let latestListIndex = 0;
-        listItems.forEach((item: any) => {
-          if (+item?.name.split(' ')[3] > latestListIndex) {
-            latestListIndex = +item.name.split(' ')[3];
-          }
-        });
-        this.newListQuestionsIndex = latestListIndex;
-      });
-  }
+        data = Object.keys(data).map((key) => ({
+          key,
+          ...data[key],
+        }));
 
-  getTopicIndex(topicName: string): number {
-    let index = 0;
-    switch (topicName.toLowerCase()) {
-      case 'triangle':
-        index = 0;
-        break;
-      case 'trapezoid':
-        index = 1;
-        break;
-      case 'circle':
-        index = 2;
-        break;
-      case 'rectangular':
-        index = 3;
-        break;
-      case 'cube':
-        index = 4;
-        break;
-      default:
-        index = 0;
-        break;
-    }
-    return index;
-  }
-
-  async getTemplateFile() {
-    const downloadPath = '/upload-question/template hoc-vui.xlsx';
-    const fileRef = this.storage.ref(downloadPath);
-    this.templateDownloadUrl = await fileRef.getDownloadURL().toPromise();
-  }
-
-  async onFileChange(event: any) {
-    this.selectedFile = event.target.files?.[0] || null;
-    const file = event.target.files[0];
-    if (file) {
-      await this.readFile(file);
-    }
-  }
-
-  async readFile(file: any) {
-    const reader = new FileReader();
-    reader.onload = (e: any) => {
-      const binaryData = e.target.result;
-      const workbook = XLSX.read(binaryData, { type: 'array' });
-
-      // Get the sheet names
-      const sheetNames = workbook.SheetNames;
-
-      // Loop through each sheet
-      sheetNames.forEach((sheetName: any) => {
-        const worksheet = workbook.Sheets[sheetName];
-        //chuyển tất cả dòng dữ liệu trong excel và dạng mảng các json
-        const data = XLSX.utils.sheet_to_json(worksheet);
-        if (sheetName.toLowerCase() === 'câu hỏi') {
-          data.forEach(async (item: any) => {
-            let question = await this.convertJsonToData(item);
-            this.listQuestions.quests.push(question);
+        data.forEach((topic: any) => {
+          this.listTopics.push({
+            key: topic.key,
+            listExercises: Object.keys(topic.content.listExercises).map(
+              (key) => ({
+                key,
+                ...topic.content.listExercises[key],
+              })
+            ),
+            topicName: this.getTopicName(topic.topicName),
+            topicCode: topic.topicName,
           });
-        }
+        });
       });
+  }
+
+  getTopicName(code: string): string {
+    let label: string = '';
+    this.topics.forEach((topic: any) => {
+      if (topic?.value.toLowerCase() === code.toLowerCase()) {
+        label = topic.label;
+        return;
+      }
+    });
+    return label;
+  }
+
+  onAddQuestionList() {
+    this._router.navigateByUrl(
+      `log-in/${this.authorize}/manage-question/add-question-list`
+    );
+  }
+
+  onExpandTopic(key: number) {
+    this.isExpand[key] = !this.isExpand[key];
+  }
+
+  onEditTopic(key: any, topicCode: string, topicKey: number) {
+    this._router.navigateByUrl(
+      `log-in/${this.authorize}/manage-question/${topicCode}/${key}`
+    );
+  }
+
+  onDeleteTopic(key: any, topicCode: string, topicKey: number) {
+    this.displayConfirmDelete = true;
+    this.selectedDelete = {
+      topicCode: topicCode,
+      key: key,
+      topicKey: topicKey,
     };
-    reader.readAsArrayBuffer(file);
   }
 
-  deleteSelectedFile() {
-    this.selectedFile = null;
-  }
+  onConfirmDelete(event: any) {
+    this.displayConfirmDelete = false;
 
-  //Khởi tạo câu hỏi dựa trên dữ liệu json
-  convertJsonToData(data: any): any {
-    let result: any;
-    if (String(data['Lọai câu hỏi']).split('.')[0] === '1') {
-      result = {
-        answer: +data['Đáp án đúng'],
-        choices: [
-          {
-            name: String(data['Câu trả lời 1']),
-            value: 1,
-          },
-          {
-            name: String(data['Câu trả lời 2']),
-            value: 2,
-          },
-          {
-            name:
-              String(data['Câu trả lời 3'])?.length > 0
-                ? String(data['Câu trả lời 3'])
-                : null,
-            value: String(data['Câu trả lời 3'])?.length > 0 ? 3 : null,
-          },
-          {
-            name:
-              String(data['Câu trả lời 4'])?.length > 0
-                ? String(data['Câu trả lời 4'])
-                : null,
-            value: String(data['Câu trả lời 4'])?.length > 0 ? 4 : null,
-          },
-        ],
-        decoratePath: `${this.selectedOption}/${data['Hình ảnh trang trí']}`,
-        imgPath: `${this.selectedOption}/${data['Hình ảnh câu hỏi']}`,
-        questionName: data['Tên câu hỏi'],
-        type: 1,
-      };
-    } else if (String(data['Lọai câu hỏi']).split('.')[0] === '2') {
-      result = {
-        choices: [
-          {
-            answer: +data['Đáp án 1']?.split('.')[0],
-            name: String(data['Ý kiến 1']),
-          },
-          {
-            answer: +data['Đáp án 2']?.split('.')[0],
-            name: String(data['Ý kiến 2']),
-          },
-          {
-            answer: +data['Đáp án 3']?.split('.')[0],
-            name: String(data['Ý kiến 3']),
-          },
-          {
-            answer: +data['Đáp án 4']?.split('.')[0],
-            name: String(data['Ý kiến 4']),
-          },
-        ],
-        decoratePath: `${this.selectedOption}/${data['Hình ảnh trang trí']}`,
-        imgPath: `${this.selectedOption}/${data['Hình ảnh câu hỏi']}`,
-        questionName: data['Tên câu hỏi'],
-        type: 2,
-      };
-    } else if (String(data['Lọai câu hỏi']).split('.')[0] === '3') {
-      result = {
-        answer: +data['Đáp án đúng'],
-        decoratePath: `${this.selectedOption}/${data['Hình ảnh trang trí']}`,
-        imgPath: `${this.selectedOption}/${data['Hình ảnh câu hỏi']}`,
-        questionName: data['Tên câu hỏi'],
-        type: 3,
-        unit: data['Đơn vị'],
-      };
-    } else if (String(data['Lọai câu hỏi']).split('.')[0] === '5') {
-      result = {
-        answer: data['Đáp án đúng'].split('#'),
-        decoratePath: `${this.selectedOption}/${data['Hình ảnh trang trí']}`,
-        imgPath: `${this.selectedOption}/${data['Hình ảnh câu hỏi']}`,
-        questionName: data['Tên câu hỏi'].split('#'),
-        type: 5,
-      };
-    }
-    return result;
-  }
-
-  clearFileName(): void {
-    this.selectedFile = null;
-  }
-
-  onImagesSelected(event: any): void {
-    this.selectedImgFiles = event.target.files;
-    this.selectedImagesArray = [...event.target.files];
-  }
-
-  uploadFiles(): void {
-    if (this.selectedImgFiles && this.selectedImgFiles.length > 0) {
-      let insertPath = `${this.selectedOption}/quests/level${this.newListQuestionsIndex}`;
-      this.fileUploadService.uploadFiles(this.selectedImgFiles, insertPath);
+    if (event) {
+      //Xóa câu hỏi trên firebase
+      // let topicContent = this.listTopics.find(
+      //   (x: any) =>
+      //     x.topicCode.toLowerCase() ===
+      //     this.selectedDelete.topicCode.toLowerCase()
+      // );
+      // let selectedDeleteItem = topicContent.listExercises.find(
+      //   (x: any) =>
+      //     x.key.toLowerCase() === this.selectedDelete.key.toLowerCase()
+      // );
+      // this.insertDbPath = `/questionAnswer/${this.selectedDelete.topicKey}/content/listExercises`;
+      // const itemRef = this._db.object(
+      //   this.insertDbPath + '/' + selectedDeleteItem.key
+      // );
+      // itemRef.remove();
+      //Xóa hình trên storage
+      // let imgPath = '';
+      // this.listTopics.forEach((topic: any) => {
+      //   if (
+      //     topic.key.toLowerCase() ===
+      //     this.selectedDelete.topicKey.toString().toLowerCase()
+      //   ) {
+      //     topic.listExercises.forEach((exercise: any) => {
+      //       if (
+      //         exercise.key.toLowerCase() ===
+      //         this.selectedDelete.key.toLowerCase()
+      //       ) {
+      //         exercise.quests = Object.keys(exercise.quests).map((key) => ({
+      //           key,
+      //           ...exercise.quests[key],
+      //         }));
+      //         exercise.quests.forEach((question: any) => {
+      //           if (question.decoratePath?.length > 0) {
+      //             imgPath = question?.decoratePath.split('/')[1];
+      //             console.log(imgPath);
+      //           }
+      //         });
+      //       }
+      //     });
+      //   }
+      // });
+      // this.fileUploadService.deleteFolder(
+      //   `/${this.selectedDelete.topicCode}/quests/${imgPath}`
+      // );
+      // Xóa ở giao diện
+      // this.listTopics.forEach((topic: any) => {
+      //   if (
+      //     topic.topicCode.toLowerCase() ===
+      //     this.selectedDelete.topicCode.toLowerCase()
+      //   ) {
+      //     let index = topic.listExercises.findIndex(
+      //       (x: any) => x.key === this.selectedDelete.key
+      //     );
+      //     if (index !== -1) {
+      //       topic.listExercises.splice(index, 1);
+      //     }
+      //   }
+      // });
     }
   }
 
-  onCreateQuestions() {
-    if (!this.selectedOption || !this.selectedFile) {
-      return;
-    }
-    this.listQuestions.name += this.newListQuestionsIndex + 1;
-    this.itemList = this._db.list('/' + this.insertDbPath);
-    this.itemList.push(this.listQuestions).then(() => {});
-    this.uploadFiles();
+  returnToBackPage() {
+    this._location.back();
   }
 }

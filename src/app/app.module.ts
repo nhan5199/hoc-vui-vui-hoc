@@ -44,6 +44,8 @@ import { KonvaModule } from 'ng2-konva';
 import { ExerciseShapeInfoComponent } from './lession/exercise-shape/exercise-shape-info/exercise-shape-info.component';
 import { LogInComponent } from './management/log-in/log-in.component';
 import { ManageQuestionComponent } from './management/manage-question/manage-question.component';
+import { AddQuestionListComponent } from './management/manage-question/add-question-list/add-question-list.component';
+import { EditQuestionListComponent } from './management/manage-question/edit-question-list/edit-question-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +83,8 @@ import { ManageQuestionComponent } from './management/manage-question/manage-que
     ExerciseShapeInfoComponent,
     LogInComponent,
     ManageQuestionComponent,
+    AddQuestionListComponent,
+    EditQuestionListComponent,
   ],
   imports: [
     KonvaModule,

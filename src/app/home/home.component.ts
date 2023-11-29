@@ -13,9 +13,10 @@ export class HomeComponent implements OnInit {
   listAdminEmails: string[] = ['nhannguyenn510@gmail.com'];
   goToMath: string = '/math-menu';
   isLoading: boolean = true;
-  errorMessage: string = '';
+  informMessage: string = '';
   url: string = '';
   envLink: string = '';
+  code: number = 200;
   constructor(
     private readonly titleService: Title,
     private storage: AngularFireStorage,
@@ -31,10 +32,10 @@ export class HomeComponent implements OnInit {
     }, 0);
 
     //Test environment
-    // this.envLink = 'http://localhost:4200';
+    this.envLink = 'http://localhost:4200';
 
     //product environment
-    this.envLink = 'https://hoc-vui-vui-hoc.vercel.app/';
+    // this.envLink = 'https://hoc-vui-vui-hoc.vercel.app/';
   }
 
   async fetchData() {
@@ -44,7 +45,8 @@ export class HomeComponent implements OnInit {
       const url = await fileRef.getDownloadURL().toPromise();
       this.url = url;
     } catch (error) {
-      this.errorMessage = 'Lỗi khi lấy dữ liệu';
+      this.informMessage = 'Lỗi khi lấy dữ liệu';
+      this.code = 202;
     }
   }
   sendEmail(authorize: string) {
@@ -62,10 +64,13 @@ export class HomeComponent implements OnInit {
         )
         .then(
           (response) => {
-            console.log('Email sent:', response);
+            console.log(1);
+            this.informMessage = 'Gửi mail thành công!';
+            this.code = 200;
           },
           (error) => {
-            console.error('Error sending email:', error);
+            this.informMessage = 'Gửi mail thất bại';
+            this.code = 202;
           }
         );
     });

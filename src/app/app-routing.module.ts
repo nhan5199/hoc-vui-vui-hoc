@@ -15,6 +15,8 @@ import { AlgebraMenuComponent } from './algebra-menu/algebra-menu.component';
 import { ExerciseShapeComponent } from './lession/exercise-shape/exercise-shape.component';
 import { LogInComponent } from './management/log-in/log-in.component';
 import { ManageQuestionComponent } from './management/manage-question/manage-question.component';
+import { AddQuestionListComponent } from './management/manage-question/add-question-list/add-question-list.component';
+import { EditQuestionListComponent } from './management/manage-question/edit-question-list/edit-question-list.component';
 
 const routes: Routes = [
   {
@@ -78,6 +80,14 @@ const routes: Routes = [
   {
     path: 'log-in/:authorize/manage-question',
     component: ManageQuestionComponent,
+  },
+  {
+    path: 'log-in/:authorize/manage-question/add-question-list',
+    component: AddQuestionListComponent,
+  },
+  {
+    path: 'log-in/:authorize/manage-question/:topicName/:id',
+    component: EditQuestionListComponent,
   },
   // { path: '403', component: PageAccessDeniedComponent },
   // { path: '404', component: PageNotFoundComponent },

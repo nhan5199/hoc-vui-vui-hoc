@@ -35,6 +35,7 @@ export class LogInComponent implements OnInit {
       .object('login')
       .valueChanges()
       .subscribe((data: any) => {
+        debugger;
         if (data.toLowerCase() === this.authorize?.toLowerCase()) {
           this.isAuthorize = true;
           this.isLoading = false;

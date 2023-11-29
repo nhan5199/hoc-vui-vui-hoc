@@ -14,6 +14,7 @@ import {
 export class ErrorMessageComponent implements OnInit, OnChanges {
   @Input('display') display: boolean = false;
   @Input('message') message: string = '';
+  @Input('code') code: number = 200;
   displayTime: number = 3;
 
   ngOnChanges(changes: SimpleChanges): void {

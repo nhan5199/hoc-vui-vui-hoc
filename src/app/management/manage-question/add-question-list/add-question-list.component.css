@@ -1,0 +1,154 @@
+.manage-question {
+  width: 100%;
+  height: 100svh;
+  background-image: url("/assets/imgs/home/background.jpg");
+  background-size: cover;
+}
+
+.not-found {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.placeholder {
+  display: none;
+}
+
+.create-form {
+  position: absolute;
+  top: 50%;
+  width: 500px;
+  height: 90svh;
+  background-color: #faf9f6;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 20px;
+  margin: 10px auto;
+  gap: 5px;
+}
+
+.item label {
+  font-weight: bold;
+  margin: 0;
+  font-size: 20px;
+}
+
+.downloadUrl {
+  text-align: center;
+}
+
+.downloadUrl a {
+  text-decoration: none;
+}
+
+.downloadUrl img {
+  width: 30px;
+  margin: 10px;
+}
+
+.required {
+  color: red;
+}
+
+.title {
+  font-size: 50px;
+  font-family: var(--title-font);
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.submit {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 15px 25px;
+  border-radius: 15px;
+  background-color: #b978fa;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: 0.5s ease;
+  color: white;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: #800080;
+}
+
+.file-display {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  cursor: pointer;
+}
+
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #b2beb5;
+  border-radius: 20px;
+}
+
+.file-upload-container i {
+  font-size: 25px;
+}
+
+input[type="file"] {
+  color: rgba(0, 0, 0, 0);
+}
+
+.form-content {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+select,
+option {
+  font-size: 20px;
+  padding: 10px;
+  border: 1px solid #b2beb5;
+  border-radius: 10px;
+}
+
+p {
+  margin: 0;
+  color: #b2beb5;
+}
+
+.list-img {
+  display: flex;
+  width: 95%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+span {
+  font-size: 15px;
+  color: #b2beb5;
+}

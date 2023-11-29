@@ -1,6 +1,14 @@
-<div class="error-message" *ngIf="display && displayTime > 0">
-  <i class="fa-solid fa-xmark"></i>
-  <span (click)="closeMessage()">X</span>
+<div
+  class="error-message"
+  *ngIf="display && displayTime > 0"
+  [style]="
+    code == 202 ? 'background-color: #f44336;' : 'background-color: #4CAF50;'
+  "
+>
+  <!-- <i class="fa-solid fa-xmark"></i> -->
+  <span (click)="closeMessage()"
+    ><i class="fa-sharp fa-solid fa-xmark"></i
+  ></span>
   <div class="message">
     {{ message }}
   </div>

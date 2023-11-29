@@ -1,1 +1,16 @@
-<p>confirm-popup works!</p>
+<div class="confirm-background" *ngIf="isDisplay">
+  <div class="confirm-popup">
+    <p class="title">
+      Xác nhận <i class="fa fa-xmark" (click)="onConfirm(false)"></i>
+    </p>
+    <p class="mesage">Bạn có chắc muốn thực hiện hành động này?</p>
+    <div class="action">
+      <button class="no" (click)="onConfirm(false)">
+        <i class="fa-solid fa-xmark"></i>Không
+      </button>
+      <button class="yes" (click)="onConfirm(true)">
+        <i class="fa-solid fa-check"></i>Có
+      </button>
+    </div>
+  </div>
+</div>

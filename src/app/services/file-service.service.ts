@@ -92,4 +92,29 @@ export class FileUploadService {
 
     return Promise.all(uploadPromises);
   }
+
+  deleteFolder(path: string): Promise<void> {
+    const storageRef = this.storage.ref(path);
+
+    // List all items in the folder
+    return storageRef
+      .listAll()
+      .toPromise()
+      .then((result: any) => {
+        const deletePromises: Promise<void>[] = [];
+
+        // Delete each item in the folder
+        result.items.forEach((item: any) => {
+          const deletePromise = item.delete();
+          deletePromises.push(deletePromise);
+        });
+
+        // Wait for all items to be deleted
+        return Promise.all(deletePromises);
+      })
+      .then(() => {
+        // Delete the folder itself
+        return storageRef.delete().toPromise();
+      });
+  }
 }

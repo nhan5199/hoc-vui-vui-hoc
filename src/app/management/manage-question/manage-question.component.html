@@ -3,88 +3,101 @@
 </ng-container>
 <ng-container *ngIf="!isLoading">
   <div class="manage-question">
-    <ng-container *ngIf="isAuthorize">
-      <div class="create-form">
-        <p class="title">Tạo câu hỏi</p>
-        <div class="form-content">
-          <label class="downloadUrl" for="downloadUrl">
-            <img src="/assets/imgs/manage-question/excel-file.png" alt="" />
-            <a [href]="templateDownloadUrl">Tải template tại đây</a></label
-          >
+    <img
+      class="left"
+      src="/assets/imgs/lession/back.png"
+      (click)="returnToBackPage()"
+      alt=""
+      title="quay lại"
+    />
+    <p class="title">Danh sách câu hỏi</p>
 
-          <div class="item">
-            <label>Chủ đề <span class="required">*</span>:</label>
-            <select [(ngModel)]="selectedOption" (change)="onTopicChange()">
-              <option value="0" disabled class="placeholder">
-                Chọn chủ đề câu hỏi
-              </option>
-              <option *ngFor="let option of options" [value]="option.value">
-                {{ option.label }}
-              </option>
-            </select>
+    <div class="table">
+      <div class="table-container">
+        <button class="add-new" (click)="onAddQuestionList()">
+          <i class="fa-solid fa-folder-plus"></i>
+          Thêm mới
+        </button>
+        <div class="list-topic">
+          <div class="table-label">
+            <span style="flex: 0 0 20%"></span>
+            <span style="flex: 0 0 40%">Tên chủ đề</span>
+            <span style="flex: 0 0 40%">Số lượng phiếu bài tập</span>
           </div>
 
-          <div class="item">
-            <label for="uploadFile"
-              >Chọn file câu hỏi <span class="required">*</span>:</label
+          <div class="list-topic-item">
+            <div
+              class="topic-item"
+              *ngFor="let topic of listTopics; let i = index"
             >
-            <div class="file-display">
-              <input
-                #inputFile
-                type="file"
-                (change)="onFileChange($event)"
-                accept=".xlsx, .xls"
-                multiple="false"
-                [disabled]="selectedOption == '0'"
-                style="display: none"
-              />
-
-              <div class="file-upload-container" (click)="inputFile.click()">
-                <i class="fa-solid fa-cloud-arrow-up"></i>
-                <p *ngIf="!selectedFile">click để tải file lên</p>
-                <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
+              <div
+                class="topic-item-content"
+                title="Mở rộng danh sách"
+                (click)="onExpandTopic(+topic.key)"
+              >
+                <span style="flex: 0 0 20%"
+                  ><i
+                    class="fa-solid fa-plus"
+                    *ngIf="!isExpand[i] && i == +topic.key"
+                  ></i>
+                  <i
+                    class="fa-solid fa-minus"
+                    *ngIf="isExpand[i] && i == +topic.key"
+                  ></i
+                ></span>
+                <span style="flex: 0 0 40%">{{ topic.topicName }}</span>
+                <span style="flex: 0 0 40%">{{
+                  topic.listExercises?.length
+                }}</span>
               </div>
-            </div>
-          </div>
-
-          <div class="item">
-            <label for="uploadImages">Chọn hình ảnh: </label>
-            <div class="file-display">
-              <input
-                style="display: none"
-                #inputImages
-                type="file"
-                [disabled]="selectedOption == '0'"
-                (change)="onImagesSelected($event)"
-                multiple
-              />
-
-              <div class="file-upload-container" (click)="inputImages.click()">
-                <i class="fa-solid fa-cloud-arrow-up"></i>
-                <p *ngIf="!selectedImgFiles">click để tải file lên</p>
-                <ng-container *ngIf="selectedImgFiles">
-                  <div class="list-img">
-                    <span *ngFor="let img of selectedImagesArray">{{
-                      img.name
-                    }}</span>
-                  </div>
-                </ng-container>
+              <div class="list-exercise" *ngIf="isExpand[i] && i == +topic.key">
+                <div class="exercise-label">
+                  <span style="flex: 0 0 10%">STT</span>
+                  <span style="flex: 0 0 40%">Tên phiếu bài tập</span>
+                  <span style="flex: 0 0 35%">Số lượng câu hỏi</span>
+                  <span style="flex: 0 0 15%">Thao tác</span>
+                </div>
+                <div
+                  class="exercise-item"
+                  *ngFor="let exercise of topic.listExercises; let i = index"
+                >
+                  <span style="flex: 0 0 10%">{{ i + 1 }}</span>
+                  <span style="flex: 0 0 40%">{{ exercise.name }}</span>
+                  <span style="flex: 0 0 35%">{{
+                    exercise.quests.length
+                  }}</span>
+                  <span style="flex: 0 0 15%"
+                    ><div class="action">
+                      <i
+                        class="fa-solid fa-file-pen"
+                        title="Chỉnh sửa phiếu bài tập"
+                        (click)="
+                          onEditTopic(exercise.key, topic.topicCode, +topic.key)
+                        "
+                      ></i>
+                      <i
+                        class="fa-solid fa-trash-can"
+                        title="Xóa phiếu bài tập"
+                        (click)="
+                          onDeleteTopic(
+                            exercise.key,
+                            topic.topicCode,
+                            +topic.key
+                          )
+                        "
+                      ></i></div
+                  ></span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <button
-          [disabled]="!selectedOption || !selectedFile"
-          class="submit"
-          (click)="onCreateQuestions()"
-        >
-          Hoàn tất
-        </button>
       </div>
-    </ng-container>
-    <ng-container *ngIf="!isAuthorize">
-      <img class="not-found" src="/assets/notfound.png" alt="" />
-    </ng-container>
+    </div>
   </div>
 </ng-container>
+
+<app-confirm-popup
+  [isDisplay]="displayConfirmDelete"
+  (result)="onConfirmDelete($event)"
+></app-confirm-popup>
