@@ -32,10 +32,10 @@ export class HomeComponent implements OnInit {
     }, 0);
 
     //Test environment
-    this.envLink = 'http://localhost:4200';
+    // this.envLink = 'http://localhost:4200';
 
     //product environment
-    // this.envLink = 'https://hoc-vui-vui-hoc.vercel.app/';
+    this.envLink = 'https://vuihoctoan5.com/';
   }
 
   async fetchData() {
