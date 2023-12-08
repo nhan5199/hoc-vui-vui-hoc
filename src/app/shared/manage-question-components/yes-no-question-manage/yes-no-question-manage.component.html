@@ -1,0 +1,40 @@
+<div class="yes-no-question">
+  <div class="answer-content">
+    <div class="question-content">
+      <img [src]="question.imgPath" alt="" class="question-img" />
+      <textarea
+        class="question"
+        [ngModel]="questionName"
+        (ngModelChange)="onChangeQuestionName($event)"
+      ></textarea>
+    </div>
+    <div class="list-answers">
+      <div
+        class="answer"
+        *ngFor="let answer of question.choices; let i = index"
+      >
+        <div class="opinion">
+          <input
+            type="text"
+            [ngModel]="answer.name"
+            (ngModelChange)="onChangeAnswerName(i, $event)"
+          />
+        </div>
+        <div class="value">
+          <button
+            [ngClass]="answer.answer == 1 ? 'correct' : 'false'"
+            (click)="changeAnswer(i, $event, 1)"
+          >
+            Đ
+          </button>
+          <button
+            [ngClass]="answer.answer == 0 ? 'correct' : 'false'"
+            (click)="changeAnswer(i, $event, 0)"
+          >
+            S
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

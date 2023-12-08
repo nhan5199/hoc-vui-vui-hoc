@@ -31,6 +31,11 @@ export class ManageQuestionComponent implements OnInit {
   selectedDelete: any = {};
   itemList!: AngularFireList<any>;
   insertDbPath: string = '';
+
+  //popup thông báo
+  informMessage: string = '';
+  code: number = 200;
+
   constructor(
     private readonly _router: Router,
     private readonly _route: ActivatedRoute,
@@ -97,7 +102,7 @@ export class ManageQuestionComponent implements OnInit {
 
   onEditTopic(key: any, topicCode: string, topicKey: number) {
     this._router.navigateByUrl(
-      `log-in/${this.authorize}/manage-question/${topicCode}/${key}`
+      `log-in/${this.authorize}/manage-question/${topicKey}/${topicCode}/${key}`
     );
   }
 
@@ -115,63 +120,69 @@ export class ManageQuestionComponent implements OnInit {
 
     if (event) {
       //Xóa câu hỏi trên firebase
-      // let topicContent = this.listTopics.find(
-      //   (x: any) =>
-      //     x.topicCode.toLowerCase() ===
-      //     this.selectedDelete.topicCode.toLowerCase()
-      // );
-      // let selectedDeleteItem = topicContent.listExercises.find(
-      //   (x: any) =>
-      //     x.key.toLowerCase() === this.selectedDelete.key.toLowerCase()
-      // );
-      // this.insertDbPath = `/questionAnswer/${this.selectedDelete.topicKey}/content/listExercises`;
-      // const itemRef = this._db.object(
-      //   this.insertDbPath + '/' + selectedDeleteItem.key
-      // );
-      // itemRef.remove();
+      let topicContent = this.listTopics.find(
+        (x: any) =>
+          x.topicCode.toLowerCase() ===
+          this.selectedDelete.topicCode.toLowerCase()
+      );
+      let selectedDeleteItem = topicContent.listExercises.find(
+        (x: any) =>
+          x.key.toLowerCase() === this.selectedDelete.key.toLowerCase()
+      );
+      this.insertDbPath = `/questionAnswer/${this.selectedDelete.topicKey}/content/listExercises`;
+      const itemRef = this._db.object(
+        this.insertDbPath + '/' + selectedDeleteItem.key
+      );
+      itemRef.remove();
+
       //Xóa hình trên storage
-      // let imgPath = '';
-      // this.listTopics.forEach((topic: any) => {
-      //   if (
-      //     topic.key.toLowerCase() ===
-      //     this.selectedDelete.topicKey.toString().toLowerCase()
-      //   ) {
-      //     topic.listExercises.forEach((exercise: any) => {
-      //       if (
-      //         exercise.key.toLowerCase() ===
-      //         this.selectedDelete.key.toLowerCase()
-      //       ) {
-      //         exercise.quests = Object.keys(exercise.quests).map((key) => ({
-      //           key,
-      //           ...exercise.quests[key],
-      //         }));
-      //         exercise.quests.forEach((question: any) => {
-      //           if (question.decoratePath?.length > 0) {
-      //             imgPath = question?.decoratePath.split('/')[1];
-      //             console.log(imgPath);
-      //           }
-      //         });
-      //       }
-      //     });
-      //   }
-      // });
-      // this.fileUploadService.deleteFolder(
-      //   `/${this.selectedDelete.topicCode}/quests/${imgPath}`
-      // );
+      let imgPath = '';
+      this.listTopics.forEach((topic: any) => {
+        if (
+          topic.key.toLowerCase() ===
+          this.selectedDelete.topicKey.toString().toLowerCase()
+        ) {
+          topic.listExercises.forEach((exercise: any) => {
+            if (
+              exercise.key.toLowerCase() ===
+              this.selectedDelete.key.toLowerCase()
+            ) {
+              exercise.quests = Object.keys(exercise.quests).map((key) => ({
+                key,
+                ...exercise.quests[key],
+              }));
+              exercise.quests.forEach((question: any) => {
+                if (question.decoratePath?.length > 0) {
+                  imgPath = question?.decoratePath.split('/')[1];
+                }
+              });
+            }
+          });
+        }
+      });
+      this.fileUploadService.deleteFolder(
+        `/${this.selectedDelete.topicCode}/quests/${imgPath}`
+      );
+
       // Xóa ở giao diện
-      // this.listTopics.forEach((topic: any) => {
-      //   if (
-      //     topic.topicCode.toLowerCase() ===
-      //     this.selectedDelete.topicCode.toLowerCase()
-      //   ) {
-      //     let index = topic.listExercises.findIndex(
-      //       (x: any) => x.key === this.selectedDelete.key
-      //     );
-      //     if (index !== -1) {
-      //       topic.listExercises.splice(index, 1);
-      //     }
-      //   }
-      // });
+      this.listTopics.forEach((topic: any) => {
+        if (
+          topic.topicCode.toLowerCase() ===
+          this.selectedDelete.topicCode.toLowerCase()
+        ) {
+          let index = topic.listExercises.findIndex(
+            (x: any) => x.key === this.selectedDelete.key
+          );
+          if (index !== -1) {
+            topic.listExercises.splice(index, 1);
+          }
+        }
+      });
+
+      setTimeout(() => {
+        this.informMessage = 'Xóa thành công!';
+        this.code = 200;
+      }, 100);
     }
   }
 

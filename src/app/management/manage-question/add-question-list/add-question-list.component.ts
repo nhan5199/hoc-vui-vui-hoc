@@ -5,7 +5,7 @@ import {
   AngularFireDatabase,
 } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FileUploadService } from 'src/app/services/file-service.service';
 import * as XLSX from 'xlsx';
 
@@ -61,7 +61,8 @@ export class AddQuestionListComponent implements OnInit {
     private _db: AngularFireDatabase,
     private storage: AngularFireStorage,
     private fileUploadService: FileUploadService,
-    private _location: Location
+    private _location: Location,
+    private _router: Router
   ) {}
 
   async ngOnInit() {
@@ -181,10 +182,6 @@ export class AddQuestionListComponent implements OnInit {
     reader.readAsArrayBuffer(file);
   }
 
-  deleteSelectedFile() {
-    this.selectedFile = null;
-  }
-
   //Khởi tạo câu hỏi dựa trên dữ liệu json
   convertJsonToData(data: any): any {
     let result: any;
@@ -267,12 +264,18 @@ export class AddQuestionListComponent implements OnInit {
   }
 
   clearFileName(): void {
+    this.inputFile.nativeElement.value = '';
     this.selectedFile = null;
   }
 
   onImagesSelected(event: any): void {
     this.selectedImgFiles = event.target.files;
     this.selectedImagesArray = [...event.target.files];
+  }
+
+  clearImagesSelected() {
+    this.selectedImagesArray = [];
+    this.inputImages.nativeElement.value = '';
   }
 
   uploadFiles(): void {
@@ -285,6 +288,15 @@ export class AddQuestionListComponent implements OnInit {
           this.informMessage = 'Thêm phiếu bài tập thành công!';
           this.selectedImgFiles = null;
           this.clearFileName();
+          this.clearImagesSelected();
+          //nếu tiếp tục thêm câu hỏi thì thư mục hình sẽ mặc định cộng thêm 1
+          this.newListQuestionsIndex += 1;
+
+          //Để lại tên phiếu bài tập về mặc định
+          this.listQuestions.name = 'Phiếu bài tập ';
+          this.listQuestions.quests = [];
+          this.listQuestions.imgPath = '';
+          this.listQuestions.url = '';
         })
         .catch((error: any) => {
           this.code = 202;
@@ -297,7 +309,6 @@ export class AddQuestionListComponent implements OnInit {
   }
 
   onCreateQuestions() {
-    debugger;
     if (!this.selectedOption || !this.selectedFile) {
       this.code = 202;
       this.informMessage = 'Vui lòng chọn đủ thông tin Chủ đề và Câu hỏi!';

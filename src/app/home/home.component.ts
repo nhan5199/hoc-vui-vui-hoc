@@ -64,7 +64,6 @@ export class HomeComponent implements OnInit {
         )
         .then(
           (response) => {
-            console.log(1);
             this.informMessage = 'Gửi mail thành công!';
             this.code = 200;
           },

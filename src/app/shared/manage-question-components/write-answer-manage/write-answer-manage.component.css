@@ -1,0 +1,74 @@
+.write-answer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 10px;
+  font-size: 35px;
+  font-family: var(--title-font);
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: fill;
+}
+
+textarea {
+  border: none;
+  outline: none;
+  word-wrap: break-word;
+  width: 100%;
+  background-color: transparent;
+  font-size: 30px;
+  resize: none;
+  text-align: center;
+}
+
+.question-content {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 0 0 70%;
+  align-items: center;
+}
+
+.answer-input {
+  display: flex;
+}
+.question {
+  font-size: 30px;
+}
+
+.answer-content {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+}
+
+.question-content input {
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 25px;
+  width: 200px;
+  margin: 0 10px;
+  font-family: var(--title-font);
+}
+
+/*Bỏ arrow ở inpur*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

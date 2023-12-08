@@ -101,3 +101,9 @@
   [isDisplay]="displayConfirmDelete"
   (result)="onConfirmDelete($event)"
 ></app-confirm-popup>
+
+<app-error-message
+  [display]="informMessage.length > 0"
+  [message]="informMessage"
+  [code]="code"
+></app-error-message>

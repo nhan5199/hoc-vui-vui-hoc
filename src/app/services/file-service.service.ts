@@ -95,7 +95,6 @@ export class FileUploadService {
 
   deleteFolder(path: string): Promise<void> {
     const storageRef = this.storage.ref(path);
-
     // List all items in the folder
     return storageRef
       .listAll()

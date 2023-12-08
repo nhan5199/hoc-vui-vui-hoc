@@ -1,0 +1,130 @@
+.exercise-background {
+  width: 100%;
+  min-height: 100svh;
+  background-image: url("/assets/imgs/home/background.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.exercise {
+  width: 90%;
+  border: none;
+  background-color: transparent;
+  border-radius: 15px;
+  background-size: cover;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 50px;
+  font-family: var(--title-font);
+  color: black;
+  margin: 20px 0;
+  color: white;
+}
+
+.list-question {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 10px;
+  position: relative;
+  margin: 10px;
+  background-color: antiquewhite;
+  border: 10px solid white;
+}
+
+.delete-question {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.delete-question:hover {
+  width: 45px;
+}
+
+.decorate-img,
+.question-img {
+  object-fit: fill;
+  border-radius: 10px;
+}
+
+.decorate-img {
+  width: 40%;
+  max-height: 100px;
+}
+
+.question-img {
+  width: 400px;
+  height: 250px;
+}
+
+app-choose-correct-answer-manage,
+app-yes-no-question-manage,
+app-write-answer-manage,
+app-write-text-answer-manage {
+  width: 100%;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  position: fixed;
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+}
+
+.submit {
+  border: 5px solid white;
+  border-radius: 50%;
+  font-size: 30px;
+  font-family: var(--title-font);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.5s ease;
+}
+
+.save {
+  background-color: rgb(121, 238, 121);
+}
+
+.save:hover {
+  background-color: rgb(6, 255, 6);
+}
+
+.reload {
+  background-color: rgb(113, 209, 238);
+}
+.reload:hover {
+  background-color: rgb(27, 190, 240);
+}

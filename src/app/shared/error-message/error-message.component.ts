@@ -18,11 +18,13 @@ export class ErrorMessageComponent implements OnInit, OnChanges {
   displayTime: number = 3;
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['display']) {
+    if (changes['display'] || changes['message']) {
       this.displayTime = 3;
       if (this.display) {
         setTimeout(() => {
           this.displayTime = 0;
+          this.message = '';
+          this.display = false;
         }, 3000);
       }
     }
@@ -31,5 +33,7 @@ export class ErrorMessageComponent implements OnInit, OnChanges {
 
   closeMessage() {
     this.displayTime = 0;
+    this.message = '';
+    this.display = false;
   }
 }

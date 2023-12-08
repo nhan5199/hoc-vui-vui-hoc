@@ -1,0 +1,30 @@
+<div class="write-answer">
+  <img [src]="question.imgPath" alt="" class="question-img" />
+  <div class="question-content">
+    <textarea
+      class="question"
+      [ngModel]="questionName"
+      (ngModelChange)="onChangeQuestionName($event)"
+    ></textarea>
+    <div class="answer-input">
+      <p>Đáp án là:</p>
+      <input
+        type="text"
+        maxlength="10"
+        [ngModel]="answer"
+        id="answer"
+        autocomplete="off"
+        (ngModelChange)="onChangeAnswer($event)"
+      />
+      <input
+        *ngIf="question.unit?.length > 0"
+        type="text"
+        maxlength="10"
+        [ngModel]="unit"
+        id="unit"
+        autocomplete="off"
+        (ngModelChange)="onChangeUnit($event)"
+      />
+    </div>
+  </div>
+</div>

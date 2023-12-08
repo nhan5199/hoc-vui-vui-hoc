@@ -1,7 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -35,7 +42,6 @@ export class LogInComponent implements OnInit {
       .object('login')
       .valueChanges()
       .subscribe((data: any) => {
-        debugger;
         if (data.toLowerCase() === this.authorize?.toLowerCase()) {
           this.isAuthorize = true;
           this.isLoading = false;

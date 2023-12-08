@@ -107,7 +107,7 @@ export class ExerciseComponent implements OnInit {
           this.listQuestions.forEach((question: any) => {
             if (question.decoratePath) {
               let decoratepath = question.decoratePath
-                .split('/')[1]
+                .split('/')[2]
                 .split('.')[0];
               question.decoratePath = urls.find((x) =>
                 x.includes(decoratepath)
@@ -115,7 +115,7 @@ export class ExerciseComponent implements OnInit {
             }
 
             if (question.imgPath) {
-              let imgPath = question.imgPath.split('/')[1].split('.')[0];
+              let imgPath = question.imgPath.split('/')[2].split('.')[0];
               question.imgPath = urls.find((x) => x.includes(imgPath));
             }
           });

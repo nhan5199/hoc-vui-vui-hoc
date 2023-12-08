@@ -1,1 +1,74 @@
-<p>edit-question-list works!</p>
+<ng-container *ngIf="isLoading">
+  <img class="loading" src="/assets/loading.gif" alt="" />
+</ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="exercise-background">
+    <img
+      class="left"
+      src="/assets/imgs/lession/back.png"
+      (click)="returnToBackPage()"
+      alt=""
+      title="quay lại"
+    />
+    <p class="title">{{ this.exercise?.name }}</p>
+    <div class="exercise">
+      <div class="list-question">
+        <div
+          class="question"
+          *ngFor="let quest of exercise.quests; let i = index"
+        >
+          <img [src]="quest.decoratePath" alt="" class="decorate-img" />
+          <img
+            class="delete-question"
+            src="/assets/imgs/lession/return.png"
+            (click)="deleteQuestion(i)"
+            alt=""
+            title="Xóa câu hỏi"
+          />
+          <ng-container *ngIf="quest.type == 1">
+            <app-choose-correct-answer-manage
+              [question]="quest"
+              [onSave]="onSave"
+              (result)="onChangeQuestion(i, $event)"
+            ></app-choose-correct-answer-manage>
+          </ng-container>
+          <ng-container *ngIf="quest.type == 2">
+            <app-yes-no-question-manage
+              [question]="quest"
+              [onSave]="onSave"
+              (result)="onChangeQuestion(i, $event)"
+            ></app-yes-no-question-manage>
+          </ng-container>
+          <ng-container *ngIf="quest.type == 3">
+            <app-write-answer-manage
+              [question]="quest"
+              [onSave]="onSave"
+              (result)="onChangeQuestion(i, $event)"
+            ></app-write-answer-manage>
+          </ng-container>
+          <ng-container *ngIf="quest.type == 5">
+            <app-write-text-answer-manage
+              [question]="quest"
+              [onSave]="onSave"
+              (result)="onChangeQuestion(i, $event)"
+            ></app-write-text-answer-manage>
+          </ng-container>
+        </div>
+      </div>
+      <div class="action">
+        <button title="Lưu" class="submit save" (click)="onSaveExercise()">
+          <i class="fa-solid fa-floppy-disk"></i>
+        </button>
+        <button title="Tải lại" class="submit reload" (click)="onReloadData()">
+          <i class="fa-solid fa-repeat"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<app-error-message
+  [display]="informMessage.length > 0"
+  [message]="informMessage"
+  [code]="code"
+></app-error-message>

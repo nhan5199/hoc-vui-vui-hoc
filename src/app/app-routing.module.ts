@@ -86,7 +86,7 @@ const routes: Routes = [
     component: AddQuestionListComponent,
   },
   {
-    path: 'log-in/:authorize/manage-question/:topicName/:id',
+    path: 'log-in/:authorize/manage-question/:topicId/:topicName/:id',
     component: EditQuestionListComponent,
   },
   // { path: '403', component: PageAccessDeniedComponent },
