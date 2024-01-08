@@ -15,39 +15,41 @@
       [src]="question?.imgPath"
       alt=""
     />
-    <div [class]="isLongAnswer ? 'list-long-answers' : 'list-answers'">
-      <ng-container>
-        <button
-          [class]="
-            isLongAnswer
-              ? 'long-answer'
-              : isMediumAnswer
-              ? 'medium-answer'
-              : 'answer'
-          "
-          *ngFor="let answer of question.choices"
-          (click)="
-            isMultipleChoice
-              ? chooseAnswer(answer.value, $event)
-              : checkAnswer(answer.value, $event)
-          "
-          [innerHTML]="answer.name"
-        ></button>
-      </ng-container>
-      <ng-container *ngIf="isAnswerWithImage">
-        <span
-          class="answer-img"
-          *ngFor="let answer of question.choices"
-          (click)="
-            isMultipleChoice
-              ? chooseAnswer(answer.value, $event)
-              : checkAnswer(answer.value, $event)
-          "
-        >
-          <img [src]="answer.name" />
-        </span>
-      </ng-container>
-    </div>
+    <ng-container *ngIf="!isAnswerWithImage">
+      <div [class]="isLongAnswer ? 'list-long-answers' : 'list-answers'">
+        <ng-container>
+          <button
+            [class]="
+              isLongAnswer
+                ? 'long-answer'
+                : isMediumAnswer
+                ? 'medium-answer'
+                : 'answer'
+            "
+            *ngFor="let answer of question.choices"
+            (click)="
+              isMultipleChoice
+                ? chooseAnswer(answer.value, $event)
+                : checkAnswer(answer.value, $event)
+            "
+            [innerHTML]="answer.name"
+          ></button>
+        </ng-container>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="isAnswerWithImage">
+      <span
+        class="answer-img"
+        *ngFor="let answer of question.choices"
+        (click)="
+          isMultipleChoice
+            ? chooseAnswer(answer.value, $event)
+            : checkAnswer(answer.value, $event)
+        "
+      >
+        <img [src]="answer.name" />
+      </span>
+    </ng-container>
   </div>
   <div class="check" *ngIf="isMultipleChoice">
     <button id="checkButton" (click)="checkMultipleAnswers()">Kiểm tra</button>

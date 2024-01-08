@@ -16,9 +16,10 @@ export class ChooseCorrectAnswerComponent implements OnInit {
 
   multipleAnswer: any[] = [];
   ngOnInit(): void {
-    if (this.question.choices[0].name.includes('/assets')) {
+    if (this.question.choices[0].name.includes('https')) {
       this.isAnswerWithImage = true;
     }
+    console.log('data: ', this.isAnswerWithImage);
 
     if (this.question.answer?.length > 1) {
       this.isMultipleChoice = true;

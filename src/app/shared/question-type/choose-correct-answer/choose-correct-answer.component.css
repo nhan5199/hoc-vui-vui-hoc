@@ -93,12 +93,13 @@
 .answer-content {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   width: 95%;
 }
 .answer-img img {
   width: 80%;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
   border-radius: 10px;
   cursor: pointer;
   border: 8px solid white;

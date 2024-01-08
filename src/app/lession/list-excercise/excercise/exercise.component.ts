@@ -94,7 +94,6 @@ export class ExerciseComponent implements OnInit {
           const folderPath = `/${this.topicName}/quests/${this.storageLevel}`;
           const storageRef = this.storage.ref(folderPath);
           const result = await storageRef.listAll().toPromise();
-
           if (result && result?.items?.length > 0) {
             for (const itemRef of result.items) {
               const downloadPath = `/${itemRef.fullPath}`;
@@ -117,6 +116,15 @@ export class ExerciseComponent implements OnInit {
             if (question.imgPath) {
               let imgPath = question.imgPath.split('/')[2].split('.')[0];
               question.imgPath = urls.find((x) => x.includes(imgPath));
+            }
+
+            if (question.choices?.length > 0) {
+              question.choices.forEach((choice: any) => {
+                if (choice.name.includes('/')) {
+                  let imgPath = choice.name.split('/')[2].split('.')[0];
+                  choice.name = urls.find((x) => x.includes(imgPath));
+                }
+              });
             }
           });
 

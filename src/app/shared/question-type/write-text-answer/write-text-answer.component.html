@@ -8,13 +8,8 @@
     />
   </div>
   <div class="answer">
-    <div class="decorate-img">
-      <img
-        class="answer-img"
-        *ngIf="question?.imgPath?.length > 0"
-        [src]="question?.imgPath"
-        alt=""
-      />
+    <div class="decorate-img" *ngIf="question?.imgPath?.length > 0">
+      <img class="answer-img" [src]="question?.imgPath" alt="" />
     </div>
     <div class="answer-content" *ngIf="question?.questionName?.length > 0">
       <ng-container *ngFor="let item of question.questionName; let i = index">
